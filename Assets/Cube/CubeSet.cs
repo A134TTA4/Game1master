@@ -33,20 +33,26 @@ namespace Cube
 
         void CreateCubeM()
         {
-            if(PhotonScriptor.ConnectingScript.informPlayerID() != PN)
+            if (PhotonScriptor.ConnectingScript.informPlayerID() != PN)
             {
                 return;
             }
 
-            if(UI.SettingPanel.SettingPanelController.InformPanelState() == true)
+            if (UI.SettingPanel.SettingPanelController.InformPanelState() == true)
             {
                 return;
             }
 
-            if(UI.RoomNoPanel.RoomNoPanelController.InformPanelState() == true)
+            if (UI.RoomNoPanel.RoomNoPanelController.InformPanelState() == true)
             {
                 return;
             }
+
+            if (TimeManager.PreParationTime.InformPreparationState() == false)
+            {
+                return;
+            }
+
 
             if (Created == CreateLimit)
             {
