@@ -42,6 +42,7 @@ namespace PhotonScriptor
 
         private void Update()
         {
+            //Debug.Log(CountPlayers);
             if(Connected == true && SetNoComplete == true)
             {
                 PhotonNetwork.JoinOrCreateRoom(RoomName + RoomNo, RoomOPS, TypedLobby.Default);
@@ -74,7 +75,7 @@ namespace PhotonScriptor
             PlayerID = Photonplayer.ActorNumber; //プレイヤー2としてテストしたいならコメントアウト
             Debug.Log("PlayerID = " + PlayerID);
             Debug.Log("Succesfully Connected");
-            TimeManager.TimeCounter.StartGameM(); //テスト用
+            //TimeManager.TimeCounter.StartGameM(); //テスト用
         }
 
         public override void OnLeftRoom()

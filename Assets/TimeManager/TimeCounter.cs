@@ -22,7 +22,6 @@ namespace TimeManager
 
         void Update()
         {
-            //Debug.Log(StartGame);
             if (StartGame)
             {
                 timeCount += Time.deltaTime;  
@@ -55,7 +54,6 @@ namespace TimeManager
 
         static public bool InformStartGame()
         {
-            //Debug.Log("startGame reffered");
             return StartGame;
         }
     }
