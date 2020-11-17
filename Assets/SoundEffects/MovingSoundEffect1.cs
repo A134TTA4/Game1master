@@ -1,0 +1,65 @@
+﻿using Photon.Pun.Demo.Cockpit;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Photon.Pun;
+
+namespace SoundEffects
+{
+    public class MovingSoundEffect1 : MonoBehaviourPunCallbacks
+    {
+        [SerializeField]
+        private AudioClip WalkingSound;
+        [SerializeField]
+        private AudioSource PlayerAudioSource;
+        private bool SoundPlaying = false;
+        private float Count = 0f;
+        private float Max = 0.2f;
+
+        private float AudioVolume = 0;
+        [SerializeField]
+        private float PN;
+
+        private void Start()
+        {
+            AudioVolume = PlayerAudioSource.volume;
+        }
+        void Update()
+        {
+            if(PhotonScriptor.ConnectingScript.informPlayerID() != PN)
+            {
+                return;
+            }
+
+            PlayerAudioSource.volume = AudioVolume * UI.SettingPanel.AudioController.InformAudioValue();
+            if (Player.PlayerMove1.InformWalking() ==true)
+            {
+                Count += Time.deltaTime;
+                if (SoundPlaying == false && Count >= Max)
+                {
+                    photonView.RPC(nameof(WalkingSoundM), RpcTarget.All);
+                }
+            }
+            else
+            {
+                Count = 0;
+                photonView.RPC(nameof(WalkingSoundStop), RpcTarget.All);
+            }
+        }
+
+        [PunRPC]
+        void WalkingSoundM()
+        {
+            PlayerAudioSource.PlayOneShot(WalkingSound);
+            SoundPlaying = true;
+            //Debug.Log("walking sound");
+        }
+
+        [PunRPC]
+        void WalkingSoundStop()
+        {
+            PlayerAudioSource.Stop();
+            SoundPlaying = false;
+        }
+    }
+}
