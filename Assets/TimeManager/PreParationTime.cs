@@ -8,7 +8,7 @@ namespace TimeManager
     public class PreParationTime : MonoBehaviour
     {
         private float nowTime = 0f;
-        static private float preparationStart = 0f;
+        static private float preparationStart = 1f;
         static private float preparationEnd = 20f;
         static private float preparationLeft ;
         static private bool preparationEndbool = false;
@@ -19,11 +19,13 @@ namespace TimeManager
         private Vector3 StartPosition;
         private Vector3 StartPosition2;
 
-        static private bool PreparationState = true;
+        static private bool PreparationState = false;
 
         static private bool PreparationRestart = false;
         void Start()
         {
+            PreparationState = false;
+            PreparationRestart = false;
             StartPosition = PlayerTrans.position;
             StartPosition2 = PlayerTrans2.position;
             preparationLeft = preparationStart - preparationEnd;
@@ -31,6 +33,7 @@ namespace TimeManager
 
         void Update()
         {
+            
             nowTime = TimeCounter.TimeInformer();
 
             if(MainPhaze.InformMainphaze() == true)

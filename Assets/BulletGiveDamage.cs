@@ -33,7 +33,10 @@ public class BulletGiveDamage : MonoBehaviour
         {
             PlayerHP2.PlayerGetDamage(Givedamage);
         }
-        Destroy(this.gameObject);
+        if (!other.CompareTag("Shield"))
+        {
+            Destroy(this.gameObject);
+        }
 
     }
 }
