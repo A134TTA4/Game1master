@@ -4770,6 +4770,7 @@ GameObject:
   - component: {fileID: 6683685326459943324}
   - component: {fileID: 9069588446948253290}
   - component: {fileID: 6250045960750087362}
+  - component: {fileID: 890251137690552304}
   m_Layer: 0
   m_Name: Smoke
   m_TagString: Untagged
@@ -5026,3 +5027,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &890251137690552304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7443733302503702361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b09e9d59fd535f4e85ceff07b244666, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BGMSource: {fileID: 0}
+  volume: 0.15
