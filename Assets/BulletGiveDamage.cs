@@ -1,12 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 using Player;
 public class BulletGiveDamage : MonoBehaviour
 {
     private float Givedamage = 14;
-    private float lifetime = 1.0f;
+    private float lifetime = 5.0f;
     private float now;
 
     void Update()
@@ -19,8 +18,7 @@ public class BulletGiveDamage : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other)
-    {
-        
+    {  
         GameObject Player = other.gameObject;
         PlayerHp component;
         if ((component = Player.GetComponent<PlayerHp>()) != null)
@@ -33,10 +31,7 @@ public class BulletGiveDamage : MonoBehaviour
         {
             PlayerHP2.PlayerGetDamage(Givedamage);
         }
-        if (!other.CompareTag("Shield"))
-        {
-            Destroy(this.gameObject);
-        }
+        Destroy(this.gameObject); 
 
     }
 }
