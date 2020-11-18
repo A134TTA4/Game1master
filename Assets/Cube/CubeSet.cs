@@ -58,17 +58,36 @@ namespace Cube
             {
                 return;
             }
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (PhotonScriptor.ConnectingScript.informPlayerID() == 1)
             {
-                if (Input.GetKey(KeyCode.LeftControl))
+                if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
-                    PhotonNetwork.Instantiate("CreatedCubeSmall", this.transform.position, transform.rotation);
-                    Created++;
+                    if (Input.GetKey(KeyCode.LeftControl))
+                    {
+                        PhotonNetwork.Instantiate("CreatedCubeSmallBlue", this.transform.position, transform.rotation);
+                        Created++;
+                    }
+                    else
+                    {
+                        PhotonNetwork.Instantiate("CreatedCubeBigBlue", this.transform.position, transform.rotation);
+                        Created++;
+                    }
                 }
-                else
+            }
+            if (PhotonScriptor.ConnectingScript.informPlayerID() == 2)
+            {
+                if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
-                    PhotonNetwork.Instantiate("CreatedCubeBig", this.transform.position, transform.rotation);
-                    Created++;
+                    if (Input.GetKey(KeyCode.LeftControl))
+                    {
+                        PhotonNetwork.Instantiate("CreatedCubeSmall", this.transform.position, transform.rotation);
+                        Created++;
+                    }
+                    else
+                    {
+                        PhotonNetwork.Instantiate("CreatedCubeBig", this.transform.position, transform.rotation);
+                        Created++;
+                    }
                 }
             }
 
