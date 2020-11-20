@@ -13,6 +13,12 @@ namespace Team
         private GameObject RedTeamText;
         private bool teamState = false;
 
+        private void Start()
+        {
+            RedTeamText.SetActive(false);
+            BlueTeamText.SetActive(false);
+        }
+
         private void Update()
         {
             

@@ -6,7 +6,7 @@ public class BulletGiveDamage : MonoBehaviour
 {
     private float Givedamage = 14;
     private float lifetime = 5.0f;
-    private float now;
+    private float now = 0f;
 
     void Update()
     {

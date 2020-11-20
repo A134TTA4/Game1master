@@ -55,6 +55,12 @@ namespace Player
             Debug.Log("get Damage");
         }
 
+        static public void PlayerGetDamageforme(float Damage)
+        {
+            PlayerHp2 -= Damage;
+            Debug.Log("get Damage");
+        }
+
         static public float InformPlayerHP()
         {
             return PlayerHp2;

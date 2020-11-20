@@ -14,10 +14,11 @@ namespace Player
                 //Debug.Log("Got Trigger Enter");
                 if (other.CompareTag("Cube"))
                 {
-                    PhotonNetwork.Instantiate("BreachEffect", this.transform.position, this.transform.rotation);
                     //Debug.Log("Destroy");
                     Destroy(other.gameObject);
                 }
+                PhotonNetwork.Instantiate("BreachEffect", this.transform.position, this.transform.rotation);
+                PhotonNetwork.Instantiate("DamageShpere", this.transform.position, this.transform.rotation);
                 Destroy(this.gameObject);
             }
         }
