@@ -46,10 +46,26 @@ namespace UI
 
         static public void IncrementRed()
         {
+            if (PhotonScriptor.ConnectingScript.informPlayerID() == 2)
+            {
+                UI.UIEffect.RoundWinEffect.WinEffectOnM();
+            }
+            else
+            {
+                UI.UIEffect.RoundLostEffect.LoseEffectOnM();
+            }
             RedPoint++;
         }
         static public void IncrementBlue()
         {
+            if (PhotonScriptor.ConnectingScript.informPlayerID() == 1)
+            {
+                UI.UIEffect.RoundWinEffect.WinEffectOnM();
+            }
+            else
+            {
+                UI.UIEffect.RoundLostEffect.LoseEffectOnM();
+            }
             BluePoint++;
         }
 

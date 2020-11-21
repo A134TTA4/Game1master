@@ -37,7 +37,8 @@ namespace PhotonScriptor
             SetNoComplete = false;
             startGame = false;
             PhotonNetwork.ConnectUsingSettings();
-            PhotonNetwork.SerializationRate = 15;
+            PhotonNetwork.SendRate = 60;
+            PhotonNetwork.SerializationRate = 60;
         }
 
         private void Update()
@@ -75,7 +76,7 @@ namespace PhotonScriptor
             PlayerID = Photonplayer.ActorNumber; //プレイヤー2としてテストしたいならコメントアウト
             Debug.Log("PlayerID = " + PlayerID);
             Debug.Log("Succesfully Connected");
-            //TimeManager.TimeCounter.StartGameM(); //テスト用
+            TimeManager.TimeCounter.StartGameM(); //テスト用
         }
 
         public override void OnLeftRoom()
