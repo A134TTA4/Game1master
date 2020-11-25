@@ -20,6 +20,10 @@ namespace UI
             {
                 ConnectingStatePanel.SetActive(false);
             }
+            if(TimeManager.BluePrint.BruePrintPhaze.InformBluePrintState() == true)//試験用
+            {
+                ConnectingStatePanel.SetActive(false);
+            }
         }
     }
 }

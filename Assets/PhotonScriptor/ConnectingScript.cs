@@ -76,7 +76,8 @@ namespace PhotonScriptor
             PlayerID = Photonplayer.ActorNumber; //プレイヤー2としてテストしたいならコメントアウト
             Debug.Log("PlayerID = " + PlayerID);
             Debug.Log("Succesfully Connected");
-            TimeManager.TimeCounter.StartGameM(); //テスト用
+            //TimeManager.TimeCounter.StartGameM(); //テスト用
+            TimeManager.BluePrint.BruePrintPhaze.StartBluePrintM();
         }
 
         public override void OnLeftRoom()

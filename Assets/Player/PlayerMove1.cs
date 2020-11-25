@@ -11,7 +11,6 @@ namespace Player
 
         [SerializeField]
         GameObject player;
-        Rigidbody playerRigid;
         Transform playerTrans;
         [SerializeField]
         private float fowardSpeed = 5.0f;
@@ -27,7 +26,6 @@ namespace Player
         
         void Start()
         {
-            playerRigid = player.GetComponent<Rigidbody>();
             playerTrans = player.transform;
         }
 
