@@ -39,6 +39,10 @@ namespace UI
                     {
                         return;
                     }
+                    if(TimeManager.BluePrint.BruePrintPhaze.InformBluePrintState() == true)
+                    {
+                        return;
+                    }
                     Cursor.lockState = CursorLockMode.Locked;
                     Cursor.visible = false;
                     return;

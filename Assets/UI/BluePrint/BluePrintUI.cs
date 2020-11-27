@@ -10,21 +10,24 @@ namespace UI
         {
             [SerializeField]
             private GameObject UI;
+
+            private bool BluePrintStart = false;
             void Start()
             {
                 UI.SetActive(false);
             }
 
-            // Update is called once per frame
             void Update()
             {
-                if(TimeManager.BluePrint.BruePrintPhaze.InformBluePrintState() == true)
+                if (TimeManager.BluePrint.BruePrintPhaze.InformBluePrintState() == true && BluePrintStart == false)
                 {
+                    BluePrintStart = true;
                     Cursor.lockState = CursorLockMode.None;
                     Cursor.visible = true;
+                    BlueprintUIeffect.BluePrintEffectOnM();
                     UI.SetActive(true);
                 }
-                else
+                else if(TimeManager.BluePrint.BruePrintPhaze.InformBluePrintState() == false)
                 {
                     UI.SetActive(false);
                 }

@@ -10,8 +10,8 @@ namespace TimeManager
         {
             static private bool BluePrintState = false;
             static private bool BluePrintStart = false;
-            private float Count = 0f;
-            private float MaxCount = 30;
+            static private float Count = 0f;
+            static private float MaxCount = 30;
             private bool Gamestart = false;
             void Start()
             {
@@ -50,6 +50,11 @@ namespace TimeManager
             static public void StartBluePrintM()
             {
                 BluePrintStart = true;
+            }
+
+            static public int InformTimesLeft()
+            {
+                return (int)(MaxCount - Count);
             }
         }
     }
