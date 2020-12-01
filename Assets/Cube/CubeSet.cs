@@ -15,7 +15,10 @@ namespace Cube
         GameObject CreatedCubeBig;
         [SerializeField]
         GameObject CreatedCubeSmall;
-
+        [SerializeField]
+        Material CubeMaterial;
+        
+        private bool CanCreate = true;
         static private int CreateLimit = 4;
         static private int Created = 0;
         private float rotSpeed = 1.0f;
@@ -53,6 +56,15 @@ namespace Cube
                 return;
             }
 
+            if(CanCreate == false)
+            {
+                CubeMaterial.color = new Color(1, 0, 0, 0.7f);
+                return;
+            }
+            else
+            {
+                CubeMaterial.color = new Color(0, 0, 1, 0.7f);
+            }
 
             if (Created == CreateLimit)
             {
@@ -117,6 +129,31 @@ namespace Cube
         static public int CubeLeftInformer()
         {
             return CreateLimit - Created;
+        }
+
+        private void OnTriggerStay(Collider other)
+        {
+            if(other.CompareTag("Cube"))
+            {
+                CanCreate = false;
+            }
+            if(other.CompareTag("Separate"))
+            {
+                CanCreate = false;
+            }
+        }
+
+
+        private void OnTriggerExit(Collider other)
+        {
+            if(other.CompareTag("Cube"))
+            {
+                CanCreate = true;
+            }
+            if(other.CompareTag("Separate"))
+            {
+                CanCreate = true;
+            }
         }
 
     }

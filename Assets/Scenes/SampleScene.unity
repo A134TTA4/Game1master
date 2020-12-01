@@ -25827,7 +25827,7 @@ GameObject:
   - component: {fileID: 618124270}
   m_Layer: 0
   m_Name: Separate
-  m_TagString: Untagged
+  m_TagString: Separate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25900,8 +25900,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 618124269}
   m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 1.0239573, y: 0.36, z: -2.3531876}
-  m_LocalScale: {x: 50, y: 5, z: 1}
+  m_LocalPosition: {x: 1.62, y: 0.36, z: -1.76}
+  m_LocalScale: {x: 50, y: 5, z: 4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
@@ -44375,6 +44375,7 @@ MonoBehaviour:
     type: 3}
   CreatedCubeSmall: {fileID: 1613461071657865980, guid: af61a64bc3ddee24497fc17baec6e9ce,
     type: 3}
+  CubeMaterial: {fileID: 2100000, guid: b7c20420148b8b64db852730a18ede57, type: 2}
 --- !u!1001 &1138588621
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49682,7 +49683,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1265353559
 Transform:
   m_ObjectHideFlags: 0
@@ -77463,6 +77464,7 @@ MonoBehaviour:
     type: 3}
   CreatedCubeSmall: {fileID: 1613461071657865980, guid: af61a64bc3ddee24497fc17baec6e9ce,
     type: 3}
+  CubeMaterial: {fileID: 0}
 --- !u!65 &1877409879
 BoxCollider:
   m_ObjectHideFlags: 0
