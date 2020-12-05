@@ -37,6 +37,10 @@ namespace Player
                 return;
             }
 
+            if(TimeManager.BluePrint.BruePrintPhaze.InformBluePrintState() == true)
+            {
+                return;
+            }
             if(PLCameraFocus.InformForcusState() == true)
             {
                 ADSMul = 0.7f;

@@ -52,6 +52,11 @@ public class Shoot : MonoBehaviourPunCallbacks
             return;
         }
 
+        if(TimeManager.BluePrint.BruePrintPhaze.InformBluePrintState())
+        {
+            return;
+        }
+
         if(IntercalTimeManager.InformIntervalState() == true)
         {
             return;

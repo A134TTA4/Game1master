@@ -12,6 +12,12 @@ namespace Cube
         private GameObject CreativeCube2;
         static private bool Cubestate = true;
 
+        private void Start()
+        {
+            CreativeCube.SetActive(false);
+            CreativeCube2.SetActive(false);
+        }
+
         void Update()
         {
             if (PreParationTime.InformPreparationState() == false)

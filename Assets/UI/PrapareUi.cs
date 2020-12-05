@@ -12,12 +12,18 @@ namespace UI
         private GameObject PareaparePanel;
         static private bool preparepanelState = true;
 
-        // Update is called once per frame
+
+        private void Start()
+        {
+            PareaparePanel.SetActive(false);
+            preparepanelState = false;
+        }
+
         void Update()
         {
             if(TimeManager.PreParationTime.InformPreparationState() == false )
             {
-                if(preparepanelState ==true)
+                //if(preparepanelState ==true)
                 {
                     preparepanelState = false;
                     PareaparePanel.SetActive(false);
@@ -25,7 +31,7 @@ namespace UI
             }
             if (TimeManager.PreParationTime.InformPreparationState() == true)
             {
-                if (preparepanelState == false)
+                //if (preparepanelState == false)
                 {
                     preparepanelState = true ;
                     PareaparePanel.SetActive(true);
@@ -33,9 +39,8 @@ namespace UI
             }
         }
 
-        private void ResetPrepare()//リセット関数
+        static public void ResetPrepare()//リセット関数
         {
-            //PareaparePanel.SetActive(true);
             preparepanelState = true;
         }
 

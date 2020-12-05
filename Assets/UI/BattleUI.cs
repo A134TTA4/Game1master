@@ -21,6 +21,11 @@ public class BattleUI : MonoBehaviour
             battlePanel.SetActive(false);
         }
 
+        if(TimeManager.BluePrint.BruePrintPhaze.InformBluePrintState() == true)
+        {
+            battlePanel.SetActive(false);
+        }
+
 
         if(TimeManager.MainPhaze.InformMainphaze() == true)
         {

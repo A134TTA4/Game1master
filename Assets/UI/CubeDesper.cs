@@ -9,14 +9,16 @@ public class CubeDesper : MonoBehaviour
     private Text CubeText;
 
     private int cube;
+    private int limit;
 
     void Update()
     {
         cube = Cube.CubeSet.CubeLeftInformer();
+        limit = Cube.CubeSet.InformLimit();
         if (cube < 0)
         {
             cube = 0;
         }
-        CubeText.text ="CREATIVE\nCUBE" + cube + "/4";
+        CubeText.text ="CREATIVE\nCUBE" + cube + "/" + limit;
     }
 }

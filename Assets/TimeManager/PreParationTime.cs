@@ -44,6 +44,7 @@ namespace TimeManager
             if (PreparationRestart == true)
             {
                 MainPhaze.ResetMainphaze();
+                UI.PrapareUi.ResetPrepare();
                 Debug.Log("restart Preparation");
                 PreparationRestart = false;
                 /////準備ラウンド再開の準備
@@ -52,6 +53,7 @@ namespace TimeManager
                 PlayerTrans.position = StartPosition;
                 PlayerTrans2.position = StartPosition2;
                 Cube.CubeSet.resetCreated();
+                Cube.CubeSet.DeclimentLimit();
             }
             if (nowTime >= preparationStart && nowTime <= preparationEnd)
             {

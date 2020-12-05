@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 namespace Cube
 {
@@ -17,14 +16,15 @@ namespace Cube
         GameObject CreatedCubeSmall;
         [SerializeField]
         Material CubeMaterial;
-        
+
         private bool CanCreate = true;
-        static private int CreateLimit = 4;
+        static private int CreateLimit = 6;
         static private int Created = 0;
         private float rotSpeed = 1.0f;
-
+        private int SetMode = 1;
         private void Start()
         {
+            CreateLimit = 6;
             Created = 0;
         }
 
@@ -56,7 +56,47 @@ namespace Cube
                 return;
             }
 
-            if(CanCreate == false)
+            if(Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                SetMode = 1;
+                this.gameObject.transform.localScale = new Vector3(2,1,1);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                if (CubeLeftInformer() >= 2)
+                {
+                    SetMode = 2;
+                    this.gameObject.transform.localScale = new Vector3(4, 1, 1);
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                if (CubeLeftInformer() >= 3)
+                {
+                    SetMode = 3;
+                    this.gameObject.transform.localScale = new Vector3(6, 1, 1);
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                if (CubeLeftInformer() >= 4)
+                {
+                    SetMode = 4;
+                    this.gameObject.transform.localScale = new Vector3(8, 1, 1);
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha5))
+            {
+                if (CubeLeftInformer() >= 5)
+                {
+                    SetMode = 5;
+                    this.gameObject.transform.localScale = new Vector3(10, 1, 1);
+                }
+            }
+
+
+
+            if (CanCreate == false)
             {
                 CubeMaterial.color = new Color(1, 0, 0, 0.7f);
                 return;
@@ -76,13 +116,17 @@ namespace Cube
                 {
                     if (Input.GetKey(KeyCode.LeftControl))
                     {
-                        PhotonNetwork.Instantiate("CreatedCubeSmallBlue", this.transform.position, transform.rotation);
-                        Created++;
+                        GameObject cube = PhotonNetwork.Instantiate("CreatedCubeSmallBlue", this.transform.position, transform.rotation);
+                        cube.transform.localScale = new Vector3(2 * SetMode, 1.25f, 1);
+                        Created += 1 * SetMode;
+                        ResetSetMode();
                     }
                     else
                     {
-                        PhotonNetwork.Instantiate("CreatedCubeBigBlue", this.transform.position, transform.rotation);
-                        Created++;
+                        GameObject cube = PhotonNetwork.Instantiate("CreatedCubeSmallBlue", this.transform.position, transform.rotation);
+                        cube.transform.localScale = new Vector3(2 * SetMode, 2, 1);
+                        Created += 1 * SetMode;
+                        ResetSetMode();
                     }
                 }
             }
@@ -92,13 +136,17 @@ namespace Cube
                 {
                     if (Input.GetKey(KeyCode.LeftControl))
                     {
-                        PhotonNetwork.Instantiate("CreatedCubeSmall", this.transform.position, transform.rotation);
-                        Created++;
+                        GameObject cube =  PhotonNetwork.Instantiate("CreatedCubeSmall", this.transform.position, transform.rotation);
+                        cube.transform.localScale = new Vector3(2 * SetMode, 1.25f, 1);
+                        Created += 1 * SetMode;
+                        ResetSetMode();
                     }
                     else
                     {
-                        PhotonNetwork.Instantiate("CreatedCubeBig", this.transform.position, transform.rotation);
-                        Created++;
+                        GameObject cube = PhotonNetwork.Instantiate("CreatedCubeSmall", this.transform.position, transform.rotation);
+                        cube.transform.localScale = new Vector3(2 * SetMode, 2, 1);
+                        Created += 1 * SetMode;
+                        ResetSetMode();
                     }
                 }
             }
@@ -133,11 +181,11 @@ namespace Cube
 
         private void OnTriggerStay(Collider other)
         {
-            if(other.CompareTag("Cube"))
+            if (other.CompareTag("Cube"))
             {
                 CanCreate = false;
             }
-            if(other.CompareTag("Separate"))
+            if (other.CompareTag("Separate"))
             {
                 CanCreate = false;
             }
@@ -146,14 +194,30 @@ namespace Cube
 
         private void OnTriggerExit(Collider other)
         {
-            if(other.CompareTag("Cube"))
+            if (other.CompareTag("Cube"))
             {
                 CanCreate = true;
             }
-            if(other.CompareTag("Separate"))
+            if (other.CompareTag("Separate"))
             {
                 CanCreate = true;
             }
+        }
+
+        static public void DeclimentLimit()
+        {
+            CreateLimit--;
+        }
+
+        static public int InformLimit()
+        {
+            return CreateLimit;
+        }
+
+        private void ResetSetMode()
+        {
+            SetMode = 1;
+            this.gameObject.transform.localScale = new Vector3(2, 1, 1);
         }
 
     }
