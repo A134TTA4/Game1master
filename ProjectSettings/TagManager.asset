@@ -8,6 +8,7 @@ TagManager:
   - Cube
   - Shield
   - BluePrint
+  - Separate
   layers:
   - Default
   - TransparentFX

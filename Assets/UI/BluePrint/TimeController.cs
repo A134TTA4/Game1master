@@ -18,7 +18,14 @@ namespace UI
                 time = TimeManager.BluePrint.BruePrintPhaze.InformTimesLeft();
                 if (time >= 60)
                 {
-                    Timer.text = "0" + (time / 60).ToString() + ":" + (time % 60).ToString();
+                    if (time % 60 >= 0 && time % 60 < 10)
+                    {
+                        Timer.text = "0" + (time / 60).ToString() + ":0" + (time % 60).ToString();
+                    }
+                    else
+                    {
+                        Timer.text = "0" + (time / 60).ToString() + ":" + (time % 60).ToString();
+                    }
                 }
                 else if (time >= 10)
                 {

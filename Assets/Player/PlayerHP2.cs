@@ -41,7 +41,7 @@ namespace Player
 
             if (redPanel.OutOfAreaInform2() == true)
             {
-                if (PhotonScriptor.ConnectingScript.informPlayerID() == PN)
+                //if (PhotonScriptor.ConnectingScript.informPlayerID() == PN)
                 {
                     outOfAreaCount += Time.deltaTime;
                     if (outOfAreaCount >= 1)

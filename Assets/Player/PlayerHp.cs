@@ -42,15 +42,15 @@ namespace Player
 
             if (redPanel.OutOfAreaInform() == true)
             {
-                if(PN == PhotonScriptor.ConnectingScript.informPlayerID())
+                //if(PN == PhotonScriptor.ConnectingScript.informPlayerID())
                 { 
-                outOfAreaCount += Time.deltaTime;
-                if(outOfAreaCount >= 1)
-                {
-                    PlayerHP -= 8;
-                    outOfAreaCount = 0;
-                    //Debug.Log("player Got Area Damage");
-                }
+                    outOfAreaCount += Time.deltaTime;
+                    if(outOfAreaCount >= 1)
+                    {
+                        PlayerHP -= 8;
+                        outOfAreaCount = 0;
+                        //Debug.Log("player Got Area Damage");
+                    }
                 }
             }
             if (redPanel.OutOfAreaInform() == false)
@@ -88,7 +88,6 @@ namespace Player
         {
             PlayerHP = 100;
             outOfAreaCount = 0f;
-            
         }
 
         [PunRPC]
