@@ -15,31 +15,42 @@ namespace Player
         static private float PlayerHP = 100;
         static private float outOfAreaCount = 0f;
 
+        static private bool HitStopBool = false;
+        static private float HitStopCont = 0f;
+        private float HitStopMax = 0.2f;
+
         static private bool Playerdie = false;
         static private bool PlayerGetDamageB = false;
-
-       
 
         void Update()
         {
             PlayerGetDamageB = false;
-            if (PN != PhotonScriptor.ConnectingScript.informPlayerID())
-            {
-                return;
-            }
             if(TimeManager.MainPhaze.InformMainphaze()==false)
             {
                 return;
             }
-            
+
+            if (HitStopBool == true)
+            {
+                HitStopCont += Time.deltaTime;
+                if (HitStopCont > HitStopMax)
+                {
+                    HitStopBool = false;
+                    HitStopCont = 0f;
+                }
+            }
+
             if (redPanel.OutOfAreaInform() == true)
             {
+                if(PN == PhotonScriptor.ConnectingScript.informPlayerID())
+                { 
                 outOfAreaCount += Time.deltaTime;
                 if(outOfAreaCount >= 1)
                 {
                     PlayerHP -= 8;
                     outOfAreaCount = 0;
                     //Debug.Log("player Got Area Damage");
+                }
                 }
             }
             if (redPanel.OutOfAreaInform() == false)
@@ -55,6 +66,8 @@ namespace Player
 
         static public void PlayerGetDamage(float Damage)
         {
+            HitStopBool = false;
+            HitStopCont = 0f;
             PlayerGetDamageB = true;
             PlayerHP -= Damage;
             Debug.Log("get Damage");
@@ -93,6 +106,11 @@ namespace Player
         static public bool InformPlayerGetDamage()
         {
             return PlayerGetDamageB;
+        }
+
+        static public bool InformHitStop()
+        {
+            return HitStopBool;
         }
     }
 }
