@@ -21,7 +21,6 @@ namespace Player
         private int SprintMul = 1;
         private float ADSMul = 1;
         private float ClouchMul = 1;
-        private float HitStopMul = 1;
         private bool isDash = false;
         static private bool isWalking = false;
         
@@ -60,18 +59,6 @@ namespace Player
                 ClouchMul = 1f;
             }
 
-            if(PN == 1)
-            {
-
-            }
-            else
-            {
-                if(Player.PlayerHP2.InformHitStop() == true)
-                {
-                    HitStopMul = 0.7f;
-                }
-            }
-
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
                 if (SprintMul == 1 && isDash == false)
@@ -104,22 +91,22 @@ namespace Player
             isWalking = false;
             if (Input.GetKey(KeyCode.W))
             {
-                playerTrans.position += playerTrans.forward * Time.deltaTime * fowardSpeed * groundspeed * SprintMul* ClouchMul * ADSMul * HitStopMul;
+                playerTrans.position += playerTrans.forward * Time.deltaTime * fowardSpeed * groundspeed * SprintMul* ClouchMul * ADSMul;
                 isWalking = true;
             }
             if (Input.GetKey(KeyCode.S))
             {
-                playerTrans.position += -1 * playerTrans.forward * Time.deltaTime * backwardSpeed * groundspeed * ClouchMul * ADSMul * HitStopMul;
+                playerTrans.position += -1 * playerTrans.forward * Time.deltaTime * backwardSpeed * groundspeed * ClouchMul * ADSMul;
                 isWalking = true;
             }
             if (Input.GetKey(KeyCode.A))
             {
-                playerTrans.position += -1 * playerTrans.right * Time.deltaTime * leftSpeed * groundspeed * ClouchMul * ADSMul * HitStopMul;
+                playerTrans.position += -1 * playerTrans.right * Time.deltaTime * leftSpeed * groundspeed * ClouchMul * ADSMul;
                 isWalking = true;
             }
             if (Input.GetKey(KeyCode.D))
             {
-                playerTrans.position += playerTrans.right * Time.deltaTime * rightSpeed * groundspeed * ClouchMul * ADSMul * HitStopMul;
+                playerTrans.position += playerTrans.right * Time.deltaTime * rightSpeed * groundspeed * ClouchMul * ADSMul;
                 isWalking = true;
             }
         }

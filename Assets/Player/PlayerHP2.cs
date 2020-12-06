@@ -20,15 +20,21 @@ namespace Player
         void Update()
         {
             PlayerGetDamageB = false;
-            if (PN != PhotonScriptor.ConnectingScript.informPlayerID())
-            {
-                return;
-            }
             if (TimeManager.MainPhaze.InformMainphaze() == false)
             {
                 return;
             }
-            
+            if(TimeManager.IntercalTimeManager.InformIntervalState() ==true)
+            {
+                return;
+            }
+
+            if(PhotonScriptor.LinkProperty.InformNowHP2() > PlayerHp2)
+            {
+                PlayerHp2 = PhotonScriptor.LinkProperty.InformNowHP2();
+                Debug.Log("Renew HP2");
+            }
+
             if (redPanel.OutOfAreaInform2() == true)
             {
                 outOfAreaCount += Time.deltaTime;

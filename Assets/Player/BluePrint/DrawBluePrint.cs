@@ -678,8 +678,8 @@ namespace Player
                     }
                 }
                 
-                Debug.Log("nowpoint:" + nowPoint);
-                Debug.Log("priviouspoint:" + priviousPoint);
+                //Debug.Log("nowpoint:" + nowPoint);
+                //Debug.Log("priviouspoint:" + priviousPoint);
             } 
 
             private void Erase()
