@@ -520,29 +520,29 @@ namespace Player
                                 {
                                     for (float n = 0; n < (int)(nowPoint.y - priviousPoint.y); n+=0.5f)
                                     {
-                                        if ((int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)) > 0 && (int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)) < 256 && (int)(priviousPoint.y + n) > 0 && (int)(priviousPoint.y + n) < 256)
+                                        if ((int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)) > 0 && (int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)) < 256 && (int)(nowPoint.y - n) > 0 && (int)(nowPoint.y - n) < 256)
                                         {
-                                            drawTexture.SetPixel((int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)), (int)(priviousPoint.y + n), DrawColor2);
+                                            drawTexture.SetPixel((int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)), (int)(nowPoint.y - n), DrawColor2);
                                         }
 
-                                        if ((int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)) > 0 + 1 && (int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)) + 1 < 256 && (int)(priviousPoint.y + n) > 0 && (int)(priviousPoint.y + n) < 256)
+                                        if ((int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)) > 0 + 1 && (int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)) + 1 < 256 && (int)(nowPoint.y - n) > 0 && (int)(nowPoint.y - n) < 256)
                                         {
-                                            drawTexture.SetPixel((int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)) + 1, (int)(priviousPoint.y + n), DrawColor2);
+                                            drawTexture.SetPixel((int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)) + 1, (int)(nowPoint.y - n), DrawColor2);
                                         }
 
-                                        if ((int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)) > 0 - 1 && (int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)) - 1 < 256 && (int)(priviousPoint.y + n) > 0 && (int)(priviousPoint.y + n) < 256)
+                                        if ((int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)) > 0 - 1 && (int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)) - 1 < 256 && (int)(nowPoint.y - n) > 0 && (int)(nowPoint.y - n) < 256)
                                         {
-                                            drawTexture.SetPixel((int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)) - 1, (int)(priviousPoint.y + n), DrawColor2);
+                                            drawTexture.SetPixel((int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)) - 1, (int)(nowPoint.y - n), DrawColor2);
                                         }
 
-                                        if ((int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)) > 0 && (int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)) < 256 && (int)(priviousPoint.y + n) + 1 > 0 && (int)(priviousPoint.y + n) + 1 < 256)
+                                        if ((int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)) > 0 && (int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)) < 256 && (int)(nowPoint.y - n) + 1 > 0 && (int)(nowPoint.y - n) + 1 < 256)
                                         {
-                                            drawTexture.SetPixel((int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)), (int)(priviousPoint.y + n) + 1, DrawColor2);
+                                            drawTexture.SetPixel((int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)), (int)(nowPoint.y - n) + 1, DrawColor2);
                                         }
 
-                                        if ((int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)) > 0 && (int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)) < 256 && (int)(priviousPoint.y + n) - 1 > 0 && (int)(priviousPoint.y + n) + 1 < 256)
+                                        if ((int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)) > 0 && (int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)) < 256 && (int)(nowPoint.y - n) - 1 > 0 && (int)(nowPoint.y - n) + 1 < 256)
                                         {
-                                            drawTexture.SetPixel((int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)), (int)(priviousPoint.y + n) - 1, DrawColor2);
+                                            drawTexture.SetPixel((int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)), (int)(nowPoint.y - n) - 1, DrawColor2);
                                         }
                                     }
                                 }
@@ -626,28 +626,57 @@ namespace Player
                     nowPoint = hit.textureCoord * 256;
                     if (DrawMode == 1)
                     {
-                        if (nowPoint.x > 0 && nowPoint.x < 256 && nowPoint.y > 0 && nowPoint.y < 256)
+                        if (PhotonScriptor.ConnectingScript.informPlayerID() == 1)
                         {
-                            drawTexture.SetPixel((int)(nowPoint.x), (int)(nowPoint.y), DrawColor1);
-                        }
-                        if (nowPoint.x + 1 > 0 && nowPoint.x + 1 < 256 && nowPoint.y > 0 && nowPoint.y < 256)
-                        {
-                            drawTexture.SetPixel((int)(nowPoint.x) + 1, (int)(nowPoint.y), DrawColor1);
-                        }
+                            if (nowPoint.x > 0 && nowPoint.x < 256 && nowPoint.y > 0 && nowPoint.y < 256)
+                            {
+                                drawTexture.SetPixel((int)(nowPoint.x), (int)(nowPoint.y), DrawColor1);
+                            }
+                            if (nowPoint.x + 1 > 0 && nowPoint.x + 1 < 256 && nowPoint.y > 0 && nowPoint.y < 256)
+                            {
+                                drawTexture.SetPixel((int)(nowPoint.x) + 1, (int)(nowPoint.y), DrawColor1);
+                            }
 
-                        if (nowPoint.x - 1 > 0 && nowPoint.x - 1 < 256 && nowPoint.y > 0 && nowPoint.y < 256)
-                        {
-                            drawTexture.SetPixel((int)(nowPoint.x) - 1, (int)(nowPoint.y), DrawColor1);
-                        }
+                            if (nowPoint.x - 1 > 0 && nowPoint.x - 1 < 256 && nowPoint.y > 0 && nowPoint.y < 256)
+                            {
+                                drawTexture.SetPixel((int)(nowPoint.x) - 1, (int)(nowPoint.y), DrawColor1);
+                            }
 
-                        if (nowPoint.x > 0 && nowPoint.x < 256 && nowPoint.y + 1 > 0 && nowPoint.y + 1 < 256)
-                        {
-                            drawTexture.SetPixel((int)(nowPoint.x), (int)(nowPoint.y) + 1, DrawColor1);
-                        }
+                            if (nowPoint.x > 0 && nowPoint.x < 256 && nowPoint.y + 1 > 0 && nowPoint.y + 1 < 256)
+                            {
+                                drawTexture.SetPixel((int)(nowPoint.x), (int)(nowPoint.y) + 1, DrawColor1);
+                            }
 
-                        if (nowPoint.x > 0 && nowPoint.x < 256 && nowPoint.y - 1 > 0 && nowPoint.y - 1 < 256)
+                            if (nowPoint.x > 0 && nowPoint.x < 256 && nowPoint.y - 1 > 0 && nowPoint.y - 1 < 256)
+                            {
+                                drawTexture.SetPixel((int)(nowPoint.x), (int)(nowPoint.y) - 1, DrawColor1);
+                            }
+                        }
+                        else
                         {
-                            drawTexture.SetPixel((int)(nowPoint.x), (int)(nowPoint.y) - 1, DrawColor1);
+                            if (nowPoint.x > 0 && nowPoint.x < 256 && nowPoint.y > 0 && nowPoint.y < 256)
+                            {
+                                drawTexture.SetPixel((int)(nowPoint.x), (int)(nowPoint.y), DrawColor2);
+                            }
+                            if (nowPoint.x + 1 > 0 && nowPoint.x + 1 < 256 && nowPoint.y > 0 && nowPoint.y < 256)
+                            {
+                                drawTexture.SetPixel((int)(nowPoint.x) + 1, (int)(nowPoint.y), DrawColor2);
+                            }
+
+                            if (nowPoint.x - 1 > 0 && nowPoint.x - 1 < 256 && nowPoint.y > 0 && nowPoint.y < 256)
+                            {
+                                drawTexture.SetPixel((int)(nowPoint.x) - 1, (int)(nowPoint.y), DrawColor2);
+                            }
+
+                            if (nowPoint.x > 0 && nowPoint.x < 256 && nowPoint.y + 1 > 0 && nowPoint.y + 1 < 256)
+                            {
+                                drawTexture.SetPixel((int)(nowPoint.x), (int)(nowPoint.y) + 1, DrawColor2);
+                            }
+
+                            if (nowPoint.x > 0 && nowPoint.x < 256 && nowPoint.y - 1 > 0 && nowPoint.y - 1 < 256)
+                            {
+                                drawTexture.SetPixel((int)(nowPoint.x), (int)(nowPoint.y) - 1, DrawColor2);
+                            }
                         }
                     }
                     else

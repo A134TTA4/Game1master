@@ -12,7 +12,7 @@ namespace PhotonScriptor
     {
         static private string RoomName = "room";
         static private int RoomNo = 0;
-        static private int PlayerID = 0;
+        static private int PlayerID = 2;
         private float CountPlayers = 0;
 
         static private bool SetNoComplete = false;
@@ -62,6 +62,7 @@ namespace PhotonScriptor
                 startGame = true;
                 Debug.Log("countPlayer 2");
                 TimeManager.TimeCounter.StartGameM();//テスト用ではない
+                //TimeManager.BluePrint.BruePrintPhaze.StartBluePrintM();
             }
         }
         
@@ -74,6 +75,7 @@ namespace PhotonScriptor
         {
             Photonplayer = PhotonNetwork.LocalPlayer;
             PlayerID = Photonplayer.ActorNumber; //プレイヤー2としてテストしたいならコメントアウト
+            //PlayerID = 2;
             Debug.Log("PlayerID = " + PlayerID);
             Debug.Log("Succesfully Connected");
             //TimeManager.TimeCounter.StartGameM(); //テスト用

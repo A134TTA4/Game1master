@@ -11,7 +11,7 @@ namespace TimeManager
             static private bool BluePrintState = false;
             static private bool BluePrintStart = false;
             static private float Count = 0f;
-            static private float MaxCount = 120;
+            static private float MaxCount = 10;
             private bool Gamestart = false;
             void Start()
             {

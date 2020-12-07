@@ -15,10 +15,12 @@ namespace Player
         static private float PlayerHP = 100;
         static private float outOfAreaCount = 0f;
 
-        static private bool Playerdie = false;
-        static private bool PlayerGetDamageB = false;
+        static private float HitStopCount = 0f;
+        static private float HitStopMax = 0.2f;
+        static private bool HitStopBool = false;
 
-       
+        static private bool Playerdie = false;
+        static private bool PlayerGetDamageB = false; 
 
         void Update()
         {
@@ -32,15 +34,27 @@ namespace Player
                 return;
             }
 
-            if (PhotonScriptor.LinkProperty.InformNowHP1() > PlayerHP)
+            if (HitStopBool == true)
             {
-                PlayerHP = PhotonScriptor.LinkProperty.InformNowHP2();
-                Debug.Log("Renew HP1");
+                HitStopCount += Time.deltaTime;
+                if (HitStopCount > HitStopMax)
+                {
+                    HitStopBool = false;
+                    HitStopCount = 0;
+                }
+            }
+
+            if (PhotonScriptor.LinkProperty.InformNowHP1() < PlayerHP)
+            {
+                PlayerHP = PhotonScriptor.LinkProperty.InformNowHP1();
+                Debug.Log("Renew HP1 " + PlayerHP);
+                HitStopBool = true;
+                HitStopCount = 0;
+                
             }
 
             if (redPanel.OutOfAreaInform() == true)
             {
-                //if(PN == PhotonScriptor.ConnectingScript.informPlayerID())
                 { 
                     outOfAreaCount += Time.deltaTime;
                     if(outOfAreaCount >= 1)
@@ -65,6 +79,8 @@ namespace Player
 
         static public void PlayerGetDamage(float Damage)
         {
+            HitStopBool = true;
+            HitStopCount = 0;
             PlayerGetDamageB = true;
             PlayerHP -= Damage;
             Debug.Log("get Damage");
@@ -102,6 +118,11 @@ namespace Player
         static public bool InformPlayerGetDamage()
         {
             return PlayerGetDamageB;
+        }
+
+        static public bool InformHitStop()
+        {
+            return HitStopBool;
         }
     }
 }

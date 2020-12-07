@@ -19,6 +19,7 @@ namespace Player
         private float rightSpeed = 6.0f;
         private float groundspeed = 1;
         private int SprintMul = 1;
+        private float HitStopMul = 1;
         private float ADSMul = 1;
         private float ClouchMul = 1;
         private bool isDash = false;
@@ -41,7 +42,31 @@ namespace Player
             {
                 return;
             }
-            if(PLCameraFocus.InformForcusState() == true)
+
+            if(PN ==1)
+            {
+                if(Player.PlayerHp.InformHitStop())
+                {
+                    HitStopMul = 0.7f;
+                }
+                else
+                {
+                    HitStopMul = 1f;
+                }
+            }
+            else
+            {
+                if (Player.PlayerHp.InformHitStop())
+                {
+                    HitStopMul = 0.7f;
+                }
+                else
+                {
+                    HitStopMul = 1f;
+                }
+            }
+
+            if (PLCameraFocus.InformForcusState() == true)
             {
                 ADSMul = 0.7f;
             }
