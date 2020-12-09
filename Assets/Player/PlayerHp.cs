@@ -16,7 +16,7 @@ namespace Player
         static private float outOfAreaCount = 0f;
 
         static private float HitStopCount = 0f;
-        static private float HitStopMax = 0.2f;
+        static private float HitStopMax = 0.3f;
         static private bool HitStopBool = false;
 
         static private bool PlayerGetDamageB = false;

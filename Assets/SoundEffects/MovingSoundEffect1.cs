@@ -16,7 +16,7 @@ namespace SoundEffects
         private float Count = 0f;
         private float Max = 0.2f;
 
-        private float AudioVolume = 0;
+        private float AudioVolume = 0.5f;
         [SerializeField]
         private float PN;
 
@@ -26,12 +26,11 @@ namespace SoundEffects
         }
         void Update()
         {
-            if(PhotonScriptor.ConnectingScript.informPlayerID() != PN)
+            PlayerAudioSource.volume = AudioVolume * UI.SettingPanel.AudioController.InformAudioValue();
+            if (PhotonScriptor.ConnectingScript.informPlayerID() != PN)
             {
                 return;
             }
-
-            PlayerAudioSource.volume = AudioVolume * UI.SettingPanel.AudioController.InformAudioValue();
             if (Player.PlayerMove1.InformWalking() ==true)
             {
                 Count += Time.deltaTime;

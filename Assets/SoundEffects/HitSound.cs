@@ -19,7 +19,7 @@ namespace SoundEffects
         private float Count = 0f;
         private float CountMax = 0.7f;
 
-        private float AudioVolume;
+        private float AudioVolume = 0.5f;
 
         private void Start()
         {

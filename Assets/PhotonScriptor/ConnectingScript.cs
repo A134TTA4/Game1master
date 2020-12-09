@@ -73,8 +73,8 @@ namespace PhotonScriptor
         public override void OnJoinedRoom()
         {
             Photonplayer = PhotonNetwork.LocalPlayer;
-            PlayerID = Photonplayer.ActorNumber; //プレイヤー2としてテストしたいならコメントアウト
-            //PlayerID = 2;
+            PlayerID = Photonplayer.ActorNumber; 
+            //PlayerID = 2;//プレイヤー2としてプレイするよう
             Debug.Log("PlayerID = " + PlayerID);
             Debug.Log("Succesfully Connected");
             //TimeManager.BluePrint.BruePrintPhaze.StartBluePrintM();//テスト用

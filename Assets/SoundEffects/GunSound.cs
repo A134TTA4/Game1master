@@ -15,7 +15,7 @@ namespace SoundEffects
         private int MagazineBefore;
         private int MagazineNow;
 
-        private float AudioVolume;
+        private float AudioVolume = 0.5f;
 
         [SerializeField]
         private float PN;
@@ -27,11 +27,12 @@ namespace SoundEffects
 
         void Update()
         {
-            if(PN != PhotonScriptor.ConnectingScript.informPlayerID())
+            GunAudioSource.volume = AudioVolume * UI.SettingPanel.AudioController.InformAudioValue();
+            if (PN != PhotonScriptor.ConnectingScript.informPlayerID())
             {
                 return;
             }
-            GunAudioSource.volume = AudioVolume * UI.SettingPanel.AudioController.InformAudioValue();
+            
             MagazineBefore = Shoot.InformMagazineLeft();
             if(MagazineBefore < MagazineNow)
             {
