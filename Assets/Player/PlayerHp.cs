@@ -19,9 +19,9 @@ namespace Player
         static private float HitStopMax = 0.2f;
         static private bool HitStopBool = false;
 
-        static private bool Playerdie = false;
-        static private bool PlayerGetDamageB = false; 
+        static private bool PlayerGetDamageB = false;
 
+        private float priviousHP = 100;
         void Update()
         {
             PlayerGetDamageB = false;
@@ -29,13 +29,10 @@ namespace Player
             {
                 return;
             }
-            if (TimeManager.IntercalTimeManager.InformIntervalState() == true)
-            {
-                return;
-            }
 
             if (HitStopBool == true)
             {
+                Debug.Log("Hit Stop is Active");
                 HitStopCount += Time.deltaTime;
                 if (HitStopCount > HitStopMax)
                 {
@@ -47,10 +44,16 @@ namespace Player
             if (PhotonScriptor.LinkProperty.InformNowHP1() < PlayerHP)
             {
                 PlayerHP = PhotonScriptor.LinkProperty.InformNowHP1();
-                Debug.Log("Renew HP1 " + PlayerHP);
+                Debug.Log("Renew HP1:" + PlayerHP);
                 HitStopBool = true;
                 HitStopCount = 0;
                 
+            }
+
+            if(priviousHP > PlayerHP)
+            {
+                HitStopBool = true;
+                HitStopCount = 0;
             }
 
             if (redPanel.OutOfAreaInform() == true)
@@ -61,7 +64,6 @@ namespace Player
                     {
                         PlayerHP -= 8;
                         outOfAreaCount = 0;
-                        //Debug.Log("player Got Area Damage");
                     }
 
                 }
@@ -72,9 +74,12 @@ namespace Player
             }
             if (PlayerHP <= 0)
             {
-                photonView.RPC(nameof(PlayerDead), RpcTarget.All);
+                if (PhotonScriptor.ConnectingScript.informPlayerID() != 1)
+                {
+                    photonView.RPC(nameof(PlayerDead), RpcTarget.All);
+                }
             }
-            
+            priviousHP = PlayerHP; 
         }
 
         static public void PlayerGetDamage(float Damage)
@@ -108,11 +113,11 @@ namespace Player
         {
             Debug.Log("Died");
             Debug.Log("Red Increased");
+            PhotonScriptor.LinkProperty.ResetLink();
             UI.WinorLose.IncrementRed();
             PlayerHP = 100;
             GameManager.GameRoundManager.SetEndM();
             TimeManager.MainPhaze.ResetMainphaze();
-            Playerdie = true;
         }
 
         static public bool InformPlayerGetDamage()

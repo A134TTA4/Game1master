@@ -14,7 +14,7 @@ public class AreaSpeedShow : MonoBehaviour
         {
             AreaSpeed.text = "AREA SPEED IS HIGH";
         }
-        else if(Shield.shieldScale.InforSmallerRate() == 1.0f)
+        else if(Shield.shieldScale.InforSmallerRate() == 1.8f)
         {
             AreaSpeed.text = "AREA SPEED IS MIDIUM";
         }

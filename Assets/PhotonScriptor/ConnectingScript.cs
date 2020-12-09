@@ -61,8 +61,7 @@ namespace PhotonScriptor
             {
                 startGame = true;
                 Debug.Log("countPlayer 2");
-                TimeManager.TimeCounter.StartGameM();//テスト用ではない
-                //TimeManager.BluePrint.BruePrintPhaze.StartBluePrintM();
+                TimeManager.BluePrint.BruePrintPhaze.StartBluePrintM();
             }
         }
         
@@ -78,8 +77,7 @@ namespace PhotonScriptor
             //PlayerID = 2;
             Debug.Log("PlayerID = " + PlayerID);
             Debug.Log("Succesfully Connected");
-            //TimeManager.TimeCounter.StartGameM(); //テスト用
-            TimeManager.BluePrint.BruePrintPhaze.StartBluePrintM();
+            //TimeManager.BluePrint.BruePrintPhaze.StartBluePrintM();//テスト用
         }
 
         public override void OnLeftRoom()

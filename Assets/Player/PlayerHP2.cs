@@ -19,8 +19,9 @@ namespace Player
         static private float HitStopMax = 0.2f;
         static private bool HitStopBool = false;
 
-        static private bool Playerdie = false;
         static private bool PlayerGetDamageB = false;
+
+        private float priviousHP = 100;
         void Update()
         {
             PlayerGetDamageB = false;
@@ -28,13 +29,10 @@ namespace Player
             {
                 return;
             }
-            if(TimeManager.IntercalTimeManager.InformIntervalState() ==true)
-            {
-                return;
-            }
 
             if(HitStopBool == true)
             {
+                Debug.Log("Hit Stop is Active");
                 HitStopCount += Time.deltaTime;
                 if(HitStopCount > HitStopMax)
                 {
@@ -46,7 +44,13 @@ namespace Player
             if(PhotonScriptor.LinkProperty.InformNowHP2() < PlayerHp2)
             {
                 PlayerHp2 = PhotonScriptor.LinkProperty.InformNowHP2();
-                Debug.Log("Renew HP2");
+                Debug.Log("Renew HP2:" + PlayerHp2);
+                HitStopBool = true;
+                HitStopCount = 0;
+            }
+
+            if (priviousHP > PlayerHp2)
+            {
                 HitStopBool = true;
                 HitStopCount = 0;
             }
@@ -56,7 +60,7 @@ namespace Player
                 outOfAreaCount += Time.deltaTime;
                 if (outOfAreaCount >= 1)
                 {
-                    PlayerHp2 -= 4;
+                    PlayerHp2 -= 8;
                     outOfAreaCount = 0;
                 }
             }
@@ -66,8 +70,13 @@ namespace Player
             }
             if (PlayerHp2 <= 0)
             {
-                photonView.RPC(nameof(PlayerDead), RpcTarget.All);
+                if (PhotonScriptor.ConnectingScript.informPlayerID() != 2)
+                {
+                    photonView.RPC(nameof(PlayerDead), RpcTarget.All);
+                }
             }
+
+            priviousHP = PlayerHp2;
         }
 
         static public void PlayerGetDamage(float Damage)
@@ -99,11 +108,13 @@ namespace Player
         [PunRPC]
         void PlayerDead()
         {
-            TimeManager.MainPhaze.ResetMainphaze();
-            UI.WinorLose.IncrementBlue();
             Debug.Log("Died");
+            Debug.Log("Blue Increased");
+            PhotonScriptor.LinkProperty.ResetLink();
+            UI.WinorLose.IncrementBlue();
             PlayerHp2 = 100;
             GameManager.GameRoundManager.SetEndM();
+            TimeManager.MainPhaze.ResetMainphaze();
         }
 
         static public bool InformPlayerGetDamage()

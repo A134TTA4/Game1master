@@ -7,11 +7,10 @@ namespace TimeManager
 {
     public class PreParationTime : MonoBehaviour
     {
-        private float nowTime = 0f;
+        static private float nowTime = 0f;
         static private float preparationStart = 1f;
         static private float preparationEnd = 20f;
         static private float preparationLeft ;
-        static private bool preparationEndbool = false;
         [SerializeField]
         private Transform PlayerTrans;
         [SerializeField]
@@ -24,6 +23,7 @@ namespace TimeManager
         static private bool PreparationRestart = false;
         void Start()
         {
+            nowTime = 0f;
             PreparationState = false;
             PreparationRestart = false;
             StartPosition = PlayerTrans.position;
@@ -36,14 +36,9 @@ namespace TimeManager
             
             nowTime = TimeCounter.TimeInformer();
 
-            if(MainPhaze.InformMainphaze() == true)
-            {
-                preparationEndbool = false;
-            }
 
             if (PreparationRestart == true)
             {
-                MainPhaze.ResetMainphaze();
                 UI.PrapareUi.ResetPrepare();
                 Debug.Log("restart Preparation");
                 PreparationRestart = false;
@@ -61,11 +56,11 @@ namespace TimeManager
                 PreparationState = true;
                 return;
             }
-            if (nowTime >= preparationEnd)
+            if (nowTime >= preparationEnd && PreparationState == true)
             {
                 PreparationState = false;
-                preparationEndbool = true;
                 preparationLeft = 0f;
+                MainPhaze.StartMainPhaze();
             }
         }
 
@@ -73,6 +68,13 @@ namespace TimeManager
         {
             return PreparationState;
         }
+
+        static public void StartPreparation()
+        {
+            PreparationState = true;
+            nowTime = 0f;
+        }
+
 
         static public float InformPreparationLeft()
         {
@@ -82,13 +84,9 @@ namespace TimeManager
         static public void PraparationReset()
         {
             PreparationRestart = true;
-            preparationEndbool = false;
             preparationLeft = preparationStart - preparationEnd;
         }
 
-        static public bool PreparationEndInform()
-        {
-            return preparationEndbool;
-        }
+
     }
 }

@@ -7,6 +7,7 @@ namespace TimeManager
     public class MainPhaze : MonoBehaviour
     {
         static private bool MainphazeState = false;
+        static private bool MainPhazeStart = false;
         [SerializeField]
         private Transform player1trans;
         private Vector3 playerStartPosition;
@@ -15,6 +16,8 @@ namespace TimeManager
         private Vector3 playerStartPosition2;
         void Start()
         {
+            MainphazeState = false;
+            MainPhazeStart = false;
             playerStartPosition = player1trans.position;
             playerStartPosition2 = player2trans.position;
         }
@@ -23,12 +26,12 @@ namespace TimeManager
         void Update()
         {
             //Debug.Log(MainphazeState);
-            if (PreParationTime.PreparationEndInform() == true)
+            if (MainphazeState == true)
             {
-                if (MainphazeState == false)
+                if (MainPhazeStart == false)
                 {
                     Debug.Log("start MainPhaze");
-                    MainphazeState = true;
+                    MainPhazeStart = true;
                     Player.PlayerHp.ResetPlayerHP();
                     Player.PlayerHP2.ResetPlayerHP();
                     player1trans.position = playerStartPosition;
@@ -46,6 +49,12 @@ namespace TimeManager
         static public void ResetMainphaze()
         {
             MainphazeState = false;
+            MainPhazeStart = false;
+        }
+
+        static public void StartMainPhaze()
+        {
+            MainphazeState = true;
         }
 
     }

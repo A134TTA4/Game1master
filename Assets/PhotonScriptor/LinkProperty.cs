@@ -7,7 +7,7 @@ namespace PhotonScriptor
 {
     public class LinkProperty : MonoBehaviourPunCallbacks
     {
-        ExitGames.Client.Photon.Hashtable roomHash;
+        static ExitGames.Client.Photon.Hashtable roomHash;
         static private int nowHP1 = 100;
         static private int nowHP2 = 100;
         static private int PlayerHP1 = 100;
@@ -27,6 +27,11 @@ namespace PhotonScriptor
 
         void Update()
         {
+            if(TimeManager.MainPhaze.InformMainphaze() == false)
+            {
+                return;
+            }
+
             if (Player.PlayerHp.InformPlayerHP() < PlayerHP1)
             {
                 PlayerHP1 = (int)Player.PlayerHp.InformPlayerHP();
@@ -73,6 +78,18 @@ namespace PhotonScriptor
         static public int InformNowHP2()
         {
             return nowHP2;
+        }
+
+        static public void ResetLink()
+        {
+            Debug.Log("reset Link");
+            nowHP1 = 100;
+            nowHP2 = 100;
+            PlayerHP1 = 100;
+            PlayerHP2 = 100;
+            roomHash["HP1"] = PlayerHP1;
+            roomHash["HP2"] = PlayerHP2;
+            PhotonNetwork.CurrentRoom.SetCustomProperties(roomHash);
         }
     }
 }
