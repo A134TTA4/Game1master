@@ -41,6 +41,12 @@ namespace Cube
                 return;
             }
 
+            if (TimeManager.MainPhaze.InformMainphaze() == true)
+            {
+                CanCreate = true;
+                
+            }
+
             if (UI.SettingPanel.SettingPanelController.InformPanelState() == true)
             {
                 return;
@@ -56,7 +62,12 @@ namespace Cube
                 return;
             }
 
-            if(Input.GetKeyDown(KeyCode.Alpha1))
+            if (Created == CreateLimit)
+            {
+                CanCreate = false;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 SetMode = 1;
                 this.gameObject.transform.localScale = new Vector3(2,1,1);
