@@ -18,13 +18,13 @@ namespace Cube
         Material CubeMaterial;
 
         private bool CanCreate = true;
-        static private int CreateLimit = 6;
+        static private int CreateLimit = 4;
         static private int Created = 0;
         private float rotSpeed = 1.0f;
         private int SetMode = 1;
         private void Start()
         {
-            CreateLimit = 6;
+            CreateLimit = 4;
             Created = 0;
         }
 
@@ -44,7 +44,6 @@ namespace Cube
             if (TimeManager.MainPhaze.InformMainphaze() == true)
             {
                 CanCreate = true;
-                
             }
 
             if (UI.SettingPanel.SettingPanelController.InformPanelState() == true)
@@ -70,14 +69,14 @@ namespace Cube
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 SetMode = 1;
-                this.gameObject.transform.localScale = new Vector3(2,1,1);
+                this.gameObject.transform.localScale = new Vector3(2,1,0.5f);
             }
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
                 if (CubeLeftInformer() >= 2)
                 {
                     SetMode = 2;
-                    this.gameObject.transform.localScale = new Vector3(4, 1, 1);
+                    this.gameObject.transform.localScale = new Vector3(4, 1, 0.5f);
                 }
             }
             if (Input.GetKeyDown(KeyCode.Alpha3))
@@ -85,7 +84,7 @@ namespace Cube
                 if (CubeLeftInformer() >= 3)
                 {
                     SetMode = 3;
-                    this.gameObject.transform.localScale = new Vector3(6, 1, 1);
+                    this.gameObject.transform.localScale = new Vector3(6, 1, 0.5f);
                 }
             }
             if (Input.GetKeyDown(KeyCode.Alpha4))
@@ -93,7 +92,7 @@ namespace Cube
                 if (CubeLeftInformer() >= 4)
                 {
                     SetMode = 4;
-                    this.gameObject.transform.localScale = new Vector3(8, 1, 1);
+                    this.gameObject.transform.localScale = new Vector3(8, 1, 0.5f);
                 }
             }
             if (Input.GetKeyDown(KeyCode.Alpha5))
@@ -101,7 +100,7 @@ namespace Cube
                 if (CubeLeftInformer() >= 5)
                 {
                     SetMode = 5;
-                    this.gameObject.transform.localScale = new Vector3(10, 1, 1);
+                    this.gameObject.transform.localScale = new Vector3(10, 1, 0.5f);
                 }
             }
 
@@ -128,14 +127,14 @@ namespace Cube
                     if (Input.GetKey(KeyCode.LeftControl))
                     {
                         GameObject cube = PhotonNetwork.Instantiate("CreatedCubeSmallBlue", this.transform.position, transform.rotation);
-                        cube.transform.localScale = new Vector3(2 * SetMode, 1.25f, 1);
+                        cube.transform.localScale = new Vector3(2 * SetMode, 1.25f, 0.5f);
                         Created += 1 * SetMode;
                         ResetSetMode();
                     }
                     else
                     {
                         GameObject cube = PhotonNetwork.Instantiate("CreatedCubeSmallBlue", this.transform.position, transform.rotation);
-                        cube.transform.localScale = new Vector3(2 * SetMode, 2, 1);
+                        cube.transform.localScale = new Vector3(2 * SetMode, 2, 0.5f);
                         Created += 1 * SetMode;
                         ResetSetMode();
                     }
@@ -148,14 +147,14 @@ namespace Cube
                     if (Input.GetKey(KeyCode.LeftControl))
                     {
                         GameObject cube =  PhotonNetwork.Instantiate("CreatedCubeSmall", this.transform.position, transform.rotation);
-                        cube.transform.localScale = new Vector3(2 * SetMode, 1.25f, 1);
+                        cube.transform.localScale = new Vector3(2 * SetMode, 1.25f, 0.5f);
                         Created += 1 * SetMode;
                         ResetSetMode();
                     }
                     else
                     {
                         GameObject cube = PhotonNetwork.Instantiate("CreatedCubeSmall", this.transform.position, transform.rotation);
-                        cube.transform.localScale = new Vector3(2 * SetMode, 2, 1);
+                        cube.transform.localScale = new Vector3(2 * SetMode, 2, 0.5f);
                         Created += 1 * SetMode;
                         ResetSetMode();
                     }
@@ -228,7 +227,7 @@ namespace Cube
         private void ResetSetMode()
         {
             SetMode = 1;
-            this.gameObject.transform.localScale = new Vector3(2, 1, 1);
+            this.gameObject.transform.localScale = new Vector3(2, 1, 0.2f);
         }
 
     }

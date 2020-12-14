@@ -19,6 +19,10 @@ namespace Player
         static private bool JumpBool = false;
         private float jumpSpeed = 5;
 
+        private Ray ray;
+        private RaycastHit hit;
+        private Vector3 rayPosition;
+
         void Start()
         {
             playerTrans = PlayerObject.transform;
@@ -29,7 +33,7 @@ namespace Player
         void Update()
         {
             playerTrans = PlayerObject.transform;
-            if (playerTrans.position.y <= groundposition)
+            if (boolGrounded() == true)
             {
                 Playerjump();
             }
@@ -50,11 +54,31 @@ namespace Player
             }
         }
 
-        static public bool boolGrounded()
+        private bool boolGrounded()
         {
-            if (playerTrans.position.y <= groundposition)
+            if(BluePrint.DrawBluePrint.InformPlayerState() == 2)
             {
-                return true;
+                jumpSpeed = 10;
+            }
+            else
+            {
+                jumpSpeed = 5;
+            }
+            rayPosition = transform.position + new Vector3(0, 0.5f, 0);
+            ray = new Ray(rayPosition, transform.up * -1);
+            //Debug.DrawRay(ray.origin, ray.direction * 10, Color.red);
+            //Debug.Log("ray");
+            if (Physics.Raycast(ray, out hit, 1.5f))
+            {
+                
+                if (hit.collider)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             return false;
         }

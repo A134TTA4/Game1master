@@ -18,10 +18,11 @@ namespace Player
         private float leftSpeed = 6.0f;
         private float rightSpeed = 6.0f;
         private float groundspeed = 1;
-        private int SprintMul = 1;
+        private float SprintMul = 1;
         private float HitStopMul = 1;
         private float ADSMul = 1;
         private float ClouchMul = 1;
+        private float BuffMul = 1;
         private bool isDash = false;
         static private bool isWalking = false;
         
@@ -45,7 +46,7 @@ namespace Player
 
             if(PN ==1)
             {
-                if(Player.PlayerHp.InformHitStop())
+                if(PlayerHp.InformHitStop())
                 {
                     HitStopMul = 0.7f;
                 }
@@ -56,7 +57,7 @@ namespace Player
             }
             else
             {
-                if (Player.PlayerHp.InformHitStop())
+                if (PlayerHP2.InformHitStop())
                 {
                     HitStopMul = 0.7f;
                 }
@@ -84,11 +85,20 @@ namespace Player
                 ClouchMul = 1f;
             }
 
+            if(BluePrint.DrawBluePrint.InformPlayerState() == 3)
+            {
+                BuffMul = 1.5f;
+            }
+            else
+            {
+                BuffMul = 1.0f;
+            }
+
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
                 if (SprintMul == 1 && isDash == false)
                 {
-                    SprintMul = 2;
+                    SprintMul = 1.5f;
                     isDash = true;
                 }
                 if (SprintMul == 2 && isDash == false)
@@ -116,29 +126,28 @@ namespace Player
             isWalking = false;
             if (Input.GetKey(KeyCode.W))
             {
-                playerTrans.position += playerTrans.forward * Time.deltaTime * fowardSpeed * groundspeed * SprintMul* ClouchMul * ADSMul;
+                playerTrans.position += playerTrans.forward * Time.deltaTime * fowardSpeed * groundspeed * SprintMul* ClouchMul * ADSMul * HitStopMul * BuffMul;
                 isWalking = true;
             }
             if (Input.GetKey(KeyCode.S))
             {
-                playerTrans.position += -1 * playerTrans.forward * Time.deltaTime * backwardSpeed * groundspeed * ClouchMul * ADSMul;
+                playerTrans.position += -1 * playerTrans.forward * Time.deltaTime * backwardSpeed * groundspeed * ClouchMul * ADSMul * HitStopMul * BuffMul;
                 isWalking = true;
             }
             if (Input.GetKey(KeyCode.A))
             {
-                playerTrans.position += -1 * playerTrans.right * Time.deltaTime * leftSpeed * groundspeed * ClouchMul * ADSMul;
+                playerTrans.position += -1 * playerTrans.right * Time.deltaTime * leftSpeed * groundspeed * ClouchMul * ADSMul * HitStopMul * BuffMul;
                 isWalking = true;
             }
             if (Input.GetKey(KeyCode.D))
             {
-                playerTrans.position += playerTrans.right * Time.deltaTime * rightSpeed * groundspeed * ClouchMul * ADSMul;
+                playerTrans.position += playerTrans.right * Time.deltaTime * rightSpeed * groundspeed * ClouchMul * ADSMul * HitStopMul * BuffMul;
                 isWalking = true;
             }
         }
 
         static public bool InformWalking()
         {
-            //Debug.Log("siWalking refferd");
             return isWalking;
         }
     }

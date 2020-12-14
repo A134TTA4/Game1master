@@ -32,7 +32,7 @@ namespace Player
 
             if(HitStopBool == true)
             {
-                Debug.Log("Hit Stop is Active");
+                //Debug.Log("Hit Stop is Active");
                 HitStopCount += Time.deltaTime;
                 if(HitStopCount > HitStopMax)
                 {
@@ -91,7 +91,7 @@ namespace Player
         static public void PlayerGetDamageforme(float Damage)
         {
             PlayerHp2 -= Damage;
-            Debug.Log("get Damage");
+            Debug.Log("PL2 get Damage from Breach");
         }
 
         static public float InformPlayerHP()

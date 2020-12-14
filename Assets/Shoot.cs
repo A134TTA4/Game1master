@@ -14,7 +14,7 @@ public class Shoot : MonoBehaviourPunCallbacks
     GameObject Mazzle;
     
     [SerializeField]
-    Transform Player;
+    Transform Player1;
     [SerializeField]
     Transform Player2;
 
@@ -31,6 +31,7 @@ public class Shoot : MonoBehaviourPunCallbacks
 
     static public bool shot = false;
 
+    private bool bulletPlusBool = false; 
 
     private void Start()
     {
@@ -70,6 +71,15 @@ public class Shoot : MonoBehaviourPunCallbacks
         if(PreParationTime.InformPreparationState() == true)
         {
             magazine = magazineMax;
+        }
+
+        if(Player.BluePrint.DrawBluePrint.InformPlayerState() == 1)
+        {
+            bulletPlusBool = true;
+        }
+        else
+        {
+            bulletPlusBool = false;
         }
 
         shot = false;
@@ -119,9 +129,18 @@ public class Shoot : MonoBehaviourPunCallbacks
                 shootable = false;
                 coolCountStart = true;
                 magazine--;
-                GameObject bulletSpawn = PhotonNetwork.Instantiate("Bullet", Mazzle.transform.position + PlayerCamera.transform.forward, Quaternion.Euler(this.transform.localEulerAngles.x, Player.localEulerAngles.y, Player.localEulerAngles.z));
-                Rigidbody BulletRigid = bulletSpawn.GetComponent<Rigidbody>();
-                BulletRigid.AddForce(this.transform.forward * bulletSpeed, ForceMode.Impulse);
+                if (bulletPlusBool == true)
+                {
+                    GameObject bulletSpawn = PhotonNetwork.Instantiate("BulletPlus", Mazzle.transform.position + PlayerCamera.transform.forward, Quaternion.Euler(this.transform.localEulerAngles.x, Player1.localEulerAngles.y, Player1.localEulerAngles.z));
+                    Rigidbody BulletRigid = bulletSpawn.GetComponent<Rigidbody>();
+                    BulletRigid.AddForce(this.transform.forward * bulletSpeed, ForceMode.Impulse);
+                }
+                else
+                {
+                    GameObject bulletSpawn = PhotonNetwork.Instantiate("Bullet", Mazzle.transform.position + PlayerCamera.transform.forward, Quaternion.Euler(this.transform.localEulerAngles.x, Player1.localEulerAngles.y, Player1.localEulerAngles.z));
+                    Rigidbody BulletRigid = bulletSpawn.GetComponent<Rigidbody>();
+                    BulletRigid.AddForce(this.transform.forward * bulletSpeed, ForceMode.Impulse);
+                }
                 shot = true;
             }
             //shot = false;
@@ -133,9 +152,18 @@ public class Shoot : MonoBehaviourPunCallbacks
                 shootable = false;
                 coolCountStart = true;
                 magazine--;
-                GameObject bulletSpawn = PhotonNetwork.Instantiate("Bullet", Mazzle.transform.position + PlayerCamera.transform.forward, Quaternion.Euler(this.transform.localEulerAngles.x, Player2.localEulerAngles.y, Player2.localEulerAngles.z));
-                Rigidbody BulletRigid = bulletSpawn.GetComponent<Rigidbody>();
-                BulletRigid.AddForce(this.transform.forward * bulletSpeed, ForceMode.Impulse);
+                if (bulletPlusBool == true)
+                {
+                    GameObject bulletSpawn = PhotonNetwork.Instantiate("BulletPlus", Mazzle.transform.position + PlayerCamera.transform.forward, Quaternion.Euler(this.transform.localEulerAngles.x, Player2.localEulerAngles.y, Player2.localEulerAngles.z));
+                    Rigidbody BulletRigid = bulletSpawn.GetComponent<Rigidbody>();
+                    BulletRigid.AddForce(this.transform.forward * bulletSpeed, ForceMode.Impulse);
+                }
+                else
+                {
+                    GameObject bulletSpawn = PhotonNetwork.Instantiate("Bullet", Mazzle.transform.position + PlayerCamera.transform.forward, Quaternion.Euler(this.transform.localEulerAngles.x, Player2.localEulerAngles.y, Player2.localEulerAngles.z));
+                    Rigidbody BulletRigid = bulletSpawn.GetComponent<Rigidbody>();
+                    BulletRigid.AddForce(this.transform.forward * bulletSpeed, ForceMode.Impulse);
+                }
                 shot = true;
             }
             //shot = false;
