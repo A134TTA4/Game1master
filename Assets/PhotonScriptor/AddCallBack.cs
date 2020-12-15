@@ -69,9 +69,8 @@ namespace PhotonScriptor
         void IPunOwnershipCallbacks.OnOwnershipTransfered(PhotonView targetView, Photon.Realtime.Player previousOwner)
         {
             string id = targetView.ViewID.ToString();
-            string p1 = previousOwner.NickName;
-            string p2 = targetView.Owner.NickName;
-            Debug.Log($"ViewID {id} の所有権が {p1} から {p2} に移譲されました");
+
+            Debug.Log($"ViewID {id} の所有権が移譲されました");
         }
     }
 }
