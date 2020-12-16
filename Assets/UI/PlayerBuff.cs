@@ -16,18 +16,22 @@ namespace Player
             if (BluePrint.DrawBluePrint.InformPlayerState() == 1)
             {
                 Bufftext.text = "Buff:ATTACK";
+                Bufftext.color = Color.blue;
             }
             else if (BluePrint.DrawBluePrint.InformPlayerState() == 2)
             {
                 Bufftext.text = "Buff:JUMP";
+                Bufftext.color = Color.yellow;
             }
             else if (BluePrint.DrawBluePrint.InformPlayerState() == 3)
             {
                 Bufftext.text = "Buff:SPEED";
+                Bufftext.color = Color.green;
             }
             else
             {
                 Bufftext.text = "Buff:NONE";
+                Bufftext.color = Color.red;
             }
         }
     }

@@ -12,6 +12,8 @@ namespace UI
 
             [SerializeField]
             private Slider MouseSenseSlider;
+            [SerializeField]
+            private Text SenseValueDesp;
             static private float Sense = 1.0f;
 
             private void Start()
@@ -24,6 +26,7 @@ namespace UI
             {
                 Sense = MouseSenseSlider.value;
                 PlayerPrefs.SetFloat("MouseSensitivity", Sense);
+                SenseValueDesp.text = "" + (int)(Sense * 100) ;
             }
 
             static public float InformSense()

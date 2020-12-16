@@ -13,16 +13,19 @@ namespace UI
             [SerializeField]
             private Slider AudioSlider;
             static private float AudioValue = 1.0f;
-
+            [SerializeField]
+            private Text AudioValueDesp;
             private void Start()
             {
                 AudioValue = PlayerPrefs.GetFloat("AudioFloat", 0.5f);
                 AudioSlider.value = AudioValue;
+                AudioValueDesp.text = "" + AudioValue;
             }
             public void GetAudioValue()
             {
                 AudioValue = AudioSlider.value;
                 PlayerPrefs.SetFloat("AudioFloat", AudioValue);
+                AudioValueDesp.text = "" + AudioValue;
             }
 
             static public float InformAudioValue()

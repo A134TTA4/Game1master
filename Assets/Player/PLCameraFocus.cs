@@ -15,6 +15,8 @@ namespace Player
         private float Fov ;
         static private bool FocusState = false;
 
+        private float Buffcount = 0f;
+        private float BuffcountMax = 0.5f;
         private void Start()
         {
             Fov = PlayerCamera.fieldOfView;
@@ -42,7 +44,7 @@ namespace Player
                 return;
             }
 
-            if(Input.GetKey(KeyCode.Mouse1))
+            if (Input.GetKey(KeyCode.Mouse1))
             {
                 Count += Time.deltaTime * 4;
                 if (Count >= Max)
@@ -63,6 +65,28 @@ namespace Player
 
 
             PlayerCamera.fieldOfView = Fov / ( Count + 1.0f);
+
+            if (BluePrint.DrawBluePrint.InformPlayerState() == 3)
+            {
+                if (Buffcount < BuffcountMax)
+                {
+                    Buffcount += Time.deltaTime;
+                }
+                PlayerCamera.fieldOfView *= Buffcount/5 + 1.0f;
+            }
+            else
+            {
+                if(Buffcount > 0)
+                {
+                    Buffcount -= Time.deltaTime;
+                    PlayerCamera.fieldOfView *= Buffcount/5 + 1.0f;
+                }
+                else
+                {
+                    Buffcount = 0f;
+                }
+            }
+            
         }
 
         static public bool InformForcusState()

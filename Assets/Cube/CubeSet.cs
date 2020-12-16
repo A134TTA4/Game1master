@@ -20,8 +20,10 @@ namespace Cube
         private bool CanCreate = true;
         static private int CreateLimit = 4;
         static private int Created = 0;
-        private float rotSpeed = 1.0f;
+        private float rotSpeed = 120.0f;
         private int SetMode = 1;
+
+        private bool collision = false;
         private void Start()
         {
             CreateLimit = 4;
@@ -41,9 +43,11 @@ namespace Cube
                 return;
             }
 
+            CanCreate = true;
             if (TimeManager.MainPhaze.InformMainphaze() == true)
             {
                 CanCreate = true;
+                Created = 0;
             }
 
             if (UI.SettingPanel.SettingPanelController.InformPanelState() == true)
@@ -59,6 +63,11 @@ namespace Cube
             if (TimeManager.PreParationTime.InformPreparationState() == false)
             {
                 return;
+            }
+
+            if(collision == true)
+            {
+                CanCreate = false;
             }
 
             if (Created == CreateLimit)
@@ -171,11 +180,11 @@ namespace Cube
             }
             if (Input.GetKey(KeyCode.Q))
             {
-                this.transform.Rotate(Vector3.up, rotSpeed);
+                this.transform.Rotate(Vector3.up, rotSpeed * Time.deltaTime);
             }
             if (Input.GetKey(KeyCode.E))
             {
-                this.transform.Rotate(-1 * Vector3.up, rotSpeed);
+                this.transform.Rotate(-1 * Vector3.up, rotSpeed * Time.deltaTime);
             }
         }
 
@@ -194,10 +203,12 @@ namespace Cube
             if (other.CompareTag("Cube"))
             {
                 CanCreate = false;
+                collision = true;
             }
             if (other.CompareTag("Separate"))
             {
                 CanCreate = false;
+                collision = true;
             }
         }
 
@@ -207,10 +218,12 @@ namespace Cube
             if (other.CompareTag("Cube"))
             {
                 CanCreate = true;
+                collision = false;
             }
             if (other.CompareTag("Separate"))
             {
                 CanCreate = true;
+                collision = false;
             }
         }
 
