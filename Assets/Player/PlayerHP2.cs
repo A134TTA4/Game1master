@@ -115,6 +115,8 @@ namespace Player
             PlayerHp2 = 100;
             GameManager.GameRoundManager.SetEndM();
             TimeManager.MainPhaze.ResetMainphaze();
+            UI.NextRoundOption.ResetSelect();
+            PlayerBody.transform.position = new Vector3(0, -100, 0);
         }
 
         static public bool InformPlayerGetDamage()

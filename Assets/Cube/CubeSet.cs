@@ -24,8 +24,10 @@ namespace Cube
         private int SetMode = 1;
 
         private bool collision = false;
+        static private bool IncreasedCube = false;
         private void Start()
         {
+            IncreasedCube = false;
             CreateLimit = 4;
             Created = 0;
         }
@@ -230,6 +232,11 @@ namespace Cube
         static public void DeclimentLimit()
         {
             CreateLimit--;
+            if(IncreasedCube == true)
+            {
+                CreateLimit--;
+                IncreasedCube = false;
+            }
         }
 
         static public int InformLimit()
@@ -243,5 +250,15 @@ namespace Cube
             this.gameObject.transform.localScale = new Vector3(2, 1, 0.2f);
         }
 
+
+        static public void IncreaseCube()
+        {
+            if(IncreasedCube == true)
+            {
+                return;
+            }
+            CreateLimit++;
+            IncreasedCube = true;
+        }
     }
 }

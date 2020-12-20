@@ -98,10 +98,10 @@ namespace Player
             {
                 if (SprintMul == 1 && isDash == false)
                 {
-                    SprintMul = 1.5f;
+                    SprintMul = 1.8f;
                     isDash = true;
                 }
-                if (SprintMul == 2 && isDash == false)
+                if (SprintMul == 1.8f && isDash == false)
                 {
                     SprintMul = 1;
                 }

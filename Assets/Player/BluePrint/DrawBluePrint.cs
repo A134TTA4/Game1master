@@ -99,21 +99,28 @@ namespace Player
                     return;
                 }
 
-
+                if(UI.SettingPanel.SettingPanelController.InformPanelState() == true)
+                {
+                    return;
+                }
 
                 drawTexture.Apply();
                 GetComponent<Renderer>().material.mainTexture = drawTexture;
+
                 if(DrawMode == 1 && inkLeft[1] < 0)
                 {
                     DrawMode = 0;
+                    Getprivious = false;
                 }
                 if (DrawMode == 2 && inkLeft[2] < 0)
                 {
                     DrawMode = 0;
+                    Getprivious = false;
                 }
                 if (DrawMode == 3 && inkLeft[3] < 0)
                 {
                     DrawMode = 0;
+                    Getprivious = false;
                 }
 
                 if (Input.GetKeyDown(KeyCode.Alpha1))

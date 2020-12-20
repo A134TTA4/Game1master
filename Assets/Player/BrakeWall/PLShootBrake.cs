@@ -26,8 +26,11 @@ namespace Player
             static private int magazine = 0;
             static private int magazineMax = 1;
             private float bulletSpeed = 40f;
+            private bool ResetTime = false;
+            static private bool magagineIncreased = false;
             void Start()
             {
+                magagineIncreased = false;
                 magazine = magazineMax;
                 BrakeMode = false;
             }
@@ -42,7 +45,14 @@ namespace Player
                 if (TimeManager.PreParationTime.InformPreparationState() == true)
                 {
                     magazine = magazineMax;
+                    if(magagineIncreased == false && magazineMax == 2 && ResetTime == true)
+                    {
+                        magazineMax = 1;
+                        magazine = magazineMax;
+                    }
                     BrakeMode = false;
+                    magagineIncreased = false;
+                    ResetTime = false;
                 }
 
                 if(Shoot.InformReloadState() == true)
@@ -58,6 +68,12 @@ namespace Player
                 {
                     return;
                 }
+                else
+                {
+                    ResetTime = true;
+                }
+
+
                 if (TimeManager.PreParationTime.InformPreparationState() == true)
                 {
                     return;
@@ -104,6 +120,12 @@ namespace Player
             static public int InformBrakeMagazineLeft()
             {
                 return magazine;
+            }
+
+            static public void IncreaseBrakeWall()
+            {
+                magazineMax = 2;
+                magagineIncreased = true;
             }
         }
     }

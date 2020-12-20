@@ -13,6 +13,7 @@ public class HpDesper : MonoBehaviour
 
     void Update()
     {
+        
         if (PhotonScriptor.ConnectingScript.informPlayerID() == 1)
         {
             hp = PlayerHp.InformPlayerHP();
@@ -20,7 +21,12 @@ public class HpDesper : MonoBehaviour
             {
                 hp = 0;
             }
-            hpText.text = hp + "/100";
+            hpText.text = "";
+            int HpBar = (int)hp / 5;
+            for (int n = 0; n < HpBar; n++)
+            {
+                hpText.text += "|";
+            }
         }
         if (PhotonScriptor.ConnectingScript.informPlayerID() == 2)
         {
@@ -29,7 +35,12 @@ public class HpDesper : MonoBehaviour
             {
                 hp = 0;
             }
-            hpText.text = hp + "/100";
+            hpText.text = "";
+            int HpBar = (int)hp / 5;
+            for (int n = 0; n < HpBar; n++)
+            {
+                hpText.text += "|";
+            }
         }
     }
 

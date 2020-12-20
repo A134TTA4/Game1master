@@ -12,8 +12,11 @@ namespace Cube
         private GameObject CreativeCube2;
         static private bool Cubestate = true;
 
+        static private bool CubIncreased = false;
         private void Start()
         {
+            CubIncreased = false;
+
             CreativeCube.SetActive(false);
             CreativeCube2.SetActive(false);
         }
@@ -27,6 +30,7 @@ namespace Cube
                     CreativeCube.SetActive(false);
                     CreativeCube2.SetActive(false);
                     Cubestate = false;
+                    CubIncreased = false;
                     return;
                 }
             }
@@ -37,9 +41,18 @@ namespace Cube
                     CreativeCube.SetActive(true);
                     CreativeCube2.SetActive(true);
                     Cubestate = true;
+                    if (CubIncreased == true)
+                    {
+                        CubeSet.IncreaseCube();
+                    }
                     return;
                 }
             }
+        }
+
+        static public void IncreaseCube()
+        {
+            CubIncreased = true;
         }
     }
 }

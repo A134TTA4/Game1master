@@ -18,7 +18,8 @@ namespace PhotonScriptor
         static private bool SetNoComplete = false;
         static private bool Connected = false;
         static private bool startGame = false;
- 
+
+        private bool inRoom = false;
         Photon.Realtime.Player Photonplayer;
         static RoomOptions RoomOPS = new RoomOptions()
         {

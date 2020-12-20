@@ -15,13 +15,13 @@ namespace SeparateManager {
         // Update is called once per frame
         void Update()
         {
-            if (TimeManager.MainPhaze.InformMainphaze() == true)
+            if(TimeManager.PreParationTime.InformPreparationState() == true)
             {
-                Separator.SetActive(false);
+                Separator.SetActive(true);
             }
             else
             {
-                Separator.SetActive(true);
+                Separator.SetActive(false);
             }
         }
     }
