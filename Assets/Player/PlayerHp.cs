@@ -84,11 +84,14 @@ namespace Player
 
         static public void PlayerGetDamage(float Damage)
         {
-            HitStopBool = true;
-            HitStopCount = 0;
-            PlayerGetDamageB = true;
-            PlayerHP -= Damage;
-            Debug.Log("get Damage");
+            if (PhotonScriptor.ConnectingScript.informPlayerID() == 2)
+            {
+                HitStopBool = true;
+                HitStopCount = 0;
+                PlayerGetDamageB = true;
+                PlayerHP -= Damage;
+                Debug.Log("get Damage");
+            }
         }
 
         static public void PlayerGetDamageforme(float Damage)

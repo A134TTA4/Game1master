@@ -7316,7 +7316,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -174.00006, y: -189.00006}
+  m_AnchoredPosition: {x: -69, y: -189.00006}
   m_SizeDelta: {x: 800, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &172204765
@@ -7351,7 +7351,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: NEXT ROUND
+  m_Text: "\u6B21\u30E9\u30A6\u30F3\u30C9 \u30DC\u30FC\u30CA\u30B9"
 --- !u!222 &172204766
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -26167,11 +26167,11 @@ GameObject:
   - component: {fileID: 607728837}
   - component: {fileID: 607728838}
   - component: {fileID: 607728840}
-  - component: {fileID: 607728839}
   - component: {fileID: 607728842}
   - component: {fileID: 607728841}
   - component: {fileID: 607728843}
   - component: {fileID: 607728844}
+  - component: {fileID: 607728839}
   m_Layer: 0
   m_Name: CameraBox2
   m_TagString: Untagged
@@ -26234,13 +26234,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 607728835}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Script: {fileID: 11500000, guid: d58c395e8e479b743a969656d916b2a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
-  m_UseLocal: 0
+  PN: 0
+  _photonView: {fileID: 607728840}
 --- !u!114 &607728840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26259,8 +26257,7 @@ MonoBehaviour:
   observableSearch: 2
   Synchronization: 3
   OwnershipTransfer: 0
-  ObservedComponents:
-  - {fileID: 607728839}
+  ObservedComponents: []
   viewIdField: 4
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -29748,8 +29745,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 230.99982, y: 160}
-  m_SizeDelta: {x: 1000, y: 100}
+  m_AnchoredPosition: {x: -116, y: 160}
+  m_SizeDelta: {x: 1500, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &688062993
 MonoBehaviour:
@@ -29783,7 +29780,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: CHANGE AREA SPEED
+  m_Text: "\u30C6\u30AD\u30B9\u30C8\u3092\u30AF\u30EA\u30C3\u30AF\u3057\u3066\u30A8\u30EA\u30A2\u30B9\u30D4\u30FC\u30C9\u306E\u5909\u66F4"
 --- !u!222 &688062994
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -30911,7 +30908,7 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 1
-  m_UseLocal: 0
+  m_UseLocal: 1
 --- !u!114 &713709712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33220,7 +33217,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &760621036
 RectTransform:
   m_ObjectHideFlags: 0
@@ -35824,8 +35821,8 @@ GameObject:
   - component: {fileID: 855924618}
   - component: {fileID: 855924619}
   - component: {fileID: 855924621}
-  - component: {fileID: 855924620}
   - component: {fileID: 855924623}
+  - component: {fileID: 855924620}
   - component: {fileID: 855924622}
   - component: {fileID: 855924624}
   - component: {fileID: 855924625}
@@ -35891,13 +35888,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 855924616}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Script: {fileID: 11500000, guid: d58c395e8e479b743a969656d916b2a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 1
-  m_UseLocal: 0
+  PN: 1
+  _photonView: {fileID: 855924621}
 --- !u!114 &855924621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35916,8 +35911,7 @@ MonoBehaviour:
   observableSearch: 2
   Synchronization: 3
   OwnershipTransfer: 0
-  ObservedComponents:
-  - {fileID: 855924620}
+  ObservedComponents: []
   viewIdField: 3
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -38794,7 +38788,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &969062486
 RectTransform:
   m_ObjectHideFlags: 0
@@ -42643,7 +42637,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 0.5}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -42662,7 +42656,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Enter No
+  m_Text: "\u3053\u3053\u306BNo\u3092\u5165\u529B"
 --- !u!222 &1056932969
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -45516,7 +45510,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: CREATE ROOM
+  m_text: JOIN ROOM
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -45585,7 +45579,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1127436152}
-    characterCount: 11
+    characterCount: 9
     spriteCount: 0
     spaceCount: 1
     wordCount: 2
@@ -66035,13 +66029,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'ENTER ROOM NUMBER TO JOIN OR CREATE ROOM
-
-
-    YOU CAN PLAY WITH YOUR
-    FRIEND
-
-'
+  m_Text: "\u30D5\u30EC\u30F3\u30C9\u3068\u540C\u3058\u30EB\u30FC\u30E0\u756A\u53F7\u3092\u5165\u529B\u3057\u3066\u5165\u5BA4\u3057\u3066\u304F\u3060\u3055\u3044\n"
 --- !u!222 &1594912923
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -68057,8 +68045,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 201.99994, y: -27.999977}
-  m_SizeDelta: {x: 1000, y: 100}
+  m_AnchoredPosition: {x: 38, y: -27.999977}
+  m_SizeDelta: {x: 1500, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1644091238
 MonoBehaviour:
@@ -68073,7 +68061,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6918176, g: 1, b: 0.2028302, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -68092,7 +68080,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ' AREA SPEED : MIDIUM'
+  m_Text: "\u6B21\u30E9\u30A6\u30F3\u30C9\u306E\u30A8\u30EA\u30A2\u30B9\u30D4\u30FC\u30C9
+    : MIDIUM"
 --- !u!222 &1644091239
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -75316,9 +75305,9 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.3803922, g: 1, b: 0, a: 1}
-    m_HighlightedColor: {r: 0.6229746, g: 1, b: 0.3915094, a: 1}
-    m_PressedColor: {r: 0.21869522, g: 0.5377358, b: 0.022828398, a: 1}
+    m_NormalColor: {r: 0.19339621, g: 0.32624888, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.18396229, g: 0.3183688, b: 1, a: 1}
+    m_PressedColor: {r: 0, g: 0.16470589, b: 1, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -75363,7 +75352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.37885177, g: 1, b: 0, a: 1}
+  m_Color: {r: 0, g: 0.16654897, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -75766,8 +75755,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
-  m_UseLocal: 0
+  m_SynchronizeScale: 1
+  m_UseLocal: 1
 --- !u!114 &1803875616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76025,7 +76014,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AudioSlider: {fileID: 1805254836}
-  AudioValueDesp: {fileID: 0}
+  AudioValueDesp: {fileID: 314352318}
 --- !u!114 &1805254836
 MonoBehaviour:
   m_ObjectHideFlags: 0

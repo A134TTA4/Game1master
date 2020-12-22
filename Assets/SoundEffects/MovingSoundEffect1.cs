@@ -15,7 +15,7 @@ namespace SoundEffects
         private bool SoundPlaying = false;
         private float Count = 0f;
         private float Max = 0.2f;
-
+        private bool RPCis = false;
         private float AudioVolume = 0.5f;
         [SerializeField]
         private float PN;
@@ -33,14 +33,16 @@ namespace SoundEffects
             }
             if (Player.PlayerMove1.InformWalking() ==true)
             {
+                RPCis = true;
                 Count += Time.deltaTime;
                 if (SoundPlaying == false && Count >= Max)
                 {
                     photonView.RPC(nameof(WalkingSoundM), RpcTarget.All);
                 }
             }
-            else
+            else if(RPCis == true)
             {
+                RPCis = false;
                 Count = 0;
                 photonView.RPC(nameof(WalkingSoundStop), RpcTarget.All);
             }

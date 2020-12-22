@@ -31,21 +31,25 @@ namespace PhotonScriptor
         void Start()
         {
             LeaveGame();
-            PhotonNetwork.JoinLobby();
             RoomNo = 0;
             PlayerID = 0;
             CountPlayers = 0;
             SetNoComplete = false;
             startGame = false;
             PhotonNetwork.ConnectUsingSettings();
-            PhotonNetwork.SendRate = 60;
             PhotonNetwork.SerializationRate = 60;
+            PhotonNetwork.SendRate = 30;
+            
         }
 
         private void Update()
         {
+            if(PhotonNetwork.IsConnected == false)
+            {
+                PhotonNetwork.JoinLobby();
+            }
             //Debug.Log(CountPlayers);
-            if(Connected == true && SetNoComplete == true)
+            if(Connected == true && SetNoComplete == true && PhotonNetwork.IsConnectedAndReady == true)
             {
                 PhotonNetwork.JoinOrCreateRoom(RoomName + RoomNo, RoomOPS, TypedLobby.Default);
                 Connected = false;
@@ -78,7 +82,7 @@ namespace PhotonScriptor
             //PlayerID = 2;//プレイヤー2としてプレイするよう
             Debug.Log("PlayerID = " + PlayerID);
             Debug.Log("Succesfully Connected");
-            TimeManager.BluePrint.BruePrintPhaze.StartBluePrintM();//テスト用
+            //TimeManager.BluePrint.BruePrintPhaze.StartBluePrintM();//テスト用
         }
 
         public override void OnLeftRoom()

@@ -18,32 +18,48 @@ namespace Player
                 return;
             }
 
+            
+
             if (BluePrint.DrawBluePrint.InformPlayerState() == 1)
             {
+                if (Bufftext == null)
+                {
+                    return;
+                }
                 Bufftext.text = "Buff:ATTACK";
                 Bufftext.color = Color.blue;
                 none = false;
             }
             else if (BluePrint.DrawBluePrint.InformPlayerState() == 2)
             {
+                if (Bufftext == null)
+                {
+                    return;
+                }
                 Bufftext.text = "Buff:JUMP";
                 Bufftext.color = Color.yellow;
                 none = false;
             }
             else if (BluePrint.DrawBluePrint.InformPlayerState() == 3)
             {
+                if (Bufftext == null)
+                {
+                    return;
+                }
                 Bufftext.text = "Buff:SPEED";
                 Bufftext.color = Color.green;
                 none = false;
             }
-            else
+            else if (BluePrint.DrawBluePrint.InformPlayerState() == 0)
             {
-                if (none == false)
+                if (Bufftext == null)
                 {
-                    Bufftext.text = "Buff:NONE";
-                    Bufftext.color = Color.red;
-                    none = true;
+                    return;
                 }
+                Bufftext.text = "Buff:NONE";
+                Bufftext.color = Color.red;
+                none = true;
+
             }
         }
     }

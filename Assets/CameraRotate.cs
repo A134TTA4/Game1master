@@ -53,7 +53,7 @@ public class CameraRotate : MonoBehaviour
     {
         
         float Y_Rotation = -1 * Input.GetAxis("Mouse Y") * YSpeed * Time.deltaTime;
-        var x = mXAxiz.x + Y_Rotation + recoil;
+        var x = mXAxiz.x + Y_Rotation + recoil * Time.deltaTime * 70f;
     
         if (x >= -LimitXAxizAngle && x <= LimitXAxizAngle)
         { 
