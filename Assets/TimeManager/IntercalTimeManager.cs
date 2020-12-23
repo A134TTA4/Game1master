@@ -5,7 +5,7 @@ namespace TimeManager
 {
     public class IntercalTimeManager : MonoBehaviour
     {
-        private float IntrevalTime = 7f;
+        private float IntrevalTime = 10f;
         static private float IntervalCounter = 0f;
         static private bool IntervalState = false;
 
