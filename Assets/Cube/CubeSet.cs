@@ -48,7 +48,6 @@ namespace Cube
             CanCreate = true;
             if (TimeManager.MainPhaze.InformMainphaze() == true)
             {
-                CanCreate = true;
                 Created = 0;
             }
 
@@ -67,7 +66,9 @@ namespace Cube
                 return;
             }
 
-            if(collision == true)
+             CubeMaterial.color = new Color(0, 0, 1, 0.7f);
+         
+            if (collision == true)
             {
                 CanCreate = false;
             }
@@ -75,6 +76,12 @@ namespace Cube
             if (Created == CreateLimit)
             {
                 CanCreate = false;
+            }
+
+            if (CanCreate == false)
+            {
+                CubeMaterial.color = new Color(1, 0, 0, 0.7f);
+                return;
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -113,18 +120,6 @@ namespace Cube
                     SetMode = 5;
                     this.gameObject.transform.localScale = new Vector3(10, 1, 0.5f);
                 }
-            }
-
-
-
-            if (CanCreate == false)
-            {
-                CubeMaterial.color = new Color(1, 0, 0, 0.7f);
-                return;
-            }
-            else
-            {
-                CubeMaterial.color = new Color(0, 0, 1, 0.7f);
             }
 
             if (Created == CreateLimit)
@@ -200,17 +195,22 @@ namespace Cube
             return CreateLimit - Created;
         }
 
-        private void OnTriggerStay(Collider other)
+        private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Cube"))
             {
                 CanCreate = false;
                 collision = true;
             }
-            if (other.CompareTag("Separate"))
+            else if (other.CompareTag("Separate"))
             {
                 CanCreate = false;
                 collision = true;
+            }
+            else
+            {
+                CanCreate = true;
+                collision = false;
             }
         }
 
