@@ -31,7 +31,7 @@ namespace SoundEffects
             {
                 return;
             }
-            if (Player.PlayerMove1.InformWalking() ==true)
+            if (Player.PlayerMove1.InformWalking() ==true )
             {
                 RPCis = true;
                 Count += Time.deltaTime;
@@ -41,6 +41,12 @@ namespace SoundEffects
                 }
             }
             else if(RPCis == true)
+            {
+                RPCis = false;
+                Count = 0;
+                photonView.RPC(nameof(WalkingSoundStop), RpcTarget.All);
+            }
+            if(AnimationConrollScripts.PLMoveAnimeControl.InformJumping() == true)
             {
                 RPCis = false;
                 Count = 0;

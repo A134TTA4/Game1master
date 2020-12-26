@@ -47,6 +47,10 @@ namespace Player
             {
                 return;
             }
+            if(AnimationConrollScripts.PLMoveAnimeControl.InformJumping() == true)
+            {
+                return;
+            }
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 playerRigid.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse);

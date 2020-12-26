@@ -31,14 +31,17 @@ namespace AnimationConrollScripts
 
             PLanimator.SetBool("ADS", Player.PLCameraFocus.InformForcusState());
 
+            PLanimator.SetBool("isDash", Player.PlayerMove1.InformDash());
+
             if (Jumping == true)
             {
                 countingJump += Time.deltaTime;
+                
                 if (countingJump >= 1.5f)
                 {
                     Jumping = false;
                     Player.PlayerJump.ReSetJumpBool();
-                    PLanimator.SetBool("Jump", false);
+                    //PLanimator.SetBool("Jump", false);
                     countingJump = 0f;
                 }
             }
@@ -48,7 +51,12 @@ namespace AnimationConrollScripts
                 Jumping = true;
             }
 
-            if(SmokeOut == true)
+            if (countingJump >= 0.7f)
+            {
+                PLanimator.SetBool("Jump", false);
+            }
+
+            if (SmokeOut == true)
             {
                 countingSmoke += Time.deltaTime;
                 if (countingSmoke >= 1.0f)

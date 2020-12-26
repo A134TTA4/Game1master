@@ -1,17 +1,59 @@
 fileFormatVersion: 2
-guid: ba7fc43770d93da47908280fc3c344f0
+guid: f7c95f1d730331e489aa952002805ecc
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable:
   - first:
+      74: 4879002098386952300
+    second: metarig|ADS
+  - first:
+      74: 8340350176375236044
+    second: metarig|ADS.Clouch
+  - first:
+      74: 1207288208484330479
+    second: metarig|ADS.ClouchWalk
+  - first:
+      74: -5431221752298827612
+    second: metarig|ADS.walk
+  - first:
+      74: 6081914738577139051
+    second: metarig|Clouch
+  - first:
+      74: -1507621364732724623
+    second: metarig|ClouchBackWalk
+  - first:
+      74: 2822034181219505712
+    second: metarig|ClouchEnd
+  - first:
+      74: 3045552049194167445
+    second: metarig|ClouchWalk
+  - first:
+      74: -5324238279805231817
+    second: metarig|Idle
+  - first:
+      74: -1695048229607696155
+    second: metarig|IntheSky
+  - first:
       74: -8284908221344111450
     second: metarig|jump
   - first:
-      74: -8643851697092793487
-    second: metarig|jump.001
+      74: -8413879291437822456
+    second: metarig|Reload
   - first:
-      74: -7408968806781539716
-    second: metarig|walk
+      74: 5960467847544518790
+    second: metarig|Reload.Clouch.Walking
+  - first:
+      74: 2529317135927470809
+    second: metarig|Reload.Clouch.Walking.002
+  - first:
+      74: -9128167138140229292
+    second: metarig|Reload.Walking
+  - first:
+      74: -8433098942784317711
+    second: metarig|RUN
+  - first:
+      74: 5325470411162386186
+    second: metarig|Throw
   - first:
       74: -4027686426356288868
     second: metarig|Walking
@@ -35,7 +77,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -96,13 +138,13 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 1
+    hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 3
+  animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

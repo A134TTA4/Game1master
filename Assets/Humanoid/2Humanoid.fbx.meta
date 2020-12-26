@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0285056d866006247af4560494b50fb7
+guid: b6052ee54a67512428594e63cff0d7a1
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable:
@@ -16,6 +16,9 @@ ModelImporter:
       74: -5431221752298827612
     second: metarig|ADS.walk
   - first:
+      74: 6081914738577139051
+    second: metarig|Clouch
+  - first:
       74: -1507621364732724623
     second: metarig|ClouchBackWalk
   - first:
@@ -28,11 +31,11 @@ ModelImporter:
       74: -5324238279805231817
     second: metarig|Idle
   - first:
+      74: -1695048229607696155
+    second: metarig|IntheSky
+  - first:
       74: -8284908221344111450
     second: metarig|jump
-  - first:
-      74: 6081914738577139051
-    second: metarig|Clouch
   - first:
       74: -8413879291437822456
     second: metarig|Reload
@@ -40,8 +43,14 @@ ModelImporter:
       74: 5960467847544518790
     second: metarig|Reload.Clouch.Walking
   - first:
+      74: 2529317135927470809
+    second: metarig|Reload.Clouch.Walking.002
+  - first:
       74: -9128167138140229292
     second: metarig|Reload.Walking
+  - first:
+      74: 5325470411162386186
+    second: metarig|Throw
   - first:
       74: -4027686426356288868
     second: metarig|Walking
@@ -65,7 +74,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -132,7 +141,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

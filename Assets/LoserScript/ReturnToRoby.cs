@@ -11,7 +11,7 @@ namespace LoserScript
         {
             if (Input.GetKey(KeyCode.Space))
             {
-                SceneManager.LoadScene(1);
+                SceneManager.LoadScene(0);
             }
         }
     }

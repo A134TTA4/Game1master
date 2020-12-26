@@ -38,8 +38,7 @@ namespace PhotonScriptor
             startGame = false;
             PhotonNetwork.ConnectUsingSettings();
             PhotonNetwork.SerializationRate = 60;
-            PhotonNetwork.SendRate = 30;
-            
+            PhotonNetwork.SendRate = 30;  
         }
 
         private void Update()

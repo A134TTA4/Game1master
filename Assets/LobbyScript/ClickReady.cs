@@ -9,7 +9,7 @@ namespace LobbyScript
     {
         public void ClickedReady()
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(1);
         }
     }
 }

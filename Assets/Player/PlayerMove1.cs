@@ -23,17 +23,17 @@ namespace Player
         private float ADSMul = 1;
         private float ClouchMul = 1;
         private float BuffMul = 1;
-        private bool isDash = false;
+        static private bool isDash = false;
         static private bool isWalking = false;
         
         void Start()
         {
+            isDash = false;
             playerTrans = player.transform;
         }
 
         void Update()
         {
-            isDash = false;
             if(PhotonScriptor.ConnectingScript.informPlayerID() != PN)
             {
                 return;
@@ -96,12 +96,12 @@ namespace Player
 
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
-                if (SprintMul == 1 && isDash == false)
+                isDash = !isDash;
+                if (isDash == true)
                 {
                     SprintMul = 1.8f;
-                    isDash = true;
                 }
-                if (SprintMul == 1.8f && isDash == false)
+                if (isDash == false)
                 {
                     SprintMul = 1;
                 }
@@ -129,6 +129,10 @@ namespace Player
                 playerTrans.position += playerTrans.forward * Time.deltaTime * fowardSpeed * groundspeed * SprintMul* ClouchMul * ADSMul * HitStopMul * BuffMul;
                 isWalking = true;
             }
+            else
+            {
+                isDash = false;
+            }
             if (Input.GetKey(KeyCode.S))
             {
                 playerTrans.position += -1 * playerTrans.forward * Time.deltaTime * backwardSpeed * groundspeed * ClouchMul * ADSMul * HitStopMul * BuffMul;
@@ -149,6 +153,11 @@ namespace Player
         static public bool InformWalking()
         {
             return isWalking;
+        }
+
+        static public bool InformDash()
+        {
+            return isDash;
         }
     }
 }
