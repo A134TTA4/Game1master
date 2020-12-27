@@ -25,6 +25,9 @@ namespace AnimationConrollScripts
                 return;
             }
 
+            PLanimator.SetBool("A", Player.PlayerMove1.InformA());
+            PLanimator.SetBool("D", Player.PlayerMove1.InfromD());
+
             PLanimator.SetBool("Walk", Player.PlayerMove1.InformWalking());
 
             PLanimator.SetBool("Clouch", Player.PlayerClouch.InformClouch());
@@ -32,6 +35,7 @@ namespace AnimationConrollScripts
             PLanimator.SetBool("ADS", Player.PLCameraFocus.InformForcusState());
 
             PLanimator.SetBool("isDash", Player.PlayerMove1.InformDash());
+            
 
             if (Jumping == true)
             {

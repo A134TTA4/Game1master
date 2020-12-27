@@ -25,7 +25,8 @@ namespace Player
         private float BuffMul = 1;
         static private bool isDash = false;
         static private bool isWalking = false;
-        
+        static private bool A = false;
+        static private bool D = false;
         void Start()
         {
             isDash = false;
@@ -142,11 +143,21 @@ namespace Player
             {
                 playerTrans.position += -1 * playerTrans.right * Time.deltaTime * leftSpeed * groundspeed * ClouchMul * ADSMul * HitStopMul * BuffMul;
                 isWalking = true;
+                A = true;
+            }
+            else
+            {
+                A = false;
             }
             if (Input.GetKey(KeyCode.D))
             {
                 playerTrans.position += playerTrans.right * Time.deltaTime * rightSpeed * groundspeed * ClouchMul * ADSMul * HitStopMul * BuffMul;
                 isWalking = true;
+                D = true;
+            }
+            else
+            {
+                D = false;
             }
         }
 
@@ -159,5 +170,16 @@ namespace Player
         {
             return isDash;
         }
+
+        static public bool InformA()
+        {
+            return A;
+        }
+
+        static public bool InfromD()
+        {
+            return D;
+        }
+
     }
 }
