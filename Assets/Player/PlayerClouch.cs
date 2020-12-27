@@ -13,10 +13,14 @@ namespace Player
         private Transform playerTrans;
         private Vector3 Originscale;
         static private bool ClouchOrNot = false;
+        [SerializeField]
+        private GameObject Humanoid;
+        private Vector3 HumanoidOriginScale;
         void Start()
         {
             playerTrans = PlayerObject.transform;
             Originscale = playerTrans.localScale;
+            HumanoidOriginScale = Humanoid.transform.localScale;
         }
 
 
@@ -35,6 +39,7 @@ namespace Player
             if (Input.GetKey(KeyCode.LeftControl))
             {
                 playerTrans.localScale = new Vector3(Originscale.x, Originscale.y / 1.5f, Originscale.z);
+                Humanoid.transform.localScale = HumanoidOriginScale;
                 ClouchOrNot = true;
             }
         }
@@ -46,6 +51,7 @@ namespace Player
                 return;
             }
             playerTrans.localScale = Originscale;
+            Humanoid.transform.localScale = HumanoidOriginScale;
             ClouchOrNot = false;
         }
 

@@ -283,7 +283,7 @@ AnimatorStateMachine:
     m_Position: {x: 710, y: -150, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5611960053562083011}
-    m_Position: {x: 230, y: -150, z: 0}
+    m_Position: {x: 220, y: -150, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: -2895806548776163485}
@@ -303,7 +303,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: metarig|ClouchWalk
-  m_Speed: 5
+  m_Speed: 3
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -3534586146533487381}
