@@ -31,8 +31,13 @@ public class Shoot : MonoBehaviourPunCallbacks
 
     static public bool shot = false;
 
-    private bool bulletPlusBool = false; 
+    private bool bulletPlusBool = false;
 
+    private float delayCount = 0f;
+
+    private int wannaToShoot = 0;
+
+    private bool shooting = false;
     private void Start()
     {
         cooltime = 0.05f;
@@ -124,49 +129,86 @@ public class Shoot : MonoBehaviourPunCallbacks
         }
         if (PhotonScriptor.ConnectingScript.informPlayerID() == 1)
         {
-            if (Input.GetKey(KeyCode.Mouse0))
+            if (Input.GetKey(KeyCode.Mouse0) || wannaToShoot > 0)
             {
-                shootable = false;
                 coolCountStart = true;
-                magazine--;
-                if (bulletPlusBool == true)
+                delayCount += Time.deltaTime;
+                if (Input.GetKey(KeyCode.Mouse0))
                 {
-                    GameObject bulletSpawn = PhotonNetwork.Instantiate("BulletPlus", Mazzle.transform.position + PlayerCamera.transform.forward, Quaternion.Euler(this.transform.localEulerAngles.x, Player1.localEulerAngles.y, Player1.localEulerAngles.z));
-                    Rigidbody BulletRigid = bulletSpawn.GetComponent<Rigidbody>();
-                    BulletRigid.AddForce(this.transform.forward * bulletSpeed, ForceMode.Impulse);
+                    wannaToShoot++;
+                    Debug.Log(wannaToShoot);
                 }
-                else
+                if (delayCount >= 0.032f|| (wannaToShoot != 0 && shooting == true))
                 {
-                    GameObject bulletSpawn = PhotonNetwork.Instantiate("Bullet", Mazzle.transform.position + PlayerCamera.transform.forward, Quaternion.Euler(this.transform.localEulerAngles.x, Player1.localEulerAngles.y, Player1.localEulerAngles.z));
-                    Rigidbody BulletRigid = bulletSpawn.GetComponent<Rigidbody>();
-                    BulletRigid.AddForce(this.transform.forward * bulletSpeed, ForceMode.Impulse);
+                    shootable = false;
+                    
+                    magazine--;
+                    wannaToShoot--;
+                    delayCount = 0f;
+                    shooting = true;
+                    if (bulletPlusBool == true)
+                    {
+                        GameObject bulletSpawn = PhotonNetwork.Instantiate("BulletPlus", Mazzle.transform.position + PlayerCamera.transform.forward, Quaternion.Euler(this.transform.localEulerAngles.x, Player1.localEulerAngles.y, Player1.localEulerAngles.z));
+                        Rigidbody BulletRigid = bulletSpawn.GetComponent<Rigidbody>();
+                        BulletRigid.AddForce(this.transform.forward * bulletSpeed, ForceMode.Impulse);
+                    }
+                    else
+                    {
+                        GameObject bulletSpawn = PhotonNetwork.Instantiate("Bullet", Mazzle.transform.position + PlayerCamera.transform.forward, Quaternion.Euler(this.transform.localEulerAngles.x, Player1.localEulerAngles.y, Player1.localEulerAngles.z));
+                        Rigidbody BulletRigid = bulletSpawn.GetComponent<Rigidbody>();
+                        BulletRigid.AddForce(this.transform.forward * bulletSpeed, ForceMode.Impulse);
+                    }
+                    shot = true;
                 }
-                shot = true;
+                
             }
-            //shot = false;
+            else if(wannaToShoot == 0)
+            {
+                delayCount = 0f;
+                shooting = false;
+            }
+            
         }
         else
         {
-            if (Input.GetKey(KeyCode.Mouse0))
+            if (Input.GetKey(KeyCode.Mouse0) || wannaToShoot > 0)
             {
-                shootable = false;
+                delayCount += Time.deltaTime;
                 coolCountStart = true;
-                magazine--;
-                if (bulletPlusBool == true)
+                if (Input.GetKey(KeyCode.Mouse0))
                 {
-                    GameObject bulletSpawn = PhotonNetwork.Instantiate("BulletPlus", Mazzle.transform.position + PlayerCamera.transform.forward, Quaternion.Euler(this.transform.localEulerAngles.x, Player2.localEulerAngles.y, Player2.localEulerAngles.z));
-                    Rigidbody BulletRigid = bulletSpawn.GetComponent<Rigidbody>();
-                    BulletRigid.AddForce(this.transform.forward * bulletSpeed, ForceMode.Impulse);
+                    wannaToShoot++;
                 }
-                else
+                if (delayCount >= 0.032f || (wannaToShoot != 0 && shooting == true))
                 {
-                    GameObject bulletSpawn = PhotonNetwork.Instantiate("Bullet", Mazzle.transform.position + PlayerCamera.transform.forward, Quaternion.Euler(this.transform.localEulerAngles.x, Player2.localEulerAngles.y, Player2.localEulerAngles.z));
-                    Rigidbody BulletRigid = bulletSpawn.GetComponent<Rigidbody>();
-                    BulletRigid.AddForce(this.transform.forward * bulletSpeed, ForceMode.Impulse);
+                    shootable = false;
+                    
+                    magazine--;
+                    wannaToShoot--;
+                    delayCount = 0f;
+                    shooting = true;
+                    if (bulletPlusBool == true)
+                    {
+                        GameObject bulletSpawn = PhotonNetwork.Instantiate("BulletPlus", Mazzle.transform.position + PlayerCamera.transform.forward, Quaternion.Euler(this.transform.localEulerAngles.x, Player2.localEulerAngles.y, Player2.localEulerAngles.z));
+                        Rigidbody BulletRigid = bulletSpawn.GetComponent<Rigidbody>();
+                        BulletRigid.AddForce(this.transform.forward * bulletSpeed, ForceMode.Impulse);
+                    }
+                    else
+                    {
+                        GameObject bulletSpawn = PhotonNetwork.Instantiate("Bullet", Mazzle.transform.position + PlayerCamera.transform.forward, Quaternion.Euler(this.transform.localEulerAngles.x, Player2.localEulerAngles.y, Player2.localEulerAngles.z));
+                        Rigidbody BulletRigid = bulletSpawn.GetComponent<Rigidbody>();
+                        BulletRigid.AddForce(this.transform.forward * bulletSpeed, ForceMode.Impulse);
+                    }
+                    shot = true;
                 }
-                shot = true;
+                
             }
-            //shot = false;
+            else if(wannaToShoot == 0)
+            {
+                delayCount = 0f;
+                shooting = false;
+            }
+            
         }
     }
 
@@ -226,6 +268,8 @@ public class Shoot : MonoBehaviourPunCallbacks
         if (reloadBool == true)
         {
             reloadingtime += Time.deltaTime;
+            wannaToShoot = 0;
+            delayCount = 0f;
         }
         if(reloadingtime >= reloadtime)
         {

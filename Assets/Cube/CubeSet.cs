@@ -133,14 +133,14 @@ namespace Cube
                     if (Input.GetKey(KeyCode.LeftControl))
                     {
                         GameObject cube = PhotonNetwork.Instantiate("CreatedCubeSmallBlue", this.transform.position, transform.rotation);
-                        cube.transform.localScale = new Vector3(2 * SetMode, 1.25f, 0.5f);
+                        cube.transform.localScale = new Vector3(2 * SetMode, 1.25f, 1f);
                         Created += 1 * SetMode;
                         ResetSetMode();
                     }
                     else
                     {
                         GameObject cube = PhotonNetwork.Instantiate("CreatedCubeSmallBlue", this.transform.position, transform.rotation);
-                        cube.transform.localScale = new Vector3(2 * SetMode, 2, 0.5f);
+                        cube.transform.localScale = new Vector3(2 * SetMode, 2, 1f);
                         Created += 1 * SetMode;
                         ResetSetMode();
                     }
@@ -153,14 +153,14 @@ namespace Cube
                     if (Input.GetKey(KeyCode.LeftControl))
                     {
                         GameObject cube =  PhotonNetwork.Instantiate("CreatedCubeSmall", this.transform.position, transform.rotation);
-                        cube.transform.localScale = new Vector3(2 * SetMode, 1.25f, 0.5f);
+                        cube.transform.localScale = new Vector3(2 * SetMode, 1.25f, 1f);
                         Created += 1 * SetMode;
                         ResetSetMode();
                     }
                     else
                     {
                         GameObject cube = PhotonNetwork.Instantiate("CreatedCubeSmall", this.transform.position, transform.rotation);
-                        cube.transform.localScale = new Vector3(2 * SetMode, 2, 0.5f);
+                        cube.transform.localScale = new Vector3(2 * SetMode, 2, 1f);
                         Created += 1 * SetMode;
                         ResetSetMode();
                     }

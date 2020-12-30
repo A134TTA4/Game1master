@@ -28,7 +28,7 @@ public class MagazineDesp : MonoBehaviour
         magazineText.text = magazine + "" ;
         if (Shoot.InformReloadState() == true)
         {
-            magazineText.text = "Reloading";
+            magazineText.text = "#/#";
         }
     }
 }

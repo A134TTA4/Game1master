@@ -70,7 +70,7 @@ namespace Player
 
             if (PLCameraFocus.InformForcusState() == true)
             {
-                ADSMul = 0.7f;
+                ADSMul = 0.5f;
             }
             else
             {

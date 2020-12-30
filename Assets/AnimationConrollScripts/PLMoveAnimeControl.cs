@@ -41,7 +41,7 @@ namespace AnimationConrollScripts
             {
                 countingJump += Time.deltaTime;
                 
-                if (countingJump >= 1.5f)
+                if (countingJump >= 1.2f)
                 {
                     Jumping = false;
                     Player.PlayerJump.ReSetJumpBool();
