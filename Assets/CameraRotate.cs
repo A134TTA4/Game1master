@@ -17,7 +17,10 @@ public class CameraRotate : MonoBehaviour
     static private float recoil = 0.0f;
 
     private float LimitXAxizAngle = 90;
-
+    static private Quaternion beforeQuart = new Quaternion();
+    private float FixTime = 0.1f;
+    private float count = 0f;
+    private bool fixing = false;
     //首の縦の動きを反映させるためのvector3
     private Vector3 mXAxiz;
     private void Start()
@@ -37,6 +40,12 @@ public class CameraRotate : MonoBehaviour
 
         if (Shoot.shot == true)
         {
+            if(recoil == 0)
+            {
+                beforeQuart = PlayerCamera.transform.rotation;
+                fixing = true;
+                Debug.Log("quart get");
+            }
             PlusRecoil();
         }
         Quaternion nowQuart = RecoilM(PlayerCamera.transform);
@@ -64,16 +73,31 @@ public class CameraRotate : MonoBehaviour
 
     
 
-    static public void PlusRecoil()
+    private void PlusRecoil()
     {
-        recoil += 0.05f;//リコイルタイム
+        if (Player.WeaponSwap.InformWeapon() == false)
+        {
+            recoil += 0.05f;//リコイルタイム
+        }
+        else
+        {
+            recoil += 0.1f;
+        }
     }
 
-    public Quaternion RecoilM(Transform Camera)
+    private Quaternion RecoilM(Transform Camera)
     {
         if (recoil > 0)
         {
-            maxRecoil_x -= 30;//一回のリコイル大きさ
+            if (Player.WeaponSwap.InformWeapon() == false)
+            {
+                maxRecoil_x -= 30;//一回のリコイル大きさ
+                FixTime += 0.01f;
+            }
+            else
+            {
+                maxRecoil_x -= 150;
+            }
             recoil -= Time.deltaTime;
             Quaternion CameraQuart = new Quaternion(0, 0, 0, 0f);
             Quaternion maxRecoil = new Quaternion( maxRecoil_x, 0, 0, 0);
@@ -85,7 +109,27 @@ public class CameraRotate : MonoBehaviour
         {
             recoil = 0f;
             maxRecoil_x = 0;
+            if (fixing == true)
+            {
+                Debug.Log("Fixing");
+                count += Time.deltaTime;
+                Quaternion CameraQuart = new Quaternion(0, 0, 0, 0f);
+                Quaternion maxRecoil = new Quaternion(2.3f, 0, 0, 0);
+                if(Player.WeaponSwap.InformWeapon() == false)
+                {
+                    maxRecoil = new Quaternion(PlayerCamera.rotation.x - beforeQuart.x, 0, 0, 0);
+                }
+                Quaternion nowQuart = Quaternion.Slerp(CameraQuart, maxRecoil, Time.deltaTime);
+                if(count > FixTime)
+                {
+                    count = 0;
+                    fixing = false;
+                }
+                return nowQuart;
+            }
+            
         }
+        
 
         return new Quaternion(1000, 0, 0, 0);
 

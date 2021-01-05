@@ -18,6 +18,8 @@ namespace AnimationConrollScripts
         static private bool SmokeOut = false;
         private bool Reloading = false;
         static private bool Jumping = false;
+
+        private bool swapnow = false;
         void Update()
         {
             if(PN!=PhotonScriptor.ConnectingScript.informPlayerID())
@@ -36,6 +38,29 @@ namespace AnimationConrollScripts
 
             PLanimator.SetBool("isDash", Player.PlayerMove1.InformDash());
             
+            
+            
+            if (Player.WeaponSwap.InformSwap() == false)
+            {
+                PLanimator.SetBool("Swap", false);
+                swapnow = false;
+            }
+            if (Player.WeaponSwap.InformSwap() == true && swapnow == false)
+            {
+                swapnow = true;
+                PLanimator.SetBool("Swap", true);
+            }
+            
+            
+            if(Player.WeaponSwap.InformWeapon() == false)
+            {
+                PLanimator.SetFloat("SideArm", 0);
+            }
+            else
+            {
+                PLanimator.SetFloat("SideArm", 1);
+            }
+
 
             if (Jumping == true)
             {

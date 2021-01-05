@@ -9,6 +9,7 @@ public class MagazineDesp : MonoBehaviour
     private Text magazineText;
 
     private int magazine;
+    private int magazines;
 
     private int magazineMax;
     // Start is called before the first frame update
@@ -21,11 +22,19 @@ public class MagazineDesp : MonoBehaviour
     void Update()
     {
         magazine = Shoot.InformMagazineLeft();
+        magazines = Shoot.InformMagazineLefts();
         if (magazine < 0)
         {
             magazine = 0;
         }
-        magazineText.text = magazine + "" ;
+        if (Player.WeaponSwap.InformWeapon() == false)
+        {
+            magazineText.text = magazine + "";
+        }
+        else
+        {
+            magazineText.text = magazines + "";
+        }
         if (Shoot.InformReloadState() == true)
         {
             magazineText.text = "#/#";

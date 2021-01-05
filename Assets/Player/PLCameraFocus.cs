@@ -30,6 +30,7 @@ namespace Player
 
             if (TimeManager.PreParationTime.InformPreparationState() == true)
             {
+                PlayerCamera.fieldOfView = Fov;
                 return;
             }
 

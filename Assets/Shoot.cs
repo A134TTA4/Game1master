@@ -19,12 +19,16 @@ public class Shoot : MonoBehaviourPunCallbacks
     Transform Player2;
 
     private float cooltime = 0.05f;
+    private float cooltimeS = 0.2f;
     private float cooltimeCount = 0f;
     private float bulletSpeed = 100f;
     static private bool shootable = true;
     private bool coolCountStart = false;
     static private int magazineMax = 25;
     static private int magazine = 25;
+    static private int magazineMaxs = 10;
+    static private int magazines = 10;
+
     static private bool reloadBool = false;
     private float reloadtime = 3.0f;//銃のリロードモーションは個別で設定し直す
     static private float reloadingtime = 0.0f;
@@ -39,14 +43,13 @@ public class Shoot : MonoBehaviourPunCallbacks
 
     private bool shooting = false;
     private void Start()
-    {
-        cooltime = 0.05f;
-        cooltimeCount = 0f;
+    { 
         bulletSpeed = 100f;
         shootable = true;
         coolCountStart = false;
         magazineMax = 25;
         magazine = 25;
+        magazines = 10;
         reloadBool = false;
         reloadtime = 3.0f;//銃のリロードモーションは個別で設定し直す
         reloadingtime = 0.0f;
@@ -76,6 +79,7 @@ public class Shoot : MonoBehaviourPunCallbacks
         if(PreParationTime.InformPreparationState() == true)
         {
             magazine = magazineMax;
+            magazines = magazineMaxs;
         }
 
         if(Player.BluePrint.DrawBluePrint.InformPlayerState() == 1)
@@ -106,15 +110,27 @@ public class Shoot : MonoBehaviourPunCallbacks
         
 
         ReloadCheck();
-        if(magazine < magazineMax)
+        if(magazine < magazineMax && Player.WeaponSwap.InformWeapon() == false)
         {
             if(Input.GetKeyDown(KeyCode.R))
             {
                 reloadBool = true;
             }
         }
+        if (magazines < magazineMaxs && Player.WeaponSwap.InformWeapon() == true)
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                reloadBool = true;
+            }
+        }
 
-        if(ShootableM() == true)
+        if(Player.WeaponSwap.InformSwap() == true)
+        {
+            reloadBool = false;
+        }
+
+        if (ShootableM() == true)
         {
             ShootM();
         }
@@ -127,98 +143,193 @@ public class Shoot : MonoBehaviourPunCallbacks
         {
             return;
         }
-        if (PhotonScriptor.ConnectingScript.informPlayerID() == 1)
+        if (Player.WeaponSwap.InformWeapon() == false)
         {
-            if (Input.GetKey(KeyCode.Mouse0) || wannaToShoot > 0)
+            if (PhotonScriptor.ConnectingScript.informPlayerID() == 1)
             {
-                coolCountStart = true;
-                delayCount += Time.deltaTime;
-                if (Input.GetKey(KeyCode.Mouse0))
+                if (Input.GetKey(KeyCode.Mouse0) || wannaToShoot > 0)
                 {
-                    wannaToShoot++;
-                    Debug.Log(wannaToShoot);
+                    coolCountStart = true;
+                    delayCount += Time.deltaTime;
+                    //Debug.LogError(Time.deltaTime);
+                    if (Input.GetKey(KeyCode.Mouse0))
+                    {
+                        wannaToShoot++;
+                        Debug.Log(wannaToShoot);
+                    }
+                    if (delayCount >= 0.00325f || (wannaToShoot != 0 && shooting == true))
+                    {
+                        shootable = false;
+
+                        magazine--;
+                        wannaToShoot--;
+                        delayCount = 0f;
+                        shooting = true;
+                        if (bulletPlusBool == true)
+                        {
+                            GameObject bulletSpawn = PhotonNetwork.Instantiate("BulletPlus", Mazzle.transform.position + PlayerCamera.transform.forward, Quaternion.Euler(this.transform.localEulerAngles.x, Player1.localEulerAngles.y, Player1.localEulerAngles.z));
+                            Rigidbody BulletRigid = bulletSpawn.GetComponent<Rigidbody>();
+                            BulletRigid.AddForce(this.transform.forward * bulletSpeed, ForceMode.Impulse);
+                        }
+                        else
+                        {
+                            GameObject bulletSpawn = PhotonNetwork.Instantiate("Bullet", Mazzle.transform.position + PlayerCamera.transform.forward, Quaternion.Euler(this.transform.localEulerAngles.x, Player1.localEulerAngles.y, Player1.localEulerAngles.z));
+                            Rigidbody BulletRigid = bulletSpawn.GetComponent<Rigidbody>();
+                            BulletRigid.AddForce(this.transform.forward * bulletSpeed, ForceMode.Impulse);
+                        }
+                        shot = true;
+                    }
+
                 }
-                if (delayCount >= 0.032f|| (wannaToShoot != 0 && shooting == true))
+                else if (wannaToShoot == 0)
                 {
-                    shootable = false;
-                    
-                    magazine--;
-                    wannaToShoot--;
                     delayCount = 0f;
-                    shooting = true;
-                    if (bulletPlusBool == true)
-                    {
-                        GameObject bulletSpawn = PhotonNetwork.Instantiate("BulletPlus", Mazzle.transform.position + PlayerCamera.transform.forward, Quaternion.Euler(this.transform.localEulerAngles.x, Player1.localEulerAngles.y, Player1.localEulerAngles.z));
-                        Rigidbody BulletRigid = bulletSpawn.GetComponent<Rigidbody>();
-                        BulletRigid.AddForce(this.transform.forward * bulletSpeed, ForceMode.Impulse);
-                    }
-                    else
-                    {
-                        GameObject bulletSpawn = PhotonNetwork.Instantiate("Bullet", Mazzle.transform.position + PlayerCamera.transform.forward, Quaternion.Euler(this.transform.localEulerAngles.x, Player1.localEulerAngles.y, Player1.localEulerAngles.z));
-                        Rigidbody BulletRigid = bulletSpawn.GetComponent<Rigidbody>();
-                        BulletRigid.AddForce(this.transform.forward * bulletSpeed, ForceMode.Impulse);
-                    }
-                    shot = true;
+                    shooting = false;
                 }
-                
+
             }
-            else if(wannaToShoot == 0)
+            else
             {
-                delayCount = 0f;
-                shooting = false;
+                if (Input.GetKey(KeyCode.Mouse0) || wannaToShoot > 0)
+                {
+                    delayCount += Time.deltaTime;
+                    coolCountStart = true;
+                    if (Input.GetKey(KeyCode.Mouse0))
+                    {
+                        wannaToShoot++;
+                    }
+                    if (delayCount >= 0.00325f || (wannaToShoot != 0 && shooting == true))
+                    {
+                        shootable = false;
+
+                        magazine--;
+                        wannaToShoot--;
+                        delayCount = 0f;
+                        shooting = true;
+                        if (bulletPlusBool == true)
+                        {
+                            GameObject bulletSpawn = PhotonNetwork.Instantiate("BulletPlus", Mazzle.transform.position + PlayerCamera.transform.forward, Quaternion.Euler(this.transform.localEulerAngles.x, Player2.localEulerAngles.y, Player2.localEulerAngles.z));
+                            Rigidbody BulletRigid = bulletSpawn.GetComponent<Rigidbody>();
+                            BulletRigid.AddForce(this.transform.forward * bulletSpeed, ForceMode.Impulse);
+                        }
+                        else
+                        {
+                            GameObject bulletSpawn = PhotonNetwork.Instantiate("Bullet", Mazzle.transform.position + PlayerCamera.transform.forward, Quaternion.Euler(this.transform.localEulerAngles.x, Player2.localEulerAngles.y, Player2.localEulerAngles.z));
+                            Rigidbody BulletRigid = bulletSpawn.GetComponent<Rigidbody>();
+                            BulletRigid.AddForce(this.transform.forward * bulletSpeed, ForceMode.Impulse);
+                        }
+                        shot = true;
+                    }
+
+                }
+                else if (wannaToShoot == 0)
+                {
+                    delayCount = 0f;
+                    shooting = false;
+                }
+
             }
-            
         }
         else
         {
-            if (Input.GetKey(KeyCode.Mouse0) || wannaToShoot > 0)
+            if (PhotonScriptor.ConnectingScript.informPlayerID() == 1)
             {
-                delayCount += Time.deltaTime;
-                coolCountStart = true;
-                if (Input.GetKey(KeyCode.Mouse0))
+                if (Input.GetKeyDown(KeyCode.Mouse0) || wannaToShoot > 0)
                 {
-                    wannaToShoot++;
+                    coolCountStart = true;
+                    delayCount += Time.deltaTime;
+                    //Debug.LogError(Time.deltaTime);
+                    if (Input.GetKeyDown(KeyCode.Mouse0))
+                    {
+                        wannaToShoot++;
+                        Debug.Log(wannaToShoot);
+                    }
+                    if (delayCount >= 0.00325f || (wannaToShoot != 0 && shooting == true))
+                    {
+                        shootable = false;
+
+                        magazines--;
+                        wannaToShoot--;
+                        delayCount = 0f;
+                        shooting = true;
+                        if (bulletPlusBool == true)
+                        {
+                            GameObject bulletSpawn = PhotonNetwork.Instantiate("BulletPlus", Mazzle.transform.position + PlayerCamera.transform.forward, Quaternion.Euler(this.transform.localEulerAngles.x, Player1.localEulerAngles.y, Player1.localEulerAngles.z));
+                            Rigidbody BulletRigid = bulletSpawn.GetComponent<Rigidbody>();
+                            BulletRigid.AddForce(this.transform.forward * bulletSpeed, ForceMode.Impulse);
+                        }
+                        else
+                        {
+                            GameObject bulletSpawn = PhotonNetwork.Instantiate("Bullet", Mazzle.transform.position + PlayerCamera.transform.forward, Quaternion.Euler(this.transform.localEulerAngles.x, Player1.localEulerAngles.y, Player1.localEulerAngles.z));
+                            Rigidbody BulletRigid = bulletSpawn.GetComponent<Rigidbody>();
+                            BulletRigid.AddForce(this.transform.forward * bulletSpeed, ForceMode.Impulse);
+                        }
+                        shot = true;
+                    }
+
                 }
-                if (delayCount >= 0.032f || (wannaToShoot != 0 && shooting == true))
+                else if (wannaToShoot == 0)
                 {
-                    shootable = false;
-                    
-                    magazine--;
-                    wannaToShoot--;
                     delayCount = 0f;
-                    shooting = true;
-                    if (bulletPlusBool == true)
-                    {
-                        GameObject bulletSpawn = PhotonNetwork.Instantiate("BulletPlus", Mazzle.transform.position + PlayerCamera.transform.forward, Quaternion.Euler(this.transform.localEulerAngles.x, Player2.localEulerAngles.y, Player2.localEulerAngles.z));
-                        Rigidbody BulletRigid = bulletSpawn.GetComponent<Rigidbody>();
-                        BulletRigid.AddForce(this.transform.forward * bulletSpeed, ForceMode.Impulse);
-                    }
-                    else
-                    {
-                        GameObject bulletSpawn = PhotonNetwork.Instantiate("Bullet", Mazzle.transform.position + PlayerCamera.transform.forward, Quaternion.Euler(this.transform.localEulerAngles.x, Player2.localEulerAngles.y, Player2.localEulerAngles.z));
-                        Rigidbody BulletRigid = bulletSpawn.GetComponent<Rigidbody>();
-                        BulletRigid.AddForce(this.transform.forward * bulletSpeed, ForceMode.Impulse);
-                    }
-                    shot = true;
+                    shooting = false;
                 }
-                
+
             }
-            else if(wannaToShoot == 0)
+            else
             {
-                delayCount = 0f;
-                shooting = false;
+                if (Input.GetKeyDown(KeyCode.Mouse0) || wannaToShoot > 0)
+                {
+                    delayCount += Time.deltaTime;
+                    coolCountStart = true;
+                    if (Input.GetKeyDown(KeyCode.Mouse0))
+                    {
+                        wannaToShoot++;
+                    }
+                    if (delayCount >= 0.00325f || (wannaToShoot != 0 && shooting == true))
+                    {
+                        shootable = false;
+
+                        magazines--;
+                        wannaToShoot--;
+                        delayCount = 0f;
+                        shooting = true;
+                        if (bulletPlusBool == true)
+                        {
+                            GameObject bulletSpawn = PhotonNetwork.Instantiate("BulletPlus", Mazzle.transform.position + PlayerCamera.transform.forward, Quaternion.Euler(this.transform.localEulerAngles.x, Player2.localEulerAngles.y, Player2.localEulerAngles.z));
+                            Rigidbody BulletRigid = bulletSpawn.GetComponent<Rigidbody>();
+                            BulletRigid.AddForce(this.transform.forward * bulletSpeed, ForceMode.Impulse);
+                        }
+                        else
+                        {
+                            GameObject bulletSpawn = PhotonNetwork.Instantiate("Bullet", Mazzle.transform.position + PlayerCamera.transform.forward, Quaternion.Euler(this.transform.localEulerAngles.x, Player2.localEulerAngles.y, Player2.localEulerAngles.z));
+                            Rigidbody BulletRigid = bulletSpawn.GetComponent<Rigidbody>();
+                            BulletRigid.AddForce(this.transform.forward * bulletSpeed, ForceMode.Impulse);
+                        }
+                        shot = true;
+                    }
+
+                }
+                else if (wannaToShoot == 0)
+                {
+                    delayCount = 0f;
+                    shooting = false;
+                }
+
             }
-            
         }
     }
 
     bool ShootableM()
     {
-        if (CoolTimeCountM() == false)
+        if (CoolTimeCountM() == false && Player.WeaponSwap.InformWeapon() == false)
         {
             return false;
         }
-        if(MagagineCheckM() == false)
+        if (CoolTimeCountMs() == false && Player.WeaponSwap.InformWeapon() == true)
+        {
+            return false;
+        }
+        if (MagagineCheckM() == false)
         {
             return false;
         }
@@ -250,9 +361,33 @@ public class Shoot : MonoBehaviourPunCallbacks
         
     }
 
+    bool CoolTimeCountMs()
+    {
+        if (coolCountStart == false)
+        {
+            return true;
+        }
+        if (coolCountStart == true)
+        {
+            cooltimeCount += Time.deltaTime;
+        }
+        if (cooltimeCount >= cooltimeS)
+        {
+            coolCountStart = false;
+            cooltimeCount = 0;
+            return true;
+        }
+        return false;
+
+    }
+
     bool MagagineCheckM()
     {
-        if(magazine <= 0)
+        if(magazine <= 0 && Player.WeaponSwap.InformWeapon() ==false)
+        {
+            return false;
+        }
+        if(magazines <= 0 && Player.WeaponSwap.InformWeapon() == true)
         {
             return false;
         }
@@ -273,7 +408,14 @@ public class Shoot : MonoBehaviourPunCallbacks
         }
         if(reloadingtime >= reloadtime)
         {
-            magazine = magazineMax;
+            if (Player.WeaponSwap.InformWeapon() == false)
+            {
+                magazine = magazineMax;
+            }
+            else
+            {
+                magazines = magazineMaxs;
+            }
             reloadingtime = 0f;
             reloadBool = false;
             return true;
@@ -290,10 +432,18 @@ public class Shoot : MonoBehaviourPunCallbacks
     {
         return magazine;
     }
+    static public int InformMagazineLefts()
+    {
+        return magazines;
+    }
     
     static public int InformMagazineMax()
     {
         return magazineMax;
+    }
+    static public int InformMagazineMaxs()
+    {
+        return magazineMaxs;
     }
 
     static public bool InformReloadState()

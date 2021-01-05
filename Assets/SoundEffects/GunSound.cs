@@ -13,7 +13,9 @@ namespace SoundEffects
         private AudioSource GunAudioSource;
 
         private int MagazineBefore;
+        private int MagazineBefores;
         private int MagazineNow;
+        private int MagazineNows;
 
         private float AudioVolume = 0.5f;
 
@@ -34,11 +36,17 @@ namespace SoundEffects
             }
             
             MagazineBefore = Shoot.InformMagazineLeft();
-            if(MagazineBefore < MagazineNow)
+            MagazineBefores = Shoot.InformMagazineLefts();
+            if(MagazineBefore < MagazineNow && Player.WeaponSwap.InformWeapon() == false)
+            {
+                photonView.RPC(nameof(ShootSound), RpcTarget.All);
+            }
+            if(MagazineBefores < MagazineNows && Player.WeaponSwap.InformWeapon() == true)
             {
                 photonView.RPC(nameof(ShootSound), RpcTarget.All);
             }
             MagazineNow = MagazineBefore;
+            MagazineNows = MagazineBefores;
         }
 
         [PunRPC]

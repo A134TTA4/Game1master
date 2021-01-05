@@ -13,7 +13,11 @@ public class PleaseReload : MonoBehaviour
 
     void Update()
     {
-        if(Shoot.InformMagazineLeft() <= 5)
+        if(Shoot.InformMagazineLeft() <= 5 && Player.WeaponSwap.InformWeapon() == false)
+        {
+            ReloadText.SetActive(true);
+        }
+        if (Shoot.InformMagazineLefts() <= 3 && Player.WeaponSwap.InformWeapon() == true)
         {
             ReloadText.SetActive(true);
         }
