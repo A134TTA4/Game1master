@@ -55,6 +55,8 @@ namespace UI
                 UI.UIEffect.RoundLostEffect.LoseEffectOnM();
             }
             RedPoint++;
+            PlayerPrefs.SetFloat("RedPoint", RedPoint);
+            PlayerPrefs.SetFloat("BluePoint", BluePoint);
         }
         static public void IncrementBlue()
         {
@@ -67,6 +69,8 @@ namespace UI
                 UI.UIEffect.RoundLostEffect.LoseEffectOnM();
             }
             BluePoint++;
+            PlayerPrefs.SetFloat("RedPoint", RedPoint);
+            PlayerPrefs.SetFloat("BluePoint", BluePoint);
         }
 
         static public void ResetRed()

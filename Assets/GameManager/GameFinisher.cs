@@ -34,6 +34,9 @@ namespace GameManager
             {
                 if (UI.WinorLose.InformBluePoint() >= 3)
                 {
+                    PlayerPrefs.SetFloat("YourPoint", PlayerPrefs.GetFloat("BluePoint"));
+                    PlayerPrefs.SetFloat("EnemyPoint", PlayerPrefs.GetFloat("RedPoint"));
+                    PlayerPrefs.Save();
                     UI.WinorLose.ResetRed();
                     UI.WinorLose.ResetBlue();
                     PhotonScriptor.ConnectingScript.LeaveGame();
@@ -42,6 +45,9 @@ namespace GameManager
                 }
                 if (UI.WinorLose.InformRedPoint() >= 3)
                 {
+                    PlayerPrefs.SetFloat("YourPoint", PlayerPrefs.GetFloat("BluePoint"));
+                    PlayerPrefs.SetFloat("EnemyPoint", PlayerPrefs.GetFloat("RedPoint"));
+                    PlayerPrefs.Save();
                     UI.WinorLose.ResetRed();
                     UI.WinorLose.ResetBlue();
                     PhotonScriptor.ConnectingScript.LeaveGame();
@@ -52,6 +58,9 @@ namespace GameManager
             {
                 if (UI.WinorLose.InformBluePoint() >= 3)
                 {
+                    PlayerPrefs.SetFloat("YourPoint", PlayerPrefs.GetFloat("RedPoint"));
+                    PlayerPrefs.SetFloat("EnemyPoint", PlayerPrefs.GetFloat("BluePoint"));
+                    PlayerPrefs.Save();
                     UI.WinorLose.ResetRed();
                     UI.WinorLose.ResetBlue();
                     PhotonScriptor.ConnectingScript.LeaveGame();
@@ -59,6 +68,9 @@ namespace GameManager
                 }
                 if (UI.WinorLose.InformRedPoint() >= 3)
                 {
+                    PlayerPrefs.SetFloat("YourPoint", PlayerPrefs.GetFloat("RedPoint"));
+                    PlayerPrefs.SetFloat("EnemyPoint", PlayerPrefs.GetFloat("BluePoint"));
+                    PlayerPrefs.Save();
                     UI.WinorLose.ResetRed();
                     UI.WinorLose.ResetBlue();
                     PhotonScriptor.ConnectingScript.LeaveGame();
