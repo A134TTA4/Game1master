@@ -100,20 +100,10 @@ namespace AnimationConrollScripts
                 PLanimator.SetBool("Thorough", true);
                 SmokeOut = true;
             }
-            
-            if (Shoot.InformReloadState() == true && Reloading == false)
-            {
-                PLanimator.SetBool("Reload", Shoot.InformReloadState());
-                Reloading = true;
-            }
-            else if(Shoot.InformReloadState() == true && Reloading == true)
-            {
-                PLanimator.SetBool("Reload", false);
-            }
-            else if(Shoot.InformReloadState() == false && Reloading == true)
-            {
-                Reloading = false;
-            }
+
+            PLanimator.SetBool("Reload", Shoot.InformReloadState());
+
+           
 
 
             if (Player.PlayerMove1.InformWalking() == true)

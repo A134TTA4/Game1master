@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 namespace Player
 {
-    public class WeaponSwap : MonoBehaviour
+    public class WeaponSwap : MonoBehaviourPunCallbacks
     {
         [SerializeField]
         private GameObject AssultRifle;
@@ -14,6 +15,7 @@ namespace Player
         private int PN = 0;
 
         static private bool NowWeapon = false;
+        private bool WeaPonNow = false;
         static private bool Swap = false;
         private float count = 0f;
         private float countMax = 0.5f;
@@ -33,7 +35,7 @@ namespace Player
             }
             if (Input.mouseScrollDelta.y != 0 && Swap == false)
             {
-                Debug.Log("swap now");
+                //Debug.Log("swap now");
                 Swap = true;
             }
             if (Swap == true)
@@ -45,17 +47,15 @@ namespace Player
                 count = 0f;
                 Swap = false;
                 NowWeapon = !NowWeapon;
-                Debug.Log(NowWeapon);
+                //Debug.Log(NowWeapon);
             }
-            if(NowWeapon == false)
+            if(NowWeapon == false && WeaPonNow == true)
             {
-                AssultRifle.SetActive(true);
-                SideArm.SetActive(false);
+                photonView.RPC(nameof(SwapToAR), RpcTarget.All);
             }
-            else
+            if(NowWeapon == true && WeaPonNow == false)
             {
-                SideArm.SetActive(true);
-                AssultRifle.SetActive(false);
+                photonView.RPC(nameof(SwapToSideArm), RpcTarget.All);
             }
 
         }
@@ -69,5 +69,26 @@ namespace Player
         {
             return NowWeapon;
         }
+
+        [PunRPC]
+        public void SwapToAR()
+        {
+            //Debug.Log("RPC executed");
+            AssultRifle.SetActive(true);
+            SideArm.SetActive(false);
+            WeaPonNow = false;
+        }
+
+        [PunRPC]
+        public void SwapToSideArm()
+        {
+            //Debug.Log("RPC executed");
+            SideArm.SetActive(true);
+            AssultRifle.SetActive(false);
+            WeaPonNow = true;
+        }
     }
+
+    
+    
 }
