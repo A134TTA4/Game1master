@@ -33,6 +33,14 @@ namespace Player
             {
                 return;
             }
+            if(TimeManager.BluePrint.BruePrintPhaze.InformBluePrintState() == true)
+            {
+                return;
+            }
+            if(TimeManager.IntercalTimeManager.InformIntervalState() == true)
+            {
+                return;
+            }
             if (Input.mouseScrollDelta.y != 0 && Swap == false)
             {
                 //Debug.Log("swap now");

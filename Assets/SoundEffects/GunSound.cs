@@ -50,7 +50,6 @@ namespace SoundEffects
 
             if(Player.WeaponSwap.InformSwap() == true && WeaponState == false)
             {
-                Debug.Log("Play");
                 GunAudioSource.PlayOneShot(WeaponSwapSound);
                 WeaponState = true;
             }
