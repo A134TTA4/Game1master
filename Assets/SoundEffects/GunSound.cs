@@ -11,14 +11,17 @@ namespace SoundEffects
         private AudioClip ShotSound;
         [SerializeField]
         private AudioSource GunAudioSource;
-
+        [SerializeField]
+        private AudioClip SideArmAudioSource;
+        [SerializeField]
+        private AudioClip WeaponSwapSound;
         private int MagazineBefore;
         private int MagazineBefores;
         private int MagazineNow;
         private int MagazineNows;
 
         private float AudioVolume = 0.5f;
-
+        private bool WeaponState = false;
         [SerializeField]
         private float PN;
 
@@ -35,6 +38,28 @@ namespace SoundEffects
                 return;
             }
             
+            if(TimeManager.BluePrint.BruePrintPhaze.InformBluePrintState() == true)
+            {
+                return;
+            }
+
+            if(TimeManager.IntercalTimeManager.InformIntervalState() == true)
+            {
+                return;
+            }
+
+            if(Player.WeaponSwap.InformSwap() == true && WeaponState == false)
+            {
+                Debug.Log("Play");
+                GunAudioSource.PlayOneShot(WeaponSwapSound);
+                WeaponState = true;
+            }
+            if(Player.WeaponSwap.InformSwap() == false && WeaponState == true)
+            {
+                WeaponState = false;
+            }
+
+
             MagazineBefore = Shoot.InformMagazineLeft();
             MagazineBefores = Shoot.InformMagazineLefts();
             if(MagazineBefore < MagazineNow && Player.WeaponSwap.InformWeapon() == false)
@@ -52,8 +77,14 @@ namespace SoundEffects
         [PunRPC]
         void ShootSound()
         {
-            GunAudioSource.PlayOneShot(ShotSound);
-            //Debug.Log("Shot Sound active");
+            if (Player.WeaponSwap.InformWeapon() == false)
+            {
+                GunAudioSource.PlayOneShot(ShotSound);
+            }
+            else
+            {
+                GunAudioSource.PlayOneShot(SideArmAudioSource);
+            }
         }
 
     }
