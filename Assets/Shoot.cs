@@ -254,13 +254,13 @@ public class Shoot : MonoBehaviourPunCallbacks
                         shooting = true;
                         if (bulletPlusBool == true)
                         {
-                            GameObject bulletSpawn = PhotonNetwork.Instantiate("BulletPlus", Mazzle.transform.position + PlayerCamera.transform.forward, Quaternion.Euler(this.transform.localEulerAngles.x, Player1.localEulerAngles.y, Player1.localEulerAngles.z));
+                            GameObject bulletSpawn = PhotonNetwork.Instantiate("BulletPlus", Mazzle.transform.position + PlayerCamera.transform.forward * 2, Quaternion.Euler(this.transform.localEulerAngles.x, Player1.localEulerAngles.y, Player1.localEulerAngles.z));
                             Rigidbody BulletRigid = bulletSpawn.GetComponent<Rigidbody>();
                             BulletRigid.AddForce(this.transform.forward * bulletSpeed, ForceMode.Impulse);
                         }
                         else
                         {
-                            GameObject bulletSpawn = PhotonNetwork.Instantiate("Bullet", Mazzle.transform.position + PlayerCamera.transform.forward, Quaternion.Euler(this.transform.localEulerAngles.x, Player1.localEulerAngles.y, Player1.localEulerAngles.z));
+                            GameObject bulletSpawn = PhotonNetwork.Instantiate("Bullet", Mazzle.transform.position + PlayerCamera.transform.forward * 2, Quaternion.Euler(this.transform.localEulerAngles.x, Player1.localEulerAngles.y, Player1.localEulerAngles.z));
                             Rigidbody BulletRigid = bulletSpawn.GetComponent<Rigidbody>();
                             BulletRigid.AddForce(this.transform.forward * bulletSpeed, ForceMode.Impulse);
                         }
@@ -295,13 +295,13 @@ public class Shoot : MonoBehaviourPunCallbacks
                         shooting = true;
                         if (bulletPlusBool == true)
                         {
-                            GameObject bulletSpawn = PhotonNetwork.Instantiate("BulletPlusSideArm", Mazzle.transform.position + PlayerCamera.transform.forward, Quaternion.Euler(this.transform.localEulerAngles.x, Player2.localEulerAngles.y, Player2.localEulerAngles.z));
+                            GameObject bulletSpawn = PhotonNetwork.Instantiate("BulletPlusSideArm", Mazzle.transform.position + PlayerCamera.transform.forward*2, Quaternion.Euler(this.transform.localEulerAngles.x, Player2.localEulerAngles.y, Player2.localEulerAngles.z));
                             Rigidbody BulletRigid = bulletSpawn.GetComponent<Rigidbody>();
                             BulletRigid.AddForce(this.transform.forward * bulletSpeed, ForceMode.Impulse);
                         }
                         else
                         {
-                            GameObject bulletSpawn = PhotonNetwork.Instantiate("BulletSideArm", Mazzle.transform.position + PlayerCamera.transform.forward, Quaternion.Euler(this.transform.localEulerAngles.x, Player2.localEulerAngles.y, Player2.localEulerAngles.z));
+                            GameObject bulletSpawn = PhotonNetwork.Instantiate("BulletSideArm", Mazzle.transform.position + PlayerCamera.transform.forward * 2, Quaternion.Euler(this.transform.localEulerAngles.x, Player2.localEulerAngles.y, Player2.localEulerAngles.z));
                             Rigidbody BulletRigid = bulletSpawn.GetComponent<Rigidbody>();
                             BulletRigid.AddForce(this.transform.forward * bulletSpeed, ForceMode.Impulse);
                         }

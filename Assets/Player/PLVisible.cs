@@ -30,7 +30,7 @@ public class PLVisible : MonoBehaviour
     {
         if(PhotonScriptor.ConnectingScript.informStartGame())
         {
-            return;
+            //return;
         }
         if (PhotonScriptor.ConnectingScript.informPlayerID() != PN)
         {

@@ -33,21 +33,24 @@ MonoBehaviour:
   RunInBackground: 1
   StartInOfflineMode: 0
   RpcList:
-  - IncrementBlue
-  - IncrementRed
-  - PlayerDead
-  - ShootM
   - ClickRpc
   - DestroyRpc
   - DestroySpaceship
   - Fire
-  - RespawnSpaceship
-  - ShootSound
-  - WalkingSoundM
-  - WalkingSoundStop
   - High
   - Low
   - Midium
+  - PlayerDead
+  - RespawnSpaceship
+  - RunSoundM
+  - RunSoundStop
+  - ShootM
+  - ShootSound
+  - ShootSoundSideArm
+  - SwapToAR
+  - SwapToSideArm
+  - WalkingSoundM
+  - WalkingSoundStop
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

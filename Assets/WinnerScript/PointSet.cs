@@ -29,10 +29,16 @@ namespace WinnerScript
             YourRate = PlayerPrefs.GetInt("YourRate", YourRate);
             YourGetPoint = (int)(PlayerPrefs.GetFloat("YourPoint") - PlayerPrefs.GetFloat("EnemyPoint")) * 100;
             YourRate += YourGetPoint;
+            if (YourRate < 0)
+            {
+                YourRate = 0;
+            }
             PlayerPrefs.SetInt("YourRate", YourRate);
             RateInCrease.text = "YOUR RATE INCREASE +" + YourGetPoint;
             NowRate.text = "NOW RATE:" + YourRate;
              
+            
+
             if(YourRate >= 0 && YourRate < 1000)
             {
                 RatePace.text = "BRONZE";

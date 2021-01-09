@@ -67,7 +67,7 @@ namespace SoundEffects
             }
             if(MagazineBefores < MagazineNows && Player.WeaponSwap.InformWeapon() == true)
             {
-                photonView.RPC(nameof(ShootSound), RpcTarget.All);
+                photonView.RPC(nameof(ShootSoundSideArm), RpcTarget.All);
             }
             MagazineNow = MagazineBefore;
             MagazineNows = MagazineBefores;
@@ -76,14 +76,13 @@ namespace SoundEffects
         [PunRPC]
         void ShootSound()
         {
-            if (Player.WeaponSwap.InformWeapon() == false)
-            {
-                GunAudioSource.PlayOneShot(ShotSound);
-            }
-            else
-            {
-                GunAudioSource.PlayOneShot(SideArmAudioSource);
-            }
+            GunAudioSource.PlayOneShot(ShotSound);
+        }
+
+        [PunRPC]
+        void ShootSoundSideArm()
+        {
+            GunAudioSource.PlayOneShot(SideArmAudioSource);
         }
 
     }
