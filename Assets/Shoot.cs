@@ -155,7 +155,7 @@ public class Shoot : MonoBehaviourPunCallbacks
                     if (Input.GetKey(KeyCode.Mouse0))
                     {
                         wannaToShoot++;
-                        Debug.Log(wannaToShoot);
+                        //Debug.Log(wannaToShoot);
                     }
                     if (delayCount >= 0.00325f || (wannaToShoot != 0 && shooting == true))
                     {

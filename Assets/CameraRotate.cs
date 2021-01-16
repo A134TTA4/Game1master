@@ -16,19 +16,21 @@ public class CameraRotate : MonoBehaviour
     static private float maxRecoil_x = 0;
     static private float recoil = 0.0f;
 
+    private int shotcount = 0;
+    private bool Getkeydown = false;
+
     private float LimitXAxizAngle = 90;
     static private Quaternion beforeQuart = new Quaternion();
     private float FixTime = 0.1f;
     private float count = 0f;
     private bool fixing = false;
-    //首の縦の動きを反映させるためのvector3
     private Vector3 mXAxiz;
     private void Start()
     {
         mXAxiz = PlayerCamera.localEulerAngles;
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if(PN!=PhotonScriptor.ConnectingScript.informPlayerID())
@@ -40,7 +42,7 @@ public class CameraRotate : MonoBehaviour
 
         if (Shoot.shot == true)
         {
-            if(recoil == 0)
+            if(recoil == 0 && Getkeydown == false)
             {
                 beforeQuart = PlayerCamera.transform.rotation;
                 fixing = true;
@@ -48,7 +50,19 @@ public class CameraRotate : MonoBehaviour
             }
             PlusRecoil();
         }
+
+        if (Input.GetKey(KeyCode.Mouse0) && Shoot.shot == true)
+        {
+            Getkeydown = true;
+            
+        }
+        else if(Shoot.shot == true)
+        {
+            Getkeydown = false;
+        }
+
         Quaternion nowQuart = RecoilM(PlayerCamera.transform);
+
         if (nowQuart.x == 1000f )
         { 
            nowQuart.x  = 0f;
@@ -77,11 +91,11 @@ public class CameraRotate : MonoBehaviour
     {
         if (Player.WeaponSwap.InformWeapon() == false)
         {
-            recoil += 0.05f;//リコイルタイム
+            recoil += 0.04f;//リコイルタイム
         }
         else
         {
-            recoil += 0.1f;
+            recoil += 0.08f;
         }
     }
 
@@ -91,12 +105,13 @@ public class CameraRotate : MonoBehaviour
         {
             if (Player.WeaponSwap.InformWeapon() == false)
             {
-                maxRecoil_x -= 30;//一回のリコイル大きさ
+                maxRecoil_x -= 50;//一回のリコイル大きさ
                 FixTime += 0.01f;
             }
             else
             {
-                maxRecoil_x -= 150;
+                maxRecoil_x -= 120;
+                FixTime += 0.07f;
             }
             recoil -= Time.deltaTime;
             Quaternion CameraQuart = new Quaternion(0, 0, 0, 0f);
@@ -109,30 +124,31 @@ public class CameraRotate : MonoBehaviour
         {
             recoil = 0f;
             maxRecoil_x = 0;
-            if (fixing == true)
+            if (fixing == true && PlayerCamera.transform.rotation.x - beforeQuart.x < -0.000001f)
             {
+                FixTime -= Time.deltaTime;
                 Debug.Log("Fixing");
                 count += Time.deltaTime;
                 Quaternion CameraQuart = new Quaternion(0, 0, 0, 0f);
-                Quaternion maxRecoil = new Quaternion(2.3f, 0, 0, 0);
-                if(Player.WeaponSwap.InformWeapon() == false)
+                Quaternion fixRecoil = new Quaternion(2.3f, 0, 0, 0);
+                Quaternion nowQuart = Quaternion.Slerp(CameraQuart, fixRecoil, Time.deltaTime);
+                /*if(0.01 > FixTime)
                 {
-                    maxRecoil = new Quaternion(PlayerCamera.rotation.x - beforeQuart.x, 0, 0, 0);
-                }
-                Quaternion nowQuart = Quaternion.Slerp(CameraQuart, maxRecoil, Time.deltaTime);
-                if(count > FixTime)
-                {
-                    count = 0;
+                    FixTime = 0f;
                     fixing = false;
-                }
+                }*/
                 return nowQuart;
             }
-            
+            else if(fixing == true && Getkeydown == false)
+            {
+                Debug.Log("fix end");
+                Debug.Log(PlayerCamera.transform.rotation.x - beforeQuart.x);
+                FixTime = 0f;
+                fixing = false;
+            }
+            shotcount = 0;
         }
-        
-
         return new Quaternion(1000, 0, 0, 0);
-
     }
 
 }
