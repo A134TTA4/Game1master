@@ -16,13 +16,12 @@ public class CameraRotate : MonoBehaviour
     static private float maxRecoil_x = 0;
     static private float recoil = 0.0f;
 
-    private int shotcount = 0;
+    private float notshotcount = 0;
     private bool Getkeydown = false;
 
     private float LimitXAxizAngle = 90;
     static private Quaternion beforeQuart = new Quaternion();
-    private float FixTime = 0.1f;
-    private float count = 0f;
+    private float FixTime = 0f;
     private bool fixing = false;
     private Vector3 mXAxiz;
     private void Start()
@@ -42,19 +41,17 @@ public class CameraRotate : MonoBehaviour
 
         if (Shoot.shot == true)
         {
-            if(recoil == 0 && Getkeydown == false)
+            if(recoil == 0 && fixing == false)
             {
                 beforeQuart = PlayerCamera.transform.rotation;
-                fixing = true;
-                Debug.Log("quart get");
             }
             PlusRecoil();
         }
-
+        //Debug.Log(FixTime);
+        //Debug.Log(fixing);
         if (Input.GetKey(KeyCode.Mouse0) && Shoot.shot == true)
         {
             Getkeydown = true;
-            
         }
         else if(Shoot.shot == true)
         {
@@ -76,12 +73,19 @@ public class CameraRotate : MonoBehaviour
     {
         
         float Y_Rotation = -1 * Input.GetAxis("Mouse Y") * YSpeed * Time.deltaTime;
+        
         var x = mXAxiz.x + Y_Rotation + recoil * Time.deltaTime * 70f;
     
         if (x >= -LimitXAxizAngle && x <= LimitXAxizAngle)
         { 
             mXAxiz.x = x;
             PlayerCamera.localEulerAngles = mXAxiz;
+            Debug.Log(beforeQuart.x);
+            if (fixing == false && Y_Rotation < 0)
+            {
+                beforeQuart.x += Y_Rotation;
+            }
+            Debug.Log(beforeQuart.x);
         }
     }
 
@@ -91,7 +95,7 @@ public class CameraRotate : MonoBehaviour
     {
         if (Player.WeaponSwap.InformWeapon() == false)
         {
-            recoil += 0.04f;//リコイルタイム
+            recoil += 0.05f;//リコイルタイム
         }
         else
         {
@@ -105,22 +109,31 @@ public class CameraRotate : MonoBehaviour
         {
             if (Player.WeaponSwap.InformWeapon() == false)
             {
-                maxRecoil_x -= 50;//一回のリコイル大きさ
-                FixTime += 0.01f;
+                maxRecoil_x =  -50 * Random.Range(0.8f,1.3f);//一回のリコイル大きさ
+                FixTime += 0.03f;
             }
             else
             {
-                maxRecoil_x -= 120;
+                maxRecoil_x =  -120;
                 FixTime += 0.07f;
             }
             recoil -= Time.deltaTime;
+            if(/*recoil < 0 &&*/ !Input.GetKey(KeyCode.Mouse0))
+            {
+                Debug.Log("infix");
+                fixing = true; 
+            }
+            if(Shoot.InformMagazineLeft() == 0 )
+            {
+                fixing = true;
+            }
             Quaternion CameraQuart = new Quaternion(0, 0, 0, 0f);
             Quaternion maxRecoil = new Quaternion( maxRecoil_x, 0, 0, 0);
             Quaternion nowQuart = Quaternion.Slerp(CameraQuart, maxRecoil, Time.deltaTime * recoilSpeed);
             return nowQuart;
 
         }
-        if (recoil < 0.001f)
+        else if(fixing == true)
         {
             recoil = 0f;
             maxRecoil_x = 0;
@@ -128,25 +141,27 @@ public class CameraRotate : MonoBehaviour
             {
                 FixTime -= Time.deltaTime;
                 Debug.Log("Fixing");
-                count += Time.deltaTime;
                 Quaternion CameraQuart = new Quaternion(0, 0, 0, 0f);
                 Quaternion fixRecoil = new Quaternion(2.3f, 0, 0, 0);
+                if(Player.WeaponSwap.InformWeapon() == false)
+                {
+                    fixRecoil = new Quaternion(4.3f, 0, 0, 0);
+                }
                 Quaternion nowQuart = Quaternion.Slerp(CameraQuart, fixRecoil, Time.deltaTime);
-                /*if(0.01 > FixTime)
+                if(0 > FixTime)
                 {
                     FixTime = 0f;
                     fixing = false;
-                }*/
+                }
                 return nowQuart;
             }
-            else if(fixing == true && Getkeydown == false)
+            else //if(fixing == true && Getkeydown == false)
             {
                 Debug.Log("fix end");
                 Debug.Log(PlayerCamera.transform.rotation.x - beforeQuart.x);
                 FixTime = 0f;
                 fixing = false;
             }
-            shotcount = 0;
         }
         return new Quaternion(1000, 0, 0, 0);
     }
