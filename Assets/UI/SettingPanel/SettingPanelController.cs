@@ -39,7 +39,7 @@ namespace UI
                     {
                         return;
                     }
-                    if(TimeManager.BluePrint.BruePrintPhaze.InformBluePrintState() == true)
+                    if(TimeManager.PreParationTime.InformPreparationState() == false && TimeManager.MainPhaze.InformMainphaze() == false)
                     {
                         return;
                     }

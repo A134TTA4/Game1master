@@ -24,7 +24,7 @@ namespace UI
             static private float Sense = 1.0f;
 
 
-            private void Start()
+            private void Update()
             {
                 Sense = PlayerPrefs.GetFloat("MouseSensitivity",0.5f);
                 MouseSenseSlider_100.value = Sense;

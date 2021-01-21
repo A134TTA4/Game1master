@@ -15,7 +15,7 @@ namespace UI
             static private float AudioValue = 1.0f;
             [SerializeField]
             private Text AudioValueDesp;
-            private void Start()
+            private void Update()
             {
                 AudioValue = PlayerPrefs.GetFloat("AudioFloat", 0.5f);
                 AudioSlider.value = AudioValue;
@@ -26,6 +26,7 @@ namespace UI
                 AudioValue = AudioSlider.value;
                 PlayerPrefs.SetFloat("AudioFloat", AudioValue);
                 AudioValueDesp.text = "" + AudioValue;
+                PlayerPrefs.Save();
             }
 
             static public float InformAudioValue()
