@@ -31,10 +31,18 @@ namespace UI
 
             public void SetNo()
             {
-                int No = int.Parse(RoomNo.text);
-                PhotonScriptor.ConnectingScript.SetRoomNo(No);
-                Debug.Log("RoomNo " + No);
-            }
+                if (int.TryParse(RoomNo.text, out int o))
+                {
+                    int No = int.Parse(RoomNo.text);
+                    PhotonScriptor.ConnectingScript.SetRoomNo(No);
+                    Debug.Log("RoomNo " + No);
+                }
+                else
+                {
+                    return;
+                }
+
+            }  
 
             static public bool InformPanelState()
             {

@@ -80,12 +80,12 @@ public class CameraRotate : MonoBehaviour
         { 
             mXAxiz.x = x;
             PlayerCamera.localEulerAngles = mXAxiz;
-            Debug.Log(beforeQuart.x);
+            //Debug.Log(beforeQuart.x);
             if (fixing == false && Y_Rotation < 0)
             {
                 beforeQuart.x += Y_Rotation;
             }
-            Debug.Log(beforeQuart.x);
+            //Debug.Log(beforeQuart.x);
         }
     }
 
