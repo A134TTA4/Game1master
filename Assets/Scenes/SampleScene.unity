@@ -16304,7 +16304,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 4, y: 36}
-  m_SizeDelta: {x: 2000, y: 1000}
+  m_SizeDelta: {x: 2000, y: 1200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &409513254
 MonoBehaviour:
@@ -25851,6 +25851,7 @@ GameObject:
   - component: {fileID: 607728843}
   - component: {fileID: 607728844}
   - component: {fileID: 607728839}
+  - component: {fileID: 607728845}
   m_Layer: 0
   m_Name: CameraBox2
   m_TagString: Untagged
@@ -25866,7 +25867,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 607728835}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.389, z: 0.275}
+  m_LocalPosition: {x: 0, y: 0.34, z: 0.275}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1803875612}
@@ -26083,6 +26084,18 @@ MonoBehaviour:
   PlayerCamera: {fileID: 963194225}
   Player: {fileID: 713709703}
   Player2: {fileID: 1803875612}
+--- !u!114 &607728845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607728835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d95255047f8749a48b9f86ce9eb85b1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &609709124
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36418,6 +36431,7 @@ GameObject:
   - component: {fileID: 855924622}
   - component: {fileID: 855924624}
   - component: {fileID: 855924625}
+  - component: {fileID: 855924626}
   m_Layer: 0
   m_Name: CameraBox1
   m_TagString: Untagged
@@ -36433,7 +36447,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 855924616}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.4, z: 0.1}
+  m_LocalPosition: {x: 0, y: 0.34, z: 0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 713709703}
@@ -36650,6 +36664,18 @@ MonoBehaviour:
   PlayerCamera: {fileID: 963194225}
   Player: {fileID: 713709703}
   Player2: {fileID: 1803875612}
+--- !u!114 &855924626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 855924616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d95255047f8749a48b9f86ce9eb85b1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &857344852
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -83477,7 +83503,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 4, y: 36}
-  m_SizeDelta: {x: 2000, y: 1000}
+  m_SizeDelta: {x: 2000, y: 1200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1921758443
 MonoBehaviour:
