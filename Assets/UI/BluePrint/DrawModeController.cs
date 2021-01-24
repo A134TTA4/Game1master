@@ -48,7 +48,7 @@ namespace UI
                 }
                 else
                 {
-                    DrawModeText.text = "MODE:ERROR";
+                    DrawModeText.text = "MODE:EMPTY";
                     DrawModeText.color = Color.red;
                 }
             }

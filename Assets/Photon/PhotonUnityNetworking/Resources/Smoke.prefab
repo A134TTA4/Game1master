@@ -325,6 +325,41 @@ PrefabInstance:
       propertyPath: ShapeModule.radius.value
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 198337158971066412, guid: 90f965259c782c74a830882af458b544,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.5283019
+      objectReference: {fileID: 0}
+    - target: {fileID: 198337158971066412, guid: 90f965259c782c74a830882af458b544,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.5208259
+      objectReference: {fileID: 0}
+    - target: {fileID: 198337158971066412, guid: 90f965259c782c74a830882af458b544,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.5208259
+      objectReference: {fileID: 0}
+    - target: {fileID: 198337158971066412, guid: 90f965259c782c74a830882af458b544,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198337158971066412, guid: 90f965259c782c74a830882af458b544,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198337158971066412, guid: 90f965259c782c74a830882af458b544,
+        type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 8000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198337158971066412, guid: 90f965259c782c74a830882af458b544,
+        type: 3}
+      propertyPath: InitialModule.startColor.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90f965259c782c74a830882af458b544, type: 3}
 --- !u!4 &644829082618482051 stripped
