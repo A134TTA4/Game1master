@@ -9,7 +9,7 @@ namespace TimeManager
     {
         static private float nowTime = 0f;
         static private float preparationStart = 1f;
-        static private float preparationEnd = 20f;
+        static private float preparationEnd = 40f;
         static private float preparationLeft ;
         [SerializeField]
         private Transform PlayerTrans;

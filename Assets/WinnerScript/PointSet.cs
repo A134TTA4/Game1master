@@ -34,7 +34,14 @@ namespace WinnerScript
                 YourRate = 0;
             }
             PlayerPrefs.SetInt("YourRate", YourRate);
-            RateInCrease.text = "YOUR RATE INCREASE +" + YourGetPoint;
+            if (YourGetPoint > 0)
+            {
+                RateInCrease.text = "YOUR RATE INCREASE +" + YourGetPoint;
+            }
+            else
+            {
+                RateInCrease.text = "YOUR RATE INCREASE " + YourGetPoint;
+            }
             NowRate.text = "NOW RATE:" + YourRate;
              
             
@@ -44,27 +51,27 @@ namespace WinnerScript
                 RatePace.text = "BRONZE";
                 RatePace.color = new Color(132, 73, 73);
             }
-            else if (YourRate > 1000 && YourRate < 2000)
+            else if (YourRate >= 1000 && YourRate < 2000)
             {
                 RatePace.text = "SILVER";
                 RatePace.color = Color.gray;
             }
-            else if (YourRate > 2000 && YourRate < 3000)
+            else if (YourRate >= 2000 && YourRate < 3000)
             {
                 RatePace.text = "GOLD";
                 RatePace.color = new Color(255, 173, 0);
             }
-            else if (YourRate > 3000 && YourRate < 4000)
+            else if (YourRate >= 3000 && YourRate < 4000)
             {
                 RatePace.text = "PLATINUM";
                 RatePace.color = new Color(0, 142, 97);
             }
-            else if (YourRate > 5000 && YourRate < 6000)
+            else if (YourRate >= 5000 && YourRate < 6000)
             {
                 RatePace.text = "DIAMOND";
                 RatePace.color = new Color(4, 255, 253);
             }
-            else if (YourRate > 7000 && YourRate < 20000)
+            else if (YourRate >= 7000 && YourRate < 20000)
             {
                 RatePace.text = "PROFESSIONAL";
                 RatePace.color = new Color(255, 0, 74);

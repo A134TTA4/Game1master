@@ -13,10 +13,10 @@ namespace Player
         GameObject player;
         Transform playerTrans;
         [SerializeField]
-        private float fowardSpeed = 5.0f;
-        private float backwardSpeed = 5.0f;
-        private float leftSpeed = 6.0f;
-        private float rightSpeed = 6.0f;
+        private float fowardSpeed = 3.0f;
+        private float backwardSpeed = 3.0f;
+        private float leftSpeed = 3.0f;
+        private float rightSpeed = 3.0f;
         private float groundspeed = 1;
         private float SprintMul = 1;
         private float HitStopMul = 1;

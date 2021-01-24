@@ -8,12 +8,15 @@ namespace UI
     {
         [SerializeField]
         GameObject Effect;
+        [SerializeField]
+        GameObject StartTextEffect;
+        [SerializeField]
+        GameObject VSTextEffect;
         void Start()
         {
             Effect.SetActive(false);
         }
 
-        // Update is called once per frame
         void Update()
         {
             if (PhotonScriptor.ConnectingScript.informPlayerID() ==1)
@@ -21,10 +24,15 @@ namespace UI
                 if(Player.PlayerHp.InformHitStop() == true)
                 {
                     Effect.SetActive(true);
+                    StartTextEffect.SetActive(true);
+                    VSTextEffect.SetActive(true);
+                    
                 }
                 else
                 {
                     Effect.SetActive(false);
+                    StartTextEffect.SetActive(false);
+                    VSTextEffect.SetActive(false);
                 }
             }
             else
@@ -32,10 +40,14 @@ namespace UI
                 if (Player.PlayerHP2.InformHitStop() == true)
                 {
                     Effect.SetActive(true);
+                    StartTextEffect.SetActive(true);
+                    VSTextEffect.SetActive(true);
                 }
                 else
                 {
                     Effect.SetActive(false);
+                    StartTextEffect.SetActive(false);
+                    VSTextEffect.SetActive(false);
                 }
             }
         }
