@@ -29,6 +29,7 @@ namespace Player
         static private bool D = false;
         void Start()
         {
+            isWalking = false;
             isDash = false;
             playerTrans = player.transform;
         }
