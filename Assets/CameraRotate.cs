@@ -26,6 +26,7 @@ public class CameraRotate : MonoBehaviour
     private Vector3 mXAxiz;
     private void Start()
     {
+        fixing = false;
         mXAxiz = PlayerCamera.localEulerAngles;
     }
 
@@ -109,7 +110,7 @@ public class CameraRotate : MonoBehaviour
         {
             if (Player.WeaponSwap.InformWeapon() == false)
             {
-                maxRecoil_x =  -50 * Random.Range(0.8f,1.3f);//一回のリコイル大きさ
+                maxRecoil_x =  -50 * Random.Range(1.8f,3.3f);//一回のリコイル大きさ
                 FixTime += 0.03f;
             }
             else
