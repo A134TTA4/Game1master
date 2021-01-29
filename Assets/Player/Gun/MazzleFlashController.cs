@@ -17,6 +17,8 @@ namespace Player
             private float Max = 0.08f;
             [SerializeField]
             private bool ADS;
+            [SerializeField]
+            private bool Jump;
             void Start()
             {
                 MazzleEffect.SetActive(false);
@@ -33,6 +35,16 @@ namespace Player
                     {
                         Effecton = true;
                         MazzleEffect.SetActive(true);
+                    }
+                    if(Jump== AnimationConrollScripts.PLMoveAnimeControl.InformJumping())
+                    {
+                        Effecton = true;
+                        MazzleEffect.SetActive(true);
+                    }
+                    else
+                    {
+                        Effecton = false;
+                        MazzleEffect.SetActive(false);
                     }
                 }
                 if (Effecton == true)

@@ -12417,7 +12417,7 @@ Transform:
   m_GameObject: {fileID: 304634918}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 37.53569, y: -4.0482855, z: -3.571652}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.7, z: 1}
   m_Children:
   - {fileID: 1097656427}
   - {fileID: 1553447378}
@@ -50364,6 +50364,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: newWall (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ddd54cf869f8f31418d799dab1a2a8d3,
+        type: 3}
+      propertyPath: m_TagString
+      value: Separate
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddd54cf869f8f31418d799dab1a2a8d3, type: 3}
 --- !u!1001 &1179152864
@@ -54184,7 +54189,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1265353559
 Transform:
   m_ObjectHideFlags: 0
@@ -54193,7 +54198,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1265353558}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 74.36016, y: 35.887527, z: -34.186867}
+  m_LocalPosition: {x: 74.36016, y: 30.88753, z: -34.186867}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1381765966}
@@ -58629,6 +58634,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: newWall (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ddd54cf869f8f31418d799dab1a2a8d3,
+        type: 3}
+      propertyPath: m_TagString
+      value: Separate
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddd54cf869f8f31418d799dab1a2a8d3, type: 3}
 --- !u!4 &1344702393 stripped
@@ -61449,6 +61459,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: newWall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ddd54cf869f8f31418d799dab1a2a8d3,
+        type: 3}
+      propertyPath: m_TagString
+      value: Separate
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddd54cf869f8f31418d799dab1a2a8d3, type: 3}
