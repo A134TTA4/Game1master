@@ -69,7 +69,7 @@ namespace AnimationConrollScripts
                 if (countingJump >= 1.2f)
                 {
                     Jumping = false;
-                    Player.PlayerJump.ReSetJumpBool();
+                    //Player.PlayerJump.ReSetJumpBool();
                     //PLanimator.SetBool("Jump", false);
                     countingJump = 0f;
                 }
