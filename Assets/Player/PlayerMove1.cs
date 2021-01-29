@@ -112,9 +112,9 @@ namespace Player
             {
                 SprintMul = 1;
             }
-            if (AnimationConrollScripts.PLMoveAnimeControl.InformJumping() == true)//ジャンプ中は早く動けない
+            if (AnimationConrollScripts.PLMoveAnimeControl.InformJumping() == true)//ジャンプ中は早く動ける
             {
-                groundspeed = 0.5f;
+                groundspeed = 1.1f;
             }
             if (AnimationConrollScripts.PLMoveAnimeControl.InformJumping() == false)
             {

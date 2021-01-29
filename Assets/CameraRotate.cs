@@ -121,7 +121,7 @@ public class CameraRotate : MonoBehaviour
             recoil -= Time.deltaTime;
             if(/*recoil < 0 &&*/ !Input.GetKey(KeyCode.Mouse0))
             {
-                Debug.Log("infix");
+                //Debug.Log("infix");
                 fixing = true; 
             }
             if(Shoot.InformMagazineLeft() == 0 )

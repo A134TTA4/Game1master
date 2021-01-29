@@ -19,6 +19,6 @@ public class CubeDesper : MonoBehaviour
         {
             cube = 0;
         }
-        CubeText.text ="CREATIVE\nCUBE" + cube + "/" + limit;
+        CubeText.text ="CREATE\nWALL" + cube + "/" + limit;
     }
 }
