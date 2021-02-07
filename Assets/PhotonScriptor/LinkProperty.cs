@@ -12,9 +12,14 @@ namespace PhotonScriptor
         static private int nowHP2 = 100;
         static private int PlayerHP1 = 100;
         static private int PlayerHP2 = 100;
-
+        static private int[,] BlackMap1 = new int[256, 256];
+        static private int[,] BlackMap2 = new int[256, 256];
+        private bool mapReady = false;
+        static private bool GetReady = false;
         void Start()
         {
+            GetReady = false;
+            mapReady = false;
             nowHP1 = 100;
             nowHP2 = 100;
             PlayerHP1 = 100;
@@ -22,11 +27,36 @@ namespace PhotonScriptor
             roomHash = new ExitGames.Client.Photon.Hashtable();
             roomHash.Add("HP1", PlayerHP1);
             roomHash.Add("HP2", PlayerHP2);
+            //roomHash.Add("BM1", BlackMap1);
+            //roomHash.Add("BM2", BlackMap2);
             PhotonNetwork.CurrentRoom.SetCustomProperties(roomHash);
         }
 
         void Update()
         {
+            /*
+            if (TimeManager.PreParationTime.InformPreparationState() == true)
+            {
+                if (mapReady == false)
+                {
+                    
+                    if(PhotonScriptor.ConnectingScript.informPlayerID() == 1)
+                    {
+                        BlackMap1 = Player.BluePrint.DrawBluePrint.InformBlackMap();
+                        roomHash["BM1"] = (object)BlackMap1;
+                    }
+                    else
+                    {
+                        BlackMap2 = Player.BluePrint.DrawBluePrint.InformBlackMap();
+                        roomHash["BM2"] = (object)BlackMap2;
+                    }
+                    mapReady = true;
+                    PhotonNetwork.CurrentRoom.SetCustomProperties(roomHash);
+                }
+
+            }
+            */
+
             if(TimeManager.MainPhaze.InformMainphaze() == false)
             {
                 return;
@@ -36,7 +66,7 @@ namespace PhotonScriptor
             {
                 PlayerHP1 = (int)Player.PlayerHp.InformPlayerHP();
                 roomHash["HP1"] = PlayerHP1;
-                PhotonNetwork.CurrentRoom.SetCustomProperties(roomHash);
+                
             }
             if (Player.PlayerHP2.InformPlayerHP() < PlayerHP2)
             {
@@ -68,6 +98,26 @@ namespace PhotonScriptor
                 Debug.Log("Link HP2");
                 nowHP2 = (int)value;
             }
+            /*
+            if (propertiesThatChanged.TryGetValue("BM1", out value))
+            {
+                Debug.Log("Link BlackMap1");
+                BlackMap1 = (int[,])value;
+                if(PhotonScriptor.ConnectingScript.informPlayerID()==2)
+                {
+                    GetReady = true;
+                }
+            }
+            if (propertiesThatChanged.TryGetValue("BM2", out value))
+            {
+                Debug.Log("Link BlackMap2");
+                BlackMap2 = (int[,])value;
+                if (PhotonScriptor.ConnectingScript.informPlayerID() == 1)
+                {
+                    GetReady = true;
+                }
+            }
+            */
         }
 
         static public int InformNowHP1()
@@ -80,6 +130,21 @@ namespace PhotonScriptor
             return nowHP2;
         }
 
+        static public int[,] InformBlackMap1()
+        {
+            return BlackMap1;
+        }
+
+        static public int[,] InformBlackMap2()
+        {
+            return BlackMap2;
+        }
+
+
+        static public bool InformgetReady()
+        {
+            return GetReady;
+        }
         static public void ResetLink()
         {
             Debug.Log("reset Link");

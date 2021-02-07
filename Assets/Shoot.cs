@@ -68,6 +68,7 @@ public class Shoot : MonoBehaviourPunCallbacks
 
         if(IntercalTimeManager.InformIntervalState() == true)
         {
+            wannaToShoot = 0;
             return;
         }
 
@@ -157,7 +158,7 @@ public class Shoot : MonoBehaviourPunCallbacks
                         wannaToShoot++;
                         //Debug.Log(wannaToShoot);
                     }
-                    if (delayCount >= 0.00325f || (wannaToShoot != 0 && shooting == true))
+                    if (delayCount >= 0.003f || (wannaToShoot != 0 && shooting == true))
                     {
                         shootable = false;
 

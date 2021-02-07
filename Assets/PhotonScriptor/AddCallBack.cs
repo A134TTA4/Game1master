@@ -24,6 +24,8 @@ namespace PhotonScriptor
         {
             PhotonNetwork.RemoveCallbackTarget(this);
         }
+
+        
         
         private void Update()
         {
@@ -36,6 +38,12 @@ namespace PhotonScriptor
                     PhotonNetwork.AddCallbackTarget(this);
                 }
             }
+
+            if (_photonView.IsMine == true)
+            {
+                return;
+            }
+            
             if (TimeManager.TimeCounter.InformStartGame() == true)
             {
                 if (PN == ConnectingScript.informPlayerID())
@@ -49,8 +57,6 @@ namespace PhotonScriptor
                 }
             }
         }
-
-        
 
         void IPunOwnershipCallbacks.OnOwnershipRequest(PhotonView targetView, Photon.Realtime.Player requestingPlayer)
         {

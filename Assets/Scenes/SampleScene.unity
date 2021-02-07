@@ -4766,13 +4766,13 @@ RectTransform:
   - {fileID: 595470086}
   - {fileID: 2016195897}
   - {fileID: 569722073}
-  m_Father: {fileID: 1740716413}
-  m_RootOrder: 0
+  m_Father: {fileID: 2004371327}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1820, y: 980}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &202914029
 MonoBehaviour:
@@ -9113,7 +9113,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 8b4eaaab4f5b68648a6e7a7e4ffe7b84,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8b4eaaab4f5b68648a6e7a7e4ffe7b84,
         type: 3}
@@ -9123,7 +9123,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 8b4eaaab4f5b68648a6e7a7e4ffe7b84,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.03
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8b4eaaab4f5b68648a6e7a7e4ffe7b84,
         type: 3}
@@ -9189,6 +9189,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8b4eaaab4f5b68648a6e7a7e4ffe7b84,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b4eaaab4f5b68648a6e7a7e4ffe7b84, type: 3}
@@ -11637,7 +11642,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Audio
+  m_Text: "\u30AA\u30FC\u30C7\u30A3\u30AA"
 --- !u!222 &465641149
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11894,7 +11899,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -38, y: 512}
-  m_SizeDelta: {x: 151, y: 200}
+  m_SizeDelta: {x: 180, y: 230}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &474728852
 MonoBehaviour:
@@ -12502,7 +12507,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &489631833
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12519,7 +12524,7 @@ RectTransform:
   - {fileID: 1423318929}
   - {fileID: 465641147}
   m_Father: {fileID: 1740716413}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -14190,7 +14195,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 569722072}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 147}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 202914028}
@@ -14222,11 +14227,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 50
+    m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 3
-    m_MaxSize: 50
+    m_MaxSize: 60
     m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -14718,7 +14723,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -723, y: -505}
+  m_AnchoredPosition: {x: -734, y: -444}
   m_SizeDelta: {x: 400, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &595470087
@@ -14742,20 +14747,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 50
+    m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 50
+    m_MaxSize: 60
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'CREATE
-
-    WALL 5/5'
+  m_Text: "CREATE\n  WALL 5/5"
 --- !u!222 &595470088
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19784,7 +19787,7 @@ RectTransform:
   - {fileID: 1594912921}
   - {fileID: 1780700574}
   m_Father: {fileID: 1740716413}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -22057,7 +22060,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.4745098}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.89411765}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -23073,7 +23076,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Sensitivity
+  m_Text: "\u30DE\u30A6\u30B9\u611F\u5EA6"
 --- !u!222 &900949133
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -25045,7 +25048,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.4745098}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.9137255}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -28167,6 +28170,9 @@ MonoBehaviour:
   - Type: 1
     SynchronizeType: 1
     Name: ReloadBlend
+  - Type: 4
+    SynchronizeType: 1
+    Name: Thorough
   m_SynchronizeLayers:
   - SynchronizeType: 1
     LayerIndex: 0
@@ -29129,7 +29135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.4745098}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.77254903}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -29679,7 +29685,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -424, y: 402}
+  m_AnchoredPosition: {x: -382, y: 432}
   m_SizeDelta: {x: 1000, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1154568295
@@ -29714,7 +29720,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "BLUE PRINT \nPHAZE"
+  m_Text: "\u8A2D\u8A08\n  \u30D5\u30A7\u30FC\u30BA"
 --- !u!222 &1154568296
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -31669,7 +31675,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2004371327}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -31797,7 +31803,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1257427028
 Transform:
   m_ObjectHideFlags: 0
@@ -33902,6 +33908,8 @@ GameObject:
   - component: {fileID: 1380017435}
   - component: {fileID: 1380017434}
   - component: {fileID: 1380017439}
+  - component: {fileID: 1380017440}
+  - component: {fileID: 1380017441}
   m_Layer: 0
   m_Name: StageBase
   m_TagString: Untagged
@@ -34012,6 +34020,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76454c6dc3731b34890c8c1a7640e63f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1380017440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380017433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b3a486f839c5da40a646186b312e0d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Element: {fileID: 6166871410885370134, guid: b8b9df7e4d349814da3c19b4bb419017, type: 3}
+--- !u!114 &1380017441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380017433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 11
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1384959589
 GameObject:
   m_ObjectHideFlags: 0
@@ -34793,7 +34836,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Fov
+  m_Text: "\u8996\u91CE\u89D2"
 --- !u!222 &1423318931
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -37533,7 +37576,7 @@ RectTransform:
   m_Children:
   - {fileID: 392117043}
   m_Father: {fileID: 1740716413}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -38052,6 +38095,9 @@ MonoBehaviour:
   - Type: 1
     SynchronizeType: 1
     Name: ReloadBlend
+  - Type: 4
+    SynchronizeType: 1
+    Name: Thorough
   m_SynchronizeLayers:
   - SynchronizeType: 1
     LayerIndex: 0
@@ -38902,7 +38948,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: PRESS ESCAPE TO RESTART
+  m_Text: PRESS "ESC" TO RESTART
 --- !u!222 &1592744607
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -40751,7 +40797,7 @@ RectTransform:
   - {fileID: 1856569078}
   - {fileID: 1752165851}
   m_Father: {fileID: 1740716413}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -42644,7 +42690,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1740716413
 RectTransform:
   m_ObjectHideFlags: 0
@@ -42652,18 +42698,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1740716412}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 202914028}
   - {fileID: 1542303339}
   - {fileID: 1671795979}
   - {fileID: 760621036}
   - {fileID: 489631833}
   - {fileID: 1841009676}
   m_Father: {fileID: 2004371327}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -44018,11 +44063,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'DRAG MOUSE TO
-
-    DRAW YOUR BLUE PRINT OF YOUR STAGE
-
-'
+  m_Text: "\"1\",\"2\",\"3\",\"4\"\u306E\u30AD\u30FC\u3067\u8272\u306E\u5909\u66F4\n\u30DE\u30A6\u30B9\u30C9\u30E9\u30C3\u30B0\u3067\u8272\u3092\u914D\u7F6E"
 --- !u!222 &1791352175
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -45872,7 +45913,7 @@ RectTransform:
   - {fileID: 833389920}
   - {fileID: 305332308}
   m_Father: {fileID: 1740716413}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -47901,8 +47942,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -823, y: -466}
-  m_SizeDelta: {x: 300, y: 120}
+  m_AnchoredPosition: {x: -823, y: -407}
+  m_SizeDelta: {x: 400, y: 170}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1890322822
 MonoBehaviour:
@@ -50545,7 +50586,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "ATTACKING \nPHAZE"
+  m_Text: "\u653B\u6483\n\u3000\u30D5\u30A7\u30FC\u30BA"
 --- !u!222 &2003751740
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -50656,6 +50697,7 @@ RectTransform:
   - {fileID: 1731818039}
   - {fileID: 969062486}
   - {fileID: 10591334}
+  - {fileID: 202914028}
   - {fileID: 1740716413}
   - {fileID: 1234144356}
   m_Father: {fileID: 0}
@@ -50961,7 +51003,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -672, y: 403}
+  m_AnchoredPosition: {x: -617, y: 424}
   m_SizeDelta: {x: 500, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2016195898
@@ -50996,7 +51038,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: PREPARATION PHAZE
+  m_Text: "\u6E96\u5099\u3000\n  \u30D5\u30A7\u30FC\u30BA"
 --- !u!222 &2016195899
 CanvasRenderer:
   m_ObjectHideFlags: 0

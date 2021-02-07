@@ -18,8 +18,9 @@ namespace Player
             private Vector2 nowPoint;
             private bool Drawing = false;
             private bool Getprivious = false;
-            static private int[] inkLeft = new int[4];
-            private int[,] mapLinst = new int[256,256];
+            static private int[] inkLeft = new int[5];
+            static private int[,] mapLinst = new int[256,256];
+            
             static private int PlayerState = 0;
             [SerializeField]
             private GameObject Player1;
@@ -37,6 +38,7 @@ namespace Player
                 inkLeft[1] = 500;
                 inkLeft[2] = 600;
                 inkLeft[3] = 700;
+                inkLeft[4] = 800;
 
                 buffer = new Color[pixels.Length];
                 pixels.CopyTo(buffer, 0);
@@ -122,6 +124,13 @@ namespace Player
                     DrawMode = 0;
                     Getprivious = false;
                 }
+                if (DrawMode == 4 && inkLeft[4] < 0)
+                {
+                    DrawMode = 0;
+                    Getprivious = false;
+
+                }
+
 
                 if (Input.GetKeyDown(KeyCode.Alpha1))
                 {
@@ -137,6 +146,11 @@ namespace Player
                 {
                     DrawMode = 3;
                     DrawColor1 = Color.green;
+                }
+                if (Input.GetKeyDown(KeyCode.Alpha4))
+                {
+                    DrawMode = 4;
+                    DrawColor1 = Color.black;
                 }
 
                 if (Input.GetKey(KeyCode.Mouse0) && DrawMode != 0)
@@ -574,6 +588,16 @@ namespace Player
             static public int InformGreenLeft()
             {
                 return inkLeft[3];
+            }
+
+            static public int InfromBlackLeft()
+            {
+                return inkLeft[4];
+            }
+
+            static public int[,] InformBlackMap()
+            {
+                return mapLinst;
             }
 
         }

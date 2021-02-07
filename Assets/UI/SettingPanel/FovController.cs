@@ -15,7 +15,7 @@ namespace UI
             [SerializeField]
             private Text FovValueText;
 
-            private void Awake()
+            private void Start()
             {
                 FovValue = PlayerPrefs.GetFloat("FovFloat", 90f);
                 FovSlider.value = FovValue;

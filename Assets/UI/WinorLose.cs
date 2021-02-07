@@ -14,6 +14,7 @@ namespace UI
         [SerializeField]
         Text RedPointText;
 
+
         void Update()
         {
             if (BluePoint == 2)

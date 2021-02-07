@@ -18,7 +18,8 @@ namespace UI
                 int leftblue = Player.BluePrint.DrawBluePrint.InformBlueLeft() / 20;
                 int leftyellow = Player.BluePrint.DrawBluePrint.InfromYellowLeft() / 20;
                 int leftgreen = Player.BluePrint.DrawBluePrint.InformGreenLeft() / 20;
-                if(Player.BluePrint.DrawBluePrint.InformDrawMode() == 1)
+                int leftblack = Player.BluePrint.DrawBluePrint.InfromBlackLeft() / 20;
+                if (Player.BluePrint.DrawBluePrint.InformDrawMode() == 1)
                 {
                     DrawModeText.text = "MODE:ATTACK";
                     for(int i = 0; i < leftblue; i++)
@@ -45,6 +46,15 @@ namespace UI
                         DrawModeText.text += "|";
                     }
                     DrawModeText.color = Color.green;
+                }
+                else if(Player.BluePrint.DrawBluePrint.InformDrawMode() == 4)
+                {
+                    DrawModeText.text = "MODE:WALL";
+                    for (int i = 0; i < leftblack; i++)
+                    {
+                        DrawModeText.text += "|";
+                    }
+                    DrawModeText.color = Color.gray;
                 }
                 else
                 {

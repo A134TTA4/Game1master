@@ -13,16 +13,22 @@ namespace UI
 
             static private bool SettingPanelState = false;
 
+            private bool strt = false;
 
             [SerializeField]
             private bool LobbyOrNot = false;
             void Start()
             {
-                SettingPanelObj.SetActive(false);
+                SettingPanelObj.SetActive(true);
             }
 
             void Update()
             {
+                if(strt == false)
+                {
+                    SettingPanelObj.SetActive(false);
+                    strt = true;
+                }
                 if (Input.GetKeyDown(KeyCode.Escape) && SettingPanelState == false)
                 {
                     SettingPanelState = true;
