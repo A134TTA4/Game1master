@@ -10,10 +10,14 @@ namespace Player
         {
             [SerializeField]
             GameObject Element;
+            
             private int[,] mapList = new int[256, 256];
-            private int[,] BlackPosition = new int[800, 800];
+            private int[,] WrotePosition = new int[256, 256];
             private bool Stagemake = false;
             //private bool StagemakeE = false;
+            private bool delay = false;
+            private float count = 0f;
+            private float max = 0.01f;
             void Start()
             {
 
@@ -23,22 +27,19 @@ namespace Player
             {
                 if (TimeManager.PreParationTime.InformPreparationState() == false)
                 {
-                    //return;
+                    return;
                 }
                 if(TimeManager.BluePrint.BruePrintPhaze.InformBluePrintState() == false)
                 {
-                    return;
+                    //return;
                 }
-                if(Input.GetKey(KeyCode.Mouse0))
+                if(Input.GetKeyDown(KeyCode.Mouse0))
                 {
-                    return;
+                    //delay = true;
                 }
-                if (Stagemake == false)
-                {
-                    instatineteStageElementM(DrawBluePrint.InformBlackMap());
-                    //Stagemake = true;
-                }
-
+                
+                
+                instatineteStageElementM(DrawBluePrint.InformBlackMap());
             }
 
             [PunRPC]
@@ -50,15 +51,23 @@ namespace Player
                     {
                         if (mapList[i, j] == 4)
                         {
-                            PhotonNetwork.Instantiate("Element", new Vector3((float)(i) / 256 * 40 - 20, 0, (float)(j) / 256 * 40 - 20), new Quaternion(0, 0, 0, 0));
-                            for (int n = 0; n <= 2; n++)
+                            if (WrotePosition[i, j] != 4)
                             {
-                                for (int m = -2; m <= 2; m++)
+                                PhotonNetwork.Instantiate("Element", new Vector3((float)(i) / 256 * 40 - 20, 0, (float)(j) / 256 * 40 - 20), new Quaternion(0, 0, 0, 0));
+                                WrotePosition[i, j] = 4;
+                                for (int n = 0; n <= 2; n++)
                                 {
-                                    mapList[i + m, j + n] = 0;
+                                    for (int m = -2; m <= 2; m++)
+                                    {
+                                        WrotePosition[i + m, j + n] = 4;
+                                    }
                                 }
-                            }
+                                return;
+                            }   
+                            
+                            
                         }
+                        
                     }
                 }
             }
