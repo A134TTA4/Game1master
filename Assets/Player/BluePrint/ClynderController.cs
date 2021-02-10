@@ -8,6 +8,10 @@ namespace Player
     {
         public class ClynderController : MonoBehaviour
         {
+            [SerializeField]
+            GameObject Hasira1;
+            [SerializeField]
+            GameObject Hasira2;
             private float count = 0f;
             private float Max = 0.5f;
             private bool SetComplete = false;
@@ -17,6 +21,16 @@ namespace Player
             // Start is called before the first frame update
             void Start()
             {
+                float R = Random.Range(0, 10);
+                Debug.Log(R);
+                if(R >= 5)
+                {
+                    Hasira1.SetActive(true);
+                }
+                else
+                {
+                    Hasira2.SetActive(true);
+                }
                 startPosition = this.transform.position;
                 this.transform.position = new Vector3(this.transform.position.x,  20, this.transform.position.z);
             }

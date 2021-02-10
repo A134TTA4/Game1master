@@ -53,7 +53,7 @@ namespace Player
                         {
                             if (WrotePosition[i, j] != 4)
                             {
-                                PhotonNetwork.Instantiate("Element", new Vector3((float)(i) / 256 * 40 - 20, 0, (float)(j) / 256 * 40 - 20), new Quaternion(0, 0, 0, 0));
+                                PhotonNetwork.Instantiate("Element", new Vector3((float)(i) / 256 * 40 - 20, 0 + Random.Range(0,0.5f), (float)(j) / 256 * 40 - 20), new Quaternion(0, 0, 0, 0));
                                 WrotePosition[i, j] = 4;
                                 for (int n = 0; n <= 2; n++)
                                 {
