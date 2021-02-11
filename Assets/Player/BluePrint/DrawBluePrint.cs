@@ -35,10 +35,10 @@ namespace Player
                 Texture2D mainTexture = (Texture2D)GetComponent<Renderer>().material.mainTexture;
                 Color[] pixels = mainTexture.GetPixels();
 
-                inkLeft[1] = 500;
-                inkLeft[2] = 600;
-                inkLeft[3] = 700;
-                inkLeft[4] = 800;
+                inkLeft[1] = PlayerPrefs.GetInt("ink1", 500);
+                inkLeft[2] = PlayerPrefs.GetInt("ink2", 600);
+                inkLeft[3] = PlayerPrefs.GetInt("ink3", 700);
+                inkLeft[4] = PlayerPrefs.GetInt("ink4", 800);
 
                 buffer = new Color[pixels.Length];
                 pixels.CopyTo(buffer, 0);
