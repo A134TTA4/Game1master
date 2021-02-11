@@ -26,7 +26,7 @@ namespace Player
                 {
                     return;
                 }
-                Bufftext.text = "Buff:ATTACK";
+                Bufftext.text = "BUFF:ATTACK";
                 Bufftext.color = Color.blue;
                 none = false;
             }
@@ -36,7 +36,7 @@ namespace Player
                 {
                     return;
                 }
-                Bufftext.text = "Buff:JUMP";
+                Bufftext.text = "BUFF:JUMP";
                 Bufftext.color = Color.yellow;
                 none = false;
             }
@@ -46,7 +46,7 @@ namespace Player
                 {
                     return;
                 }
-                Bufftext.text = "Buff:SPEED";
+                Bufftext.text = "BUFF:SPEED";
                 Bufftext.color = Color.green;
                 none = false;
             }
@@ -56,7 +56,7 @@ namespace Player
                 {
                     return;
                 }
-                Bufftext.text = "Buff:NONE";
+                Bufftext.text = "BUFF:NONE";
                 Bufftext.color = Color.red;
                 none = true;
 

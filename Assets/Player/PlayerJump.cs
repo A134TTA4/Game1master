@@ -62,7 +62,7 @@ namespace Player
         {
             if(BluePrint.DrawBluePrint.InformPlayerState() == 2)
             {
-                jumpSpeed = 10;
+                jumpSpeed = 8.3f;
             }
             else
             {

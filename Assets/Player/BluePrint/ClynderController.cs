@@ -18,11 +18,10 @@ namespace Player
             Vector3 startPosition = new Vector3();
             [SerializeField]
             GameObject FX;
-            // Start is called before the first frame update
             void Start()
             {
+                SetComplete = false;
                 float R = Random.Range(0, 10);
-                Debug.Log(R);
                 if(R >= 5)
                 {
                     Hasira1.SetActive(true);
@@ -35,7 +34,7 @@ namespace Player
                 this.transform.position = new Vector3(this.transform.position.x,  20, this.transform.position.z);
             }
 
-            // Update is called once per frame
+
             void Update()
             {
                 if (SetComplete == false)

@@ -21,7 +21,7 @@ namespace UI
                 int leftblack = Player.BluePrint.DrawBluePrint.InfromBlackLeft() / 20;
                 if (Player.BluePrint.DrawBluePrint.InformDrawMode() == 1)
                 {
-                    DrawModeText.text = "MODE:ATTACK";
+                    DrawModeText.text = "INK:ATTACK";
                     for(int i = 0; i < leftblue; i++)
                     {
                         DrawModeText.text += "|";
@@ -31,7 +31,7 @@ namespace UI
                 }
                 else if(Player.BluePrint.DrawBluePrint.InformDrawMode() == 2)
                 {
-                    DrawModeText.text = "MODE:JUMP";
+                    DrawModeText.text = "INK:JUMP";
                     for (int i = 0; i < leftyellow; i++)
                     {
                         DrawModeText.text += "|";
@@ -40,7 +40,7 @@ namespace UI
                 }
                 else if (Player.BluePrint.DrawBluePrint.InformDrawMode() == 3)
                 {
-                    DrawModeText.text = "MODE:SPRINT";
+                    DrawModeText.text = "INK:SPRINT";
                     for (int i = 0; i < leftgreen; i++)
                     {
                         DrawModeText.text += "|";
@@ -49,7 +49,7 @@ namespace UI
                 }
                 else if(Player.BluePrint.DrawBluePrint.InformDrawMode() == 4)
                 {
-                    DrawModeText.text = "MODE:WALL";
+                    DrawModeText.text = "INK:WALL";
                     for (int i = 0; i < leftblack; i++)
                     {
                         DrawModeText.text += "|";
@@ -58,7 +58,7 @@ namespace UI
                 }
                 else
                 {
-                    DrawModeText.text = "MODE:EMPTY";
+                    DrawModeText.text = "INK:EMPTY";
                     DrawModeText.color = Color.red;
                 }
             }

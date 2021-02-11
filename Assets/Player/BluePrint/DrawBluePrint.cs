@@ -75,9 +75,9 @@ namespace Player
                     Px = (int)(Player2Position.x);
                     Py = (int)(Player2Position.y);
                 }
-                for (int x = -4; x < 4; x++)
+                for (int x = -6; x < 6; x++)
                 {
-                    for (int y = -4; y < 4; y++)
+                    for (int y = -6; y < 6; y++)
                     {
                         if((Px + x) > 0 && (Py + y) > 0 && (Px + x) < 256 && (Py + y) < 256)
                         {
