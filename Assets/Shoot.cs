@@ -108,7 +108,10 @@ public class Shoot : MonoBehaviourPunCallbacks
             return;
         }
 
-        
+        if(Player.WeaponSwap.InformQ() == true)
+        {
+            return;
+        }
 
         ReloadCheck();
         if(magazine < magazineMax && Player.WeaponSwap.InformWeapon() == false)

@@ -92,7 +92,7 @@ namespace Player
             {
                 if (PhotonScriptor.ConnectingScript.informPlayerID() == 1)
                 {
-                    if (Input.GetKeyDown(KeyCode.Q))
+                    if (WeaponSwap.InformQ() == true && Input.GetKeyDown(KeyCode.Mouse0))
                     {
                         magazine--;
                         GameObject bulletSpawn = PhotonNetwork.Instantiate("BrakeWallBullet", Mazzle.transform.position + PlayerCamera.transform.forward, Quaternion.Euler(this.transform.localEulerAngles.x + 90f, Player.localEulerAngles.y, Player.localEulerAngles.z));
@@ -102,7 +102,7 @@ namespace Player
                 }
                 else
                 {
-                    if (Input.GetKeyDown(KeyCode.Q))
+                    if (WeaponSwap.InformQ() == true && Input.GetKeyDown(KeyCode.Mouse0))
                     {
                         magazine--;
                         GameObject bulletSpawn = PhotonNetwork.Instantiate("BrakeWallBullet", Mazzle.transform.position + PlayerCamera.transform.forward, Quaternion.Euler(this.transform.localEulerAngles.x + 90f, Player2.localEulerAngles.y, Player2.localEulerAngles.z));

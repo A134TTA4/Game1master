@@ -12,8 +12,11 @@ namespace Player
         [SerializeField]
         private GameObject SideArm;
         [SerializeField]
+        private GameObject Launchar;
+        [SerializeField]
         private int PN = 0;
-
+        static private bool Q = false;
+        static private bool nowQ = false;
         static private bool NowWeapon = false;
         private bool WeaPonNow = false;
         static private bool Swap = false;
@@ -25,26 +28,35 @@ namespace Player
             SideArm.SetActive(false);
             NowWeapon = false;
             Swap = false;
+            Q = false;
         }
 
         void Update()
         {
-            if(PhotonScriptor.ConnectingScript.informPlayerID() != PN)
+            if (PhotonScriptor.ConnectingScript.informPlayerID() != PN)
             {
                 return;
             }
-            if(TimeManager.BluePrint.BruePrintPhaze.InformBluePrintState() == true)
+            if (TimeManager.BluePrint.BruePrintPhaze.InformBluePrintState() == true)
             {
                 return;
             }
-            if(TimeManager.IntercalTimeManager.InformIntervalState() == true)
+            if (TimeManager.IntercalTimeManager.InformIntervalState() == true)
             {
                 return;
             }
-            if (Input.mouseScrollDelta.y != 0 && Swap == false)
+            if ((Input.GetKeyDown(KeyCode.Q) || Input.mouseScrollDelta.y != 0) && Swap == false)
             {
                 //Debug.Log("swap now");
                 Swap = true;
+                if (Input.GetKeyDown(KeyCode.Q) && Q == false)
+                {
+                    Q = true;
+                }
+                else if (Q == true)
+                {
+                    Q = false;
+                }
             }
             if (Swap == true)
             {
@@ -55,15 +67,23 @@ namespace Player
                 count = 0f;
                 Swap = false;
                 NowWeapon = !NowWeapon;
+                if (nowQ == true)
+                {
+                    NowWeapon = true;
+                }
                 //Debug.Log(NowWeapon);
             }
-            if(NowWeapon == false && WeaPonNow == true)
+            if (NowWeapon == false && (WeaPonNow == true || nowQ == true) && Swap == false)
             {
                 photonView.RPC(nameof(SwapToAR), RpcTarget.All);
             }
-            if(NowWeapon == true && WeaPonNow == false)
+            if (NowWeapon == true && (WeaPonNow == false || nowQ == true) && Swap == false)
             {
                 photonView.RPC(nameof(SwapToSideArm), RpcTarget.All);
+            }
+            if (Q == true && nowQ == false && Swap ==false)
+            {
+                photonView.RPC(nameof(SwapToLaunchar), RpcTarget.All);
             }
 
         }
@@ -78,13 +98,20 @@ namespace Player
             return NowWeapon;
         }
 
+        static public bool InformQ()
+        {
+            return nowQ;
+        }
+
         [PunRPC]
         public void SwapToAR()
         {
             //Debug.Log("RPC executed");
             AssultRifle.SetActive(true);
             SideArm.SetActive(false);
+            Launchar.SetActive(false);
             WeaPonNow = false;
+            nowQ = false;
         }
 
         [PunRPC]
@@ -93,7 +120,19 @@ namespace Player
             //Debug.Log("RPC executed");
             SideArm.SetActive(true);
             AssultRifle.SetActive(false);
+            Launchar.SetActive(false);
             WeaPonNow = true;
+            nowQ = false;
+        }
+
+        [PunRPC]
+        public void SwapToLaunchar()
+        {
+            SideArm.SetActive(false);
+            AssultRifle.SetActive(false);
+            Launchar.SetActive(true);
+            WeaPonNow = true;
+            nowQ = true;
         }
     }
 
