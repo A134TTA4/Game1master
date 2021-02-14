@@ -60,6 +60,10 @@ namespace AnimationConrollScripts
             {
                 PLanimator.SetFloat("SideArm", 1);
             }
+            if(Player.WeaponSwap.InformQ() == true)
+            {
+                PLanimator.SetFloat("SideArm", 1);
+            }
 
 
             if (Jumping == true)
