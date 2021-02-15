@@ -34,6 +34,11 @@ namespace Player
                 return;
             }
 
+            if(Player.WeaponSwap.InformQ() == true)
+            {
+                return;
+            }
+
             if (TimeManager.MainPhaze.InformMainphaze() != true)
             {
                 return;
@@ -43,6 +48,15 @@ namespace Player
             {
                 FocusState = false;
                 return;
+            }
+
+            if(Player.WeaponSwap.InformWeapon() == true)
+            {
+                Max = 0.25f;
+            }
+            else
+            {
+                Max = 0.5f;
             }
 
             if (Input.GetKey(KeyCode.Mouse1))

@@ -18,7 +18,7 @@ namespace Cube
         Material CubeMaterial;
 
         private bool CanCreate = true;
-        static private int CreateLimit = 4;
+        static private int CreateLimit = 3;
         static private int Created = 0;
         private float rotSpeed = 120.0f;
         private int SetMode = 1;
@@ -28,7 +28,7 @@ namespace Cube
         private void Start()
         {
             IncreasedCube = false;
-            CreateLimit = 4;
+            CreateLimit = 3;
             Created = 0;
         }
 
