@@ -20,14 +20,14 @@ namespace UI
             Text InkLeft;
             private int[] ink = new int[5];
             private bool canincrease = false;
-            private int Max = 2600;
-            private int inkMax = 860;
+            private int Max = 2000;
+            private int inkMax = 850;
             void Start()
             {
                 ink[1] =PlayerPrefs.GetInt("ink1",500);
-                ink[2] =PlayerPrefs.GetInt("ink2",600);
-                ink[3] =PlayerPrefs.GetInt("ink3",700);
-                ink[4] =PlayerPrefs.GetInt("ink4",800);
+                ink[2] =PlayerPrefs.GetInt("ink2",500);
+                ink[3] =PlayerPrefs.GetInt("ink3",500);
+                ink[4] =PlayerPrefs.GetInt("ink4",500);
             }
 
             // Update is called once per frame

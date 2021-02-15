@@ -41,6 +41,10 @@ namespace Player
             {
                 return;
             }
+            if(TimeManager.MainPhaze.InformMainphaze() ==false)
+            {
+                return;
+            }
             if (TimeManager.IntercalTimeManager.InformIntervalState() == true)
             {
                 return;

@@ -36,9 +36,9 @@ namespace Player
                 Color[] pixels = mainTexture.GetPixels();
 
                 inkLeft[1] = PlayerPrefs.GetInt("ink1", 500);
-                inkLeft[2] = PlayerPrefs.GetInt("ink2", 600);
-                inkLeft[3] = PlayerPrefs.GetInt("ink3", 700);
-                inkLeft[4] = PlayerPrefs.GetInt("ink4", 800);
+                inkLeft[2] = PlayerPrefs.GetInt("ink2", 500);
+                inkLeft[3] = PlayerPrefs.GetInt("ink3", 500);
+                inkLeft[4] = PlayerPrefs.GetInt("ink4", 500);
 
                 buffer = new Color[pixels.Length];
                 pixels.CopyTo(buffer, 0);
@@ -166,7 +166,7 @@ namespace Player
 
                 if (Drawing == true)
                 {
-                    DrawingCount += Time.deltaTime;
+                    //DrawingCount += Time.deltaTime;
                     if (DrawingCount > 0.5f)
                     {
                         inkLeft[DrawMode] -= 80;
@@ -203,30 +203,50 @@ namespace Player
                                     if ((int)(priviousPoint.x + n) > 0 && (int)(priviousPoint.x + n) <  256 && (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (nowPoint.x - priviousPoint.x) * n)) > 0 && (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (nowPoint.x - priviousPoint.x) * n)) < 256)
                                     {
                                         drawTexture.SetPixel((int)(priviousPoint.x + n), (int)(priviousPoint.y + (nowPoint.y - priviousPoint.y) / (nowPoint.x - priviousPoint.x) * n), DrawColor1);
+                                        if(mapLinst[(int)(priviousPoint.x + n), (int)(priviousPoint.y + (nowPoint.y - priviousPoint.y) / (nowPoint.x - priviousPoint.x) * n)] == DrawMode)
+                                        {
+                                            inkLeft[DrawMode]++;
+                                        }
                                         mapLinst[(int)(priviousPoint.x + n), (int)(priviousPoint.y + (nowPoint.y - priviousPoint.y) / (nowPoint.x - priviousPoint.x) * n)] = DrawMode;
                                     }
 
                                     if ((int)(priviousPoint.x + n) +1 > 0 && (int)(priviousPoint.x + n) + 1 < 256 && (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (nowPoint.x - priviousPoint.x) * n)) > 0 && (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (nowPoint.x - priviousPoint.x) * n)) < 256)
                                     {
                                         drawTexture.SetPixel((int)(priviousPoint.x + n) + 1, (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (nowPoint.x - priviousPoint.x) * n)), DrawColor1);
+                                        if(mapLinst[(int)(priviousPoint.x + n) + 1, (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (nowPoint.x - priviousPoint.x) * n))] == DrawMode)
+                                        {
+                                            inkLeft[DrawMode]++;
+                                        }
                                         mapLinst[(int)(priviousPoint.x + n) + 1, (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (nowPoint.x - priviousPoint.x) * n))] = DrawMode;
                                     }
 
                                     if ((int)(priviousPoint.x + n) - 1 > 0 && (int)(priviousPoint.x + n) - 1 < 256 && (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (nowPoint.x - priviousPoint.x) * n)) > 0 && (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (nowPoint.x - priviousPoint.x) * n)) < 256)
                                     {
                                         drawTexture.SetPixel((int)(priviousPoint.x + n) - 1, (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (nowPoint.x - priviousPoint.x) * n)), DrawColor1);
+                                        if(mapLinst[(int)(priviousPoint.x + n) - 1, (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (nowPoint.x - priviousPoint.x) * n))] == DrawMode)
+                                        {
+                                            inkLeft[DrawMode]++;
+                                        }
                                         mapLinst[(int)(priviousPoint.x + n) - 1, (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (nowPoint.x - priviousPoint.x) * n))] = DrawMode;
                                     }
 
                                     if ((int)(priviousPoint.x + n) > 0 && (int)(priviousPoint.x + n) < 256 && (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (nowPoint.x - priviousPoint.x) * n)) + 1 > 0 && (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (nowPoint.x - priviousPoint.x) * n)) + 1 < 256)
                                     {
                                         drawTexture.SetPixel((int)(priviousPoint.x + n), (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (nowPoint.x - priviousPoint.x) * n )) +1, DrawColor1);
+                                        if(mapLinst[(int)(priviousPoint.x + n), (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (nowPoint.x - priviousPoint.x) * n)) + 1] == DrawMode)
+                                        {
+                                            inkLeft[DrawMode]++;
+                                        }
                                         mapLinst[(int)(priviousPoint.x + n), (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (nowPoint.x - priviousPoint.x) * n)) + 1] = DrawMode;
                                     }
 
                                     if ((int)(priviousPoint.x + n) > 0 && (int)(priviousPoint.x + n) < 256 && (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (nowPoint.x - priviousPoint.x) * n)) - 1 > 0 && (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (nowPoint.x - priviousPoint.x) * n)) - 1 < 256)
                                     {
                                         drawTexture.SetPixel((int)(priviousPoint.x + n), (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (nowPoint.x - priviousPoint.x) * n )) - 1, DrawColor1);
+                                        if(mapLinst[(int)(priviousPoint.x + n), (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (nowPoint.x - priviousPoint.x) * n)) - 1] == DrawMode)
+                                        {
+                                            inkLeft[DrawMode]++;
+                                        }
                                         mapLinst[(int)(priviousPoint.x + n), (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (nowPoint.x - priviousPoint.x) * n)) - 1] = DrawMode;
                                     }
                                 }
@@ -239,30 +259,50 @@ namespace Player
                                     if ((int)(priviousPoint.x + n) > 0 && (int)(priviousPoint.x + n) < 256 && (int)(priviousPoint.y - ((priviousPoint.y - nowPoint.y) / (nowPoint.x - priviousPoint.x) * n)) > 0 && (int)(priviousPoint.y - ((priviousPoint.y - nowPoint.y) /(nowPoint.x - priviousPoint.x) * n)) < 256)
                                     {
                                         drawTexture.SetPixel((int)(priviousPoint.x + n), (int)(priviousPoint.y - ((priviousPoint.y - nowPoint.y) / (nowPoint.x - priviousPoint.x) * n)), DrawColor1);
+                                        if(mapLinst[(int)(priviousPoint.x + n), (int)(priviousPoint.y - ((priviousPoint.y - nowPoint.y) / (nowPoint.x - priviousPoint.x) * n))] == DrawMode)
+                                        {
+                                            inkLeft[DrawMode]++;
+                                        }
                                         mapLinst[(int)(priviousPoint.x + n), (int)(priviousPoint.y - ((priviousPoint.y - nowPoint.y) / (nowPoint.x - priviousPoint.x) * n))] = DrawMode;
                                     }
 
                                     if ((int)(priviousPoint.x + n) + 1 > 0 && (int)(priviousPoint.x + n) + 1 < 256 && (int)(priviousPoint.y - ((priviousPoint.y - nowPoint.y) / (nowPoint.x - priviousPoint.x)) * n) > 0 && (int)(priviousPoint.y - ((priviousPoint.y - nowPoint.y) /(nowPoint.x - priviousPoint.x) * n)) < 256)
                                     {
                                         drawTexture.SetPixel((int)(priviousPoint.x + n) + 1, (int)(priviousPoint.y - ((priviousPoint.y - nowPoint.y) / (nowPoint.x - priviousPoint.x) * n)), DrawColor1);
+                                        if(mapLinst[(int)(priviousPoint.x + n) + 1, (int)(priviousPoint.y - ((priviousPoint.y - nowPoint.y) / (nowPoint.x - priviousPoint.x) * n))] == DrawMode)
+                                        {
+                                            inkLeft[DrawMode]++;
+                                        }
                                         mapLinst[(int)(priviousPoint.x + n) + 1, (int)(priviousPoint.y - ((priviousPoint.y - nowPoint.y) / (nowPoint.x - priviousPoint.x) * n))] = DrawMode;
                                     }
 
                                     if ((int)(priviousPoint.x + n) - 1 > 0 && (int)(priviousPoint.x + n) - 1 < 256 && (int)(priviousPoint.y - ((priviousPoint.y - nowPoint.y) /(nowPoint.x - priviousPoint.x) * n)) > 0 && (int)(priviousPoint.y - ((priviousPoint.y - nowPoint.y) /(nowPoint.x - priviousPoint.x) * n)) < 256)
                                     {
                                         drawTexture.SetPixel((int)(priviousPoint.x + n) - 1, (int)(priviousPoint.y - ((priviousPoint.y - nowPoint.y) /(nowPoint.x - priviousPoint.x) * n)), DrawColor1);
+                                        if(mapLinst[(int)(priviousPoint.x + n) - 1, (int)(priviousPoint.y - ((priviousPoint.y - nowPoint.y) / (nowPoint.x - priviousPoint.x) * n))] == DrawMode)
+                                        {
+                                            inkLeft[DrawMode]++;
+                                        }
                                         mapLinst[(int)(priviousPoint.x + n) - 1, (int)(priviousPoint.y - ((priviousPoint.y - nowPoint.y) / (nowPoint.x - priviousPoint.x) * n))] = DrawMode;
                                     }
 
                                     if ((int)(priviousPoint.x + n) > 0 && (int)(priviousPoint.x + n) < 256 && (int)(priviousPoint.y - ((priviousPoint.y - nowPoint.y) /(nowPoint.x - priviousPoint.x) * n)) + 1 > 0 && (int)(priviousPoint.y - ((priviousPoint.y - nowPoint.y) / (nowPoint.x - priviousPoint.x) * n)) + 1 < 256)
                                     {
                                         drawTexture.SetPixel((int)(priviousPoint.x + n), (int)(priviousPoint.y - ((priviousPoint.y - nowPoint.y) / (nowPoint.x - priviousPoint.x) * n)) + 1, DrawColor1);
+                                        if(mapLinst[(int)(priviousPoint.x + n), (int)(priviousPoint.y - ((priviousPoint.y - nowPoint.y) / (nowPoint.x - priviousPoint.x) * n)) + 1] == DrawMode)
+                                        {
+                                            inkLeft[DrawMode]++;
+                                        }
                                         mapLinst[(int)(priviousPoint.x + n), (int)(priviousPoint.y - ((priviousPoint.y - nowPoint.y) / (nowPoint.x - priviousPoint.x) * n)) + 1] = DrawMode;
                                     }
 
                                     if ((int)(priviousPoint.x + n) > 0 && (int)(priviousPoint.x + n) < 256 && (int)(priviousPoint.y - ((priviousPoint.y - nowPoint.y) /(nowPoint.x - priviousPoint.x) * n)) - 1 > 0 && (int)(priviousPoint.y - ((priviousPoint.y - nowPoint.y) / (nowPoint.x - priviousPoint.x) * n)) - 1 < 256)
                                     {
                                         drawTexture.SetPixel((int)(priviousPoint.x + n), (int)(priviousPoint.y - ((priviousPoint.y - nowPoint.y) / (nowPoint.x - priviousPoint.x) * n)) - 1, DrawColor1);
+                                        if(mapLinst[(int)(priviousPoint.x + n), (int)(priviousPoint.y - ((priviousPoint.y - nowPoint.y) / (nowPoint.x - priviousPoint.x) * n)) - 1] == DrawMode)
+                                        {
+                                            inkLeft[DrawMode]++;
+                                        }
                                         mapLinst[(int)(priviousPoint.x + n), (int)(priviousPoint.y - ((priviousPoint.y - nowPoint.y) / (nowPoint.x - priviousPoint.x) * n)) - 1] = DrawMode;
                                     }
                                 }
@@ -279,30 +319,50 @@ namespace Player
                                     if ((int)(priviousPoint.x - n) > 0 && (int)(priviousPoint.x - n) < 256 && (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (priviousPoint.x - nowPoint.x) * n)) > 0 && (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (priviousPoint.x - nowPoint.x) * n)) < 256)
                                     { 
                                         drawTexture.SetPixel((int)(priviousPoint.x - n), (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (priviousPoint.x - nowPoint.x) * n)), DrawColor1);
+                                        if(mapLinst[(int)(priviousPoint.x - n), (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (priviousPoint.x - nowPoint.x) * n))] == DrawMode)
+                                        {
+                                            inkLeft[DrawMode]++;
+                                        }
                                         mapLinst[(int)(priviousPoint.x - n), (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (priviousPoint.x - nowPoint.x) * n))] = DrawMode;
                                     }
 
                                     if ((int)(priviousPoint.x - n) + 1 > 0 && (int)(priviousPoint.x - n) + 1 < 256 && (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (priviousPoint.x - nowPoint.x) * n)) > 0 && (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (priviousPoint.x - nowPoint.x) * n)) < 256)
                                     {
                                         drawTexture.SetPixel((int)(priviousPoint.x - n) + 1, (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (priviousPoint.x - nowPoint.x) * n)), DrawColor1);
+                                        if(mapLinst[(int)(priviousPoint.x - n) + 1, (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (priviousPoint.x - nowPoint.x) * n))] == DrawMode)
+                                        {
+                                            inkLeft[DrawMode]++;
+                                        }
                                         mapLinst[(int)(priviousPoint.x - n) + 1, (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (priviousPoint.x - nowPoint.x) * n))] = DrawMode;
                                     }
 
                                     if ((int)(priviousPoint.x - n) - 1 > 0 && (int)(priviousPoint.x - n) - 1 < 256 && (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (priviousPoint.x - nowPoint.x) * n)) > 0 && (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (priviousPoint.x - nowPoint.x) * n)) < 256)
                                     {
                                         drawTexture.SetPixel((int)(priviousPoint.x - n) - 1, (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (priviousPoint.x - nowPoint.x) * n)), DrawColor1);
+                                        if(mapLinst[(int)(priviousPoint.x - n) - 1, (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (priviousPoint.x - nowPoint.x) * n))] == DrawMode)
+                                        {
+                                            inkLeft[DrawMode]++;
+                                        }
                                         mapLinst[(int)(priviousPoint.x - n) - 1, (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (priviousPoint.x - nowPoint.x) * n))] = DrawMode;
                                     }
 
                                     if ((int)(priviousPoint.x - n) > 0 && (int)(priviousPoint.x - n) < 256 && (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (priviousPoint.x - nowPoint.x) * n)) + 1 > 0 && (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (priviousPoint.x - nowPoint.x) * n)) + 1 < 256)
                                     {
                                         drawTexture.SetPixel((int)(priviousPoint.x - n), (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (priviousPoint.x - nowPoint.x) * n)) + 1, DrawColor1);
+                                        if(mapLinst[(int)(priviousPoint.x - n), (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (priviousPoint.x - nowPoint.x) * n)) + 1] == DrawMode)
+                                        {
+                                            inkLeft[DrawMode]++;
+                                        }
                                         mapLinst[(int)(priviousPoint.x - n), (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (priviousPoint.x - nowPoint.x) * n)) + 1] = DrawMode;
                                     }
 
                                     if ((int)(priviousPoint.x - n) > 0 && (int)(priviousPoint.x - n) < 256 && (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (priviousPoint.x - nowPoint.x) * n)) - 1 > 0 && (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (priviousPoint.x - nowPoint.x) * n)) - 1 < 256)
                                     {
                                         drawTexture.SetPixel((int)(priviousPoint.x - n), (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (priviousPoint.x - nowPoint.x) * n)) - 1, DrawColor1);
+                                        if(mapLinst[(int)(priviousPoint.x - n), (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (priviousPoint.x - nowPoint.x) * n)) - 1] == DrawMode)
+                                        {
+                                            inkLeft[DrawMode]++;
+                                        }
                                         mapLinst[(int)(priviousPoint.x - n), (int)(priviousPoint.y + ((nowPoint.y - priviousPoint.y) / (priviousPoint.x - nowPoint.x) * n)) - 1] = DrawMode;
                                     }
                                 } 
@@ -316,30 +376,50 @@ namespace Player
                                     if ((int)(nowPoint.x + n) > 0 && (int)(nowPoint.x + n) < 256 && (int)(nowPoint.y + ((priviousPoint.y - nowPoint.y) / (priviousPoint.x - nowPoint.x) * n)) > 0 && (int)(nowPoint.y + ((priviousPoint.y - nowPoint.y) / (priviousPoint.x - nowPoint.x) * n)) < 256)
                                     {
                                         drawTexture.SetPixel((int)(nowPoint.x + n), (int)(nowPoint.y + ((priviousPoint.y - nowPoint.y) / (priviousPoint.x - nowPoint.x) * n)), DrawColor1);
+                                        if(mapLinst[(int)(nowPoint.x + n), (int)(nowPoint.y + ((priviousPoint.y - nowPoint.y) / (priviousPoint.x - nowPoint.x) * n))] == DrawMode)
+                                        {
+                                            inkLeft[DrawMode]++;
+                                        }
                                         mapLinst[(int)(nowPoint.x + n), (int)(nowPoint.y + ((priviousPoint.y - nowPoint.y) / (priviousPoint.x - nowPoint.x) * n))] = DrawMode;
                                     }
 
                                     if ((int)(nowPoint.x + n) + 1 > 0 && (int)(nowPoint.x + n) + 1 < 256 && (int)(nowPoint.y + ((priviousPoint.y - nowPoint.y) / (priviousPoint.x - nowPoint.x) * n)) > 0 && (int)(nowPoint.y + ((priviousPoint.y - nowPoint.y) / (priviousPoint.x - nowPoint.x) * n)) < 256)
                                     {
                                         drawTexture.SetPixel((int)(nowPoint.x + n) + 1, (int)(nowPoint.y + ((priviousPoint.y - nowPoint.y) / (priviousPoint.x - nowPoint.x) * n)), DrawColor1);
+                                        if(mapLinst[(int)(nowPoint.x + n) + 1, (int)(nowPoint.y + ((priviousPoint.y - nowPoint.y) / (priviousPoint.x - nowPoint.x) * n))] == DrawMode)
+                                        {
+                                            inkLeft[DrawMode]++;
+                                        }
                                         mapLinst[(int)(nowPoint.x + n) + 1, (int)(nowPoint.y + ((priviousPoint.y - nowPoint.y) / (priviousPoint.x - nowPoint.x) * n))] = DrawMode;
                                     }
 
                                     if ((int)(nowPoint.x + n) -1 > 0 && (int)(nowPoint.x + n) -1 < 256 && (int)(nowPoint.y + ((priviousPoint.y - nowPoint.y) / (priviousPoint.x - nowPoint.x) * n)) > 0 && (int)(nowPoint.y + ((priviousPoint.y - nowPoint.y) / (priviousPoint.x - nowPoint.x) * n)) < 256)
                                     {
                                         drawTexture.SetPixel((int)(nowPoint.x + n) -1, (int)(nowPoint.y + ((priviousPoint.y - nowPoint.y) / (priviousPoint.x - nowPoint.x) * n)), DrawColor1);
+                                        if(mapLinst[(int)(nowPoint.x + n) - 1, (int)(nowPoint.y + ((priviousPoint.y - nowPoint.y) / (priviousPoint.x - nowPoint.x) * n))] == DrawMode)
+                                        {
+                                            inkLeft[DrawMode]++;
+                                        }
                                         mapLinst[(int)(nowPoint.x + n) - 1, (int)(nowPoint.y + ((priviousPoint.y - nowPoint.y) / (priviousPoint.x - nowPoint.x) * n))] = DrawMode;
                                     }
 
                                     if ((int)(nowPoint.x + n) > 0 && (int)(nowPoint.x + n) < 256 && (int)(nowPoint.y + ((priviousPoint.y - nowPoint.y) / (priviousPoint.x - nowPoint.x) * n)) + 1 > 0 && (int)(nowPoint.y + ((priviousPoint.y - nowPoint.y) / (priviousPoint.x - nowPoint.x) * n)) + 1 < 256)
                                     {
                                         drawTexture.SetPixel((int)(nowPoint.x + n), (int)(nowPoint.y + ((priviousPoint.y - nowPoint.y) / (priviousPoint.x - nowPoint.x) * n)) + 1, DrawColor1);
+                                        if(mapLinst[(int)(nowPoint.x + n), (int)(nowPoint.y + ((priviousPoint.y - nowPoint.y) / (priviousPoint.x - nowPoint.x) * n)) + 1] == DrawMode)
+                                        {
+                                            inkLeft[DrawMode]++;
+                                        }
                                         mapLinst[(int)(nowPoint.x + n), (int)(nowPoint.y + ((priviousPoint.y - nowPoint.y) / (priviousPoint.x - nowPoint.x) * n)) + 1] = DrawMode;
                                     }
 
                                     if ((int)(nowPoint.x + n) > 0 && (int)(nowPoint.x + n) < 256 && (int)(nowPoint.y + ((priviousPoint.y - nowPoint.y) / (priviousPoint.x - nowPoint.x) * n)) -1 > 0 && (int)(nowPoint.y + ((priviousPoint.y - nowPoint.y) / (priviousPoint.x - nowPoint.x) * n))  -1< 256)
                                     {
                                         drawTexture.SetPixel((int)(nowPoint.x + n), (int)(nowPoint.y + ((priviousPoint.y - nowPoint.y) / (priviousPoint.x - nowPoint.x) * n)) - 1, DrawColor1);
+                                        if(mapLinst[(int)(nowPoint.x + n), (int)(nowPoint.y + ((priviousPoint.y - nowPoint.y) / (priviousPoint.x - nowPoint.x) * n)) - 1] == DrawMode)
+                                        {
+                                            inkLeft[DrawMode]++;
+                                        }
                                         mapLinst[(int)(nowPoint.x + n), (int)(nowPoint.y + ((priviousPoint.y - nowPoint.y) / (priviousPoint.x - nowPoint.x) * n)) - 1] = DrawMode;
                                     }
                                 }
@@ -361,30 +441,50 @@ namespace Player
                                     if ((int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (nowPoint.y - priviousPoint.y))) > 0 && (int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (nowPoint.y - priviousPoint.y))) < 256 && (int)(priviousPoint.y + n) > 0 && (int)(priviousPoint.y + n) < 256)
                                     {
                                         drawTexture.SetPixel((int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (nowPoint.y - priviousPoint.y))), (int)(priviousPoint.y + n), DrawColor1);
+                                        if(mapLinst[(int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (nowPoint.y - priviousPoint.y))), (int)(priviousPoint.y + n)] == DrawMode)
+                                        {
+                                            inkLeft[DrawMode]++;
+                                        }
                                         mapLinst[(int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (nowPoint.y - priviousPoint.y))), (int)(priviousPoint.y + n)] = DrawMode;
                                     }
 
                                     if ((int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (nowPoint.y - priviousPoint.y))) + 1 > 0 && (int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (nowPoint.y - priviousPoint.y))) + 1 < 256 && (int)(priviousPoint.y + n) > 0 && (int)(priviousPoint.y + n) < 256)
                                     {
                                         drawTexture.SetPixel((int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (nowPoint.y - priviousPoint.y))) + 1, (int)(priviousPoint.y + n), DrawColor1);
+                                        if(mapLinst[(int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (nowPoint.y - priviousPoint.y))) + 1, (int)(priviousPoint.y + n)] == DrawMode)
+                                        {
+                                            inkLeft[DrawMode]++;
+                                        }
                                         mapLinst[(int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (nowPoint.y - priviousPoint.y))) + 1, (int)(priviousPoint.y + n)] = DrawMode;
                                     }
 
                                     if ((int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (nowPoint.y - priviousPoint.y))) - 1 > 0 && (int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (nowPoint.y - priviousPoint.y))) - 1 < 256 && (int)(priviousPoint.y + n) > 0 && (int)(priviousPoint.y + n) < 256)
                                     {
                                         drawTexture.SetPixel((int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (nowPoint.y - priviousPoint.y))) - 1, (int)(priviousPoint.y + n), DrawColor1);
+                                        if(mapLinst[(int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (nowPoint.y - priviousPoint.y))) - 1, (int)(priviousPoint.y + n)] == DrawMode)
+                                        {
+                                            inkLeft[DrawMode]++;
+                                        }
                                         mapLinst[(int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (nowPoint.y - priviousPoint.y))) - 1, (int)(priviousPoint.y + n)] = DrawMode;
                                     }
 
                                     if ((int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (nowPoint.y - priviousPoint.y))) > 0 && (int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (nowPoint.y - priviousPoint.y))) < 256 && (int)(priviousPoint.y + n) + 1 > 0 && (int)(priviousPoint.y + n) + 1 < 256)
                                     {
                                         drawTexture.SetPixel((int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (nowPoint.y - priviousPoint.y))), (int)(priviousPoint.y + n) + 1, DrawColor1);
+                                        if(mapLinst[(int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (nowPoint.y - priviousPoint.y))), (int)(priviousPoint.y + n) + 1] == DrawMode)
+                                        {
+                                            inkLeft[DrawMode]++;
+                                        }
                                         mapLinst[(int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (nowPoint.y - priviousPoint.y))), (int)(priviousPoint.y + n) + 1] = DrawMode;
                                     }
 
                                     if ((int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (nowPoint.y - priviousPoint.y))) > 0 && (int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (nowPoint.y - priviousPoint.y))) < 256 && (int)(priviousPoint.y + n) - 1 > 0 && (int)(priviousPoint.y + n) - 1 < 256)
                                     {
                                         drawTexture.SetPixel((int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (nowPoint.y - priviousPoint.y))), (int)(priviousPoint.y + n) - 1, DrawColor1);
+                                        if(mapLinst[(int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (nowPoint.y - priviousPoint.y))), (int)(priviousPoint.y + n) - 1] == DrawMode)
+                                        {
+                                            inkLeft[DrawMode]++;
+                                        }
                                         mapLinst[(int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (nowPoint.y - priviousPoint.y))), (int)(priviousPoint.y + n) - 1] = DrawMode;
                                     }
                                 }
@@ -398,30 +498,50 @@ namespace Player
                                     if ((int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (priviousPoint.y - nowPoint.y))) > 0 && (int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (priviousPoint.y - nowPoint.y))) < 256 && (int)(priviousPoint.y - n) > 0 && (int)(nowPoint.y + n) < 256)
                                     {
                                         drawTexture.SetPixel((int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (priviousPoint.y - nowPoint.y))), (int)(priviousPoint.y - n), DrawColor1);
+                                        if(mapLinst[(int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (priviousPoint.y - nowPoint.y))), (int)(priviousPoint.y - n)] == DrawMode)
+                                        {
+                                            inkLeft[DrawMode]++;
+                                        }
                                         mapLinst[(int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (priviousPoint.y - nowPoint.y))), (int)(priviousPoint.y - n)] = DrawMode;
                                     }
 
                                     if ((int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (priviousPoint.y - nowPoint.y))) +1 > 0 && (int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (priviousPoint.y - nowPoint.y))) +1 < 256 && (int)(priviousPoint.y - n) > 0 && (int)(nowPoint.y + n) < 256)
                                     {
                                         drawTexture.SetPixel((int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (priviousPoint.y - nowPoint.y))) +1, (int)(priviousPoint.y - n), DrawColor1);
+                                        if(mapLinst[(int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (priviousPoint.y - nowPoint.y))) + 1, (int)(priviousPoint.y - n)] == DrawMode)
+                                        {
+                                            inkLeft[DrawMode]++;
+                                        }
                                         mapLinst[(int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (priviousPoint.y - nowPoint.y))) + 1, (int)(priviousPoint.y - n)] = DrawMode;
                                     }
 
                                     if ((int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (priviousPoint.y - nowPoint.y))) + 1 > 0 && (int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (priviousPoint.y - nowPoint.y))) + 1 < 256 && (int)(priviousPoint.y - n) > 0 && (int)(nowPoint.y + n) < 256)
                                     {
                                         drawTexture.SetPixel((int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (priviousPoint.y - nowPoint.y))) + 1, (int)(priviousPoint.y - n), DrawColor1);
+                                        if(mapLinst[(int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (priviousPoint.y - nowPoint.y))) + 1, (int)(priviousPoint.y - n)] == DrawMode)
+                                        {
+                                            inkLeft[DrawMode]++;
+                                        }
                                         mapLinst[(int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (priviousPoint.y - nowPoint.y))) + 1, (int)(priviousPoint.y - n)] = DrawMode;
                                     }
 
                                     if ((int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (priviousPoint.y - nowPoint.y))) > 0 && (int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (priviousPoint.y - nowPoint.y))) < 256 && (int)(priviousPoint.y - n) +1 > 0 && (int)(nowPoint.y + n) +1 < 256)
                                     {
                                         drawTexture.SetPixel((int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (priviousPoint.y - nowPoint.y))), (int)(priviousPoint.y - n) +1, DrawColor1);
+                                        if(mapLinst[(int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (priviousPoint.y - nowPoint.y))), (int)(priviousPoint.y - n) + 1] == DrawMode)
+                                        {
+                                            inkLeft[DrawMode]++;
+                                        }
                                         mapLinst[(int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (priviousPoint.y - nowPoint.y))), (int)(priviousPoint.y - n) + 1] = DrawMode;
                                     }
 
                                     if ((int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (priviousPoint.y - nowPoint.y))) > 0 && (int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (priviousPoint.y - nowPoint.y))) < 256 && (int)(priviousPoint.y - n) - 1 > 0 && (int)(nowPoint.y + n) - 1 < 256)
                                     {
                                         drawTexture.SetPixel((int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (priviousPoint.y - nowPoint.y))), (int)(priviousPoint.y - n) - 1, DrawColor1);
+                                        if(mapLinst[(int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (priviousPoint.y - nowPoint.y))), (int)(priviousPoint.y - n) - 1] == DrawMode)
+                                        {
+                                            inkLeft[DrawMode]++;
+                                        }
                                         mapLinst[(int)(priviousPoint.x + ((nowPoint.x - priviousPoint.x) * n / (priviousPoint.y - nowPoint.y))), (int)(priviousPoint.y - n) - 1] = DrawMode;
                                     }
                                 }
@@ -439,30 +559,50 @@ namespace Player
                                     if ((int)(priviousPoint.x - ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)) > 0 && (int)(priviousPoint.x - + ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)) < 256 && (int)(priviousPoint.y + n) > 0 && (int)(priviousPoint.y + n) < 256)
                                     {
                                         drawTexture.SetPixel((int)(priviousPoint.x - ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)), (int)(priviousPoint.y + n), DrawColor1);
+                                        if(mapLinst[(int)(priviousPoint.x - ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)), (int)(priviousPoint.y + n)] == DrawMode)
+                                        {
+                                            inkLeft[DrawMode]++;
+                                        }
                                         mapLinst[(int)(priviousPoint.x - ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)), (int)(priviousPoint.y + n)] = DrawMode;
                                     }
 
                                     if ((int)(priviousPoint.x - ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)) > 0 +1 && (int)(priviousPoint.x - ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)) + 1 < 256 && (int)(priviousPoint.y + n) > 0 && (int)(priviousPoint.y + n) < 256)
                                     {
                                         drawTexture.SetPixel((int)(priviousPoint.x - ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)) +1, (int)(priviousPoint.y + n), DrawColor1);
+                                        if(mapLinst[(int)(priviousPoint.x - ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)) + 1, (int)(priviousPoint.y + n)] == DrawMode)
+                                        {
+                                            inkLeft[DrawMode]++;
+                                        }
                                         mapLinst[(int)(priviousPoint.x - ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)) + 1, (int)(priviousPoint.y + n)] = DrawMode;
                                     }
 
                                     if ((int)(priviousPoint.x - ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)) > 0 - 1 && (int)(priviousPoint.x - ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)) - 1 < 256 && (int)(priviousPoint.y + n) > 0 && (int)(priviousPoint.y + n) < 256)
                                     {
                                         drawTexture.SetPixel((int)(priviousPoint.x - ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)) -1, (int)(priviousPoint.y + n), DrawColor1);
+                                        if(mapLinst[(int)(priviousPoint.x - ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)) - 1, (int)(priviousPoint.y + n)] == DrawMode)
+                                        {
+                                            inkLeft[DrawMode]++;
+                                        }
                                         mapLinst[(int)(priviousPoint.x - ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)) - 1, (int)(priviousPoint.y + n)] = DrawMode;
                                     }
 
                                     if ((int)(priviousPoint.x - ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)) > 0 && (int)(priviousPoint.x - ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)) < 256 && (int)(priviousPoint.y + n) + 1 > 0  && (int)(priviousPoint.y + n) + 1 < 256)
                                     {
                                         drawTexture.SetPixel((int)(priviousPoint.x - ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)), (int)(priviousPoint.y + n) + 1, DrawColor1);
+                                        if(mapLinst[(int)(priviousPoint.x - ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)), (int)(priviousPoint.y + n) + 1] == DrawMode)
+                                        {
+                                            inkLeft[DrawMode]++;
+                                        }
                                         mapLinst[(int)(priviousPoint.x - ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)), (int)(priviousPoint.y + n) + 1] = DrawMode;
                                     }
 
                                     if ((int)(priviousPoint.x - ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)) > 0 && (int)(priviousPoint.x - ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)) < 256 && (int)(priviousPoint.y + n) - 1 > 0 && (int)(priviousPoint.y + n) + 1 < 256)
                                     {
                                         drawTexture.SetPixel((int)(priviousPoint.x - ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)), (int)(priviousPoint.y + n) - 1, DrawColor1);
+                                        if(mapLinst[(int)(priviousPoint.x - ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)), (int)(priviousPoint.y + n) - 1] == DrawMode)
+                                        {
+                                            inkLeft[DrawMode]++;
+                                        }
                                         mapLinst[(int)(priviousPoint.x - ((priviousPoint.x - nowPoint.x) / (nowPoint.y - priviousPoint.y) * n)), (int)(priviousPoint.y + n) - 1] = DrawMode;
                                     }
                                 }
@@ -478,30 +618,50 @@ namespace Player
                                     if ((int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (priviousPoint.y - nowPoint.y) * n)) > 0 && (int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (priviousPoint.y - nowPoint.y) * n)) < 256 && (int)(nowPoint.y + n) > 0 && (int)(nowPoint.y + n) < 256)
                                     {
                                         drawTexture.SetPixel((int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (priviousPoint.y - nowPoint.y) * n)), (int)(nowPoint.y + n), DrawColor1);
+                                        if(mapLinst[(int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (priviousPoint.y - nowPoint.y) * n)), (int)(nowPoint.y + n)] == DrawMode)
+                                        {
+                                            inkLeft[DrawMode]++;
+                                        }
                                         mapLinst[(int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (priviousPoint.y - nowPoint.y) * n)), (int)(nowPoint.y + n)] = DrawMode;
                                     }
 
                                     if ((int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (priviousPoint.y - nowPoint.y) * n)) + 1 > 0 && (int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (priviousPoint.y - nowPoint.y) * n)) + 1 < 256 && (int)(nowPoint.y + n) > 0 && (int)(nowPoint.y + n) < 256)
                                     {
                                         drawTexture.SetPixel((int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (priviousPoint.y - nowPoint.y) * n)) + 1, (int)(nowPoint.y + n), DrawColor1);
+                                        if(mapLinst[(int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (priviousPoint.y - nowPoint.y) * n)) + 1, (int)(nowPoint.y + n)] ==DrawMode)
+                                        {
+                                            inkLeft[DrawMode]++;
+                                        }
                                         mapLinst[(int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (priviousPoint.y - nowPoint.y) * n)) + 1, (int)(nowPoint.y + n)] = DrawMode;
                                     }
 
                                     if ((int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (priviousPoint.y - nowPoint.y) * n)) - 1 > 0 && (int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (priviousPoint.y - nowPoint.y) * n)) - 1 < 256 && (int)(nowPoint.y + n) > 0 && (int)(nowPoint.y + n) < 256)
                                     {
                                         drawTexture.SetPixel((int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (priviousPoint.y - nowPoint.y) * n)) - 1, (int)(nowPoint.y + n), DrawColor1);
+                                        if(mapLinst[(int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (priviousPoint.y - nowPoint.y) * n)) - 1, (int)(nowPoint.y + n)] == DrawMode)
+                                        {
+                                            inkLeft[DrawMode]++;
+                                        }
                                         mapLinst[(int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (priviousPoint.y - nowPoint.y) * n)) - 1, (int)(nowPoint.y + n)] = DrawMode;
                                     }
 
                                     if ((int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (priviousPoint.y - nowPoint.y) * n)) > 0 && (int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (priviousPoint.y - nowPoint.y) * n)) < 256 && (int)(nowPoint.y + n) +1 > 0 && (int)(nowPoint.y + n) +1 < 256)
                                     {
                                         drawTexture.SetPixel((int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (priviousPoint.y - nowPoint.y) * n)), (int)(nowPoint.y + n) + 1, DrawColor1);
+                                        if(mapLinst[(int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (priviousPoint.y - nowPoint.y) * n)), (int)(nowPoint.y + n) + 1] == DrawMode)
+                                        {
+                                            inkLeft[DrawMode]++;
+                                        }
                                         mapLinst[(int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (priviousPoint.y - nowPoint.y) * n)), (int)(nowPoint.y + n) + 1] = DrawMode;
                                     }
 
                                     if ((int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (priviousPoint.y - nowPoint.y) * n)) > 0 && (int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (priviousPoint.y - nowPoint.y) * n)) < 256 && (int)(nowPoint.y + n) - 1 > 0 && (int)(nowPoint.y + n) - 1 < 256)
                                     {
                                         drawTexture.SetPixel((int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (priviousPoint.y - nowPoint.y) * n)), (int)(nowPoint.y + n) - 1, DrawColor1);
+                                        if(mapLinst[(int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (priviousPoint.y - nowPoint.y) * n)), (int)(nowPoint.y + n) - 1] == DrawMode)
+                                        {
+                                            inkLeft[DrawMode]++;
+                                        }
                                         mapLinst[(int)(nowPoint.x + ((priviousPoint.x - nowPoint.x) / (priviousPoint.y - nowPoint.y) * n)), (int)(nowPoint.y + n) - 1] = DrawMode;
                                     }
                                 }

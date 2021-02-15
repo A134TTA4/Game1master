@@ -98,6 +98,7 @@ namespace Player
                         GameObject bulletSpawn = PhotonNetwork.Instantiate("BrakeWallBullet", Mazzle.transform.position + PlayerCamera.transform.forward, Quaternion.Euler(this.transform.localEulerAngles.x + 90f, Player.localEulerAngles.y, Player.localEulerAngles.z));
                         Rigidbody BulletRigid = bulletSpawn.GetComponent<Rigidbody>();
                         BulletRigid.AddForce(this.transform.forward * bulletSpeed, ForceMode.Impulse);
+                        SoundEffects.WallBrakerShootSound.shotTrueM();
                     }
                 }
                 else
@@ -108,6 +109,7 @@ namespace Player
                         GameObject bulletSpawn = PhotonNetwork.Instantiate("BrakeWallBullet", Mazzle.transform.position + PlayerCamera.transform.forward, Quaternion.Euler(this.transform.localEulerAngles.x + 90f, Player2.localEulerAngles.y, Player2.localEulerAngles.z));
                         Rigidbody BulletRigid = bulletSpawn.GetComponent<Rigidbody>();
                         BulletRigid.AddForce(this.transform.forward * bulletSpeed, ForceMode.Impulse);
+                        SoundEffects.WallBrakerShootSound.shotTrueM();
                     }
                 }
             }
