@@ -35,10 +35,10 @@ namespace Player
                 Texture2D mainTexture = (Texture2D)GetComponent<Renderer>().material.mainTexture;
                 Color[] pixels = mainTexture.GetPixels();
 
-                inkLeft[1] = PlayerPrefs.GetInt("ink1", 500);
-                inkLeft[2] = PlayerPrefs.GetInt("ink2", 500);
-                inkLeft[3] = PlayerPrefs.GetInt("ink3", 500);
-                inkLeft[4] = PlayerPrefs.GetInt("ink4", 500);
+                inkLeft[1] = PlayerPrefs.GetInt("ink1", 200);
+                inkLeft[2] = PlayerPrefs.GetInt("ink2", 200);
+                inkLeft[3] = PlayerPrefs.GetInt("ink3", 200);
+                inkLeft[4] = PlayerPrefs.GetInt("ink4", 200);
 
                 buffer = new Color[pixels.Length];
                 pixels.CopyTo(buffer, 0);
@@ -128,7 +128,6 @@ namespace Player
                 {
                     DrawMode = 0;
                     Getprivious = false;
-
                 }
 
 
@@ -685,32 +684,53 @@ namespace Player
                     {
                         return;
                     }
+                    inkLeft[DrawMode] -= 5;
                     if (nowPoint.x > 0 && nowPoint.x < 256 && nowPoint.y > 0 && nowPoint.y < 256)
                     {
                         drawTexture.SetPixel((int)(nowPoint.x), (int)(nowPoint.y), DrawColor1);
+                        if(mapLinst[(int)(nowPoint.x), (int)(nowPoint.y)] == DrawMode)
+                        {
+                            inkLeft[DrawMode]++;
+                        }
                         mapLinst[(int)(nowPoint.x), (int)(nowPoint.y)] = DrawMode;
                     }
                     if (nowPoint.x + 1 > 0 && nowPoint.x + 1 < 256 && nowPoint.y > 0 && nowPoint.y < 256)
                     {
                         drawTexture.SetPixel((int)(nowPoint.x) + 1, (int)(nowPoint.y), DrawColor1);
+                        if(mapLinst[(int)(nowPoint.x) + 1, (int)(nowPoint.y)] == DrawMode)
+                        {
+                            inkLeft[DrawMode]++;
+                        }
                         mapLinst[(int)(nowPoint.x) + 1, (int)(nowPoint.y)] = DrawMode;
                     }
 
                     if (nowPoint.x - 1 > 0 && nowPoint.x - 1 < 256 && nowPoint.y > 0 && nowPoint.y < 256)
                     {
                         drawTexture.SetPixel((int)(nowPoint.x) - 1, (int)(nowPoint.y), DrawColor1);
+                        if(mapLinst[(int)(nowPoint.x) - 1, (int)(nowPoint.y)] == DrawMode)
+                        {
+                            inkLeft[DrawMode]++;
+                        }
                         mapLinst[(int)(nowPoint.x) - 1, (int)(nowPoint.y)] = DrawMode;
                     }
 
                     if (nowPoint.x > 0 && nowPoint.x < 256 && nowPoint.y + 1 > 0 && nowPoint.y + 1 < 256)
                     {
                         drawTexture.SetPixel((int)(nowPoint.x), (int)(nowPoint.y) + 1, DrawColor1);
+                        if(mapLinst[(int)(nowPoint.x), (int)(nowPoint.y) + 1] == DrawMode)
+                        {
+                            inkLeft[DrawMode]++;
+                        }
                         mapLinst[(int)(nowPoint.x), (int)(nowPoint.y) + 1] = DrawMode;
                     }
 
                     if (nowPoint.x > 0 && nowPoint.x < 256 && nowPoint.y - 1 > 0 && nowPoint.y - 1 < 256)
                     {
                         drawTexture.SetPixel((int)(nowPoint.x), (int)(nowPoint.y) - 1, DrawColor1);
+                        if(mapLinst[(int)(nowPoint.x), (int)(nowPoint.y) - 1] == DrawMode)
+                        {
+                            inkLeft[DrawMode]++;
+                        }
                         mapLinst[(int)(nowPoint.x), (int)(nowPoint.y) - 1] = DrawMode;
                     }
                         
