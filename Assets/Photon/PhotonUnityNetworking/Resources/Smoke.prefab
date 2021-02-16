@@ -33,9 +33,10 @@ Transform:
   m_GameObject: {fileID: 7443733302503702361}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.2, z: 0.1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 644829082618482051}
+  - {fileID: 1873287474163209457}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -54,7 +55,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7443733302503702361}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -260,6 +261,96 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BGMSource: {fileID: 6250045960750087362}
   volume: 0.15
+--- !u!1001 &2369027924365244631
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7309998702628677757}
+    m_Modifications:
+    - target: {fileID: 3626783070588958364, guid: 8acf0e0bb76367347bc8590896ea1c19,
+        type: 3}
+      propertyPath: m_Name
+      value: SmokeGrenade
+      objectReference: {fileID: 0}
+    - target: {fileID: 4116073799985310758, guid: 8acf0e0bb76367347bc8590896ea1c19,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4116073799985310758, guid: 8acf0e0bb76367347bc8590896ea1c19,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4116073799985310758, guid: 8acf0e0bb76367347bc8590896ea1c19,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4116073799985310758, guid: 8acf0e0bb76367347bc8590896ea1c19,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4116073799985310758, guid: 8acf0e0bb76367347bc8590896ea1c19,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4116073799985310758, guid: 8acf0e0bb76367347bc8590896ea1c19,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4116073799985310758, guid: 8acf0e0bb76367347bc8590896ea1c19,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.8660254
+      objectReference: {fileID: 0}
+    - target: {fileID: 4116073799985310758, guid: 8acf0e0bb76367347bc8590896ea1c19,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4116073799985310758, guid: 8acf0e0bb76367347bc8590896ea1c19,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -60
+      objectReference: {fileID: 0}
+    - target: {fileID: 4116073799985310758, guid: 8acf0e0bb76367347bc8590896ea1c19,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4116073799985310758, guid: 8acf0e0bb76367347bc8590896ea1c19,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4116073799985310758, guid: 8acf0e0bb76367347bc8590896ea1c19,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4116073799985310758, guid: 8acf0e0bb76367347bc8590896ea1c19,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4116073799985310758, guid: 8acf0e0bb76367347bc8590896ea1c19,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 70
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8acf0e0bb76367347bc8590896ea1c19, type: 3}
+--- !u!4 &1873287474163209457 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4116073799985310758, guid: 8acf0e0bb76367347bc8590896ea1c19,
+    type: 3}
+  m_PrefabInstance: {fileID: 2369027924365244631}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3497942988953924560
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -271,6 +362,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Smoke_Small_Light_FX
+      objectReference: {fileID: 0}
+    - target: {fileID: 4066656375477230595, guid: 4c34036aca611434daec148fa68ce7fc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4069517108834893395, guid: 4c34036aca611434daec148fa68ce7fc,
         type: 3}

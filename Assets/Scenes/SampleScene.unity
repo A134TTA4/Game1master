@@ -14845,7 +14845,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: ca3d648949b750c418c1bef7aa46357b,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1900
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ca3d648949b750c418c1bef7aa46357b,
         type: 3}
@@ -15732,7 +15732,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84c3f4c5730a8b54f85163a8c7290052, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HitImage: {fileID: 1265824370}
+  HitImage: {fileID: 1619445725}
   HitSoundClip: {fileID: 8300000, guid: ec9fa6552abd58c44af0d2c21d8e5626, type: 3}
   GunAudioSource: {fileID: 607728841}
   PN: 2
@@ -18412,7 +18412,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PN: 1
   PlayerObject: {fileID: 713709699}
-  Humanoid: {fileID: 0}
+  Humanoid: {fileID: 1654375709}
 --- !u!114 &713709709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22748,7 +22748,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84c3f4c5730a8b54f85163a8c7290052, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HitImage: {fileID: 1265824370}
+  HitImage: {fileID: 1619445725}
   HitSoundClip: {fileID: 8300000, guid: ec9fa6552abd58c44af0d2c21d8e5626, type: 3}
   GunAudioSource: {fileID: 855924623}
   PN: 1
@@ -25440,7 +25440,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &969062486
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25557,7 +25557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 901f5adcad9ce034d997870cb602b275, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Qcrosshair: {fileID: 1619445725}
+  Qcrosshair: {fileID: 1265824370}
 --- !u!1 &970423280
 GameObject:
   m_ObjectHideFlags: 0
@@ -27249,7 +27249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1048429200}
   m_Layer: 0
-  m_Name: InsideWall
+  m_Name: OutsideWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32290,7 +32290,7 @@ GameObject:
   - component: {fileID: 1265824373}
   - component: {fileID: 1265824372}
   m_Layer: 5
-  m_Name: HitImage
+  m_Name: Q
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34946,7 +34946,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: ca3d648949b750c418c1bef7aa46357b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 29.78431
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ca3d648949b750c418c1bef7aa46357b,
         type: 3}
@@ -35001,12 +35001,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: ca3d648949b750c418c1bef7aa46357b,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1900
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ca3d648949b750c418c1bef7aa46357b,
         type: 3}
       propertyPath: m_Name
       value: newWall2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ca3d648949b750c418c1bef7aa46357b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca3d648949b750c418c1bef7aa46357b, type: 3}
@@ -39713,12 +39718,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1619445726}
   m_Layer: 5
-  m_Name: Q CrossHair
+  m_Name: HitImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1619445726
 RectTransform:
   m_ObjectHideFlags: 0
@@ -44951,7 +44956,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PN: 2
   PlayerObject: {fileID: 1803875602}
-  Humanoid: {fileID: 0}
+  Humanoid: {fileID: 113459313}
 --- !u!114 &1803875605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51124,7 +51129,6 @@ GameObject:
   - component: {fileID: 2004371333}
   - component: {fileID: 2004371334}
   - component: {fileID: 2004371335}
-  - component: {fileID: 2004371337}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -51327,19 +51331,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UI: {fileID: 10591333}
---- !u!114 &2004371337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2004371323}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7339660c002b23c49953bf7baeac70fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Bufftext: {fileID: 0}
 --- !u!1001 &2006933648
 PrefabInstance:
   m_ObjectHideFlags: 0
