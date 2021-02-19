@@ -15,9 +15,13 @@ namespace Player
             CrossHair.SetActive(false);
         }
 
-        // Update is called once per frame
         void Update()
         {
+            if(WeaponSwap.InformQ() == true)
+            {
+                CrossHair.SetActive(false);
+                return;
+            }
             if(PLCameraFocus.InformForcusState() == true)
             {
                 CrossHair.SetActive(true);

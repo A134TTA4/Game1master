@@ -24,6 +24,12 @@ namespace Player
 
         void Update()
         {
+            if (WeaponSwap.InformQ() == true)
+            {
+                Count = 0f;
+                FocusState = false;
+            }
+
             Fov = UI.SettingPanel.FovController.InformFovValue();
 
             PlayerCamera.fieldOfView = Fov;
@@ -34,7 +40,7 @@ namespace Player
                 return;
             }
 
-            if(Player.WeaponSwap.InformQ() == true)
+            if (WeaponSwap.InformQ() == true)
             {
                 return;
             }

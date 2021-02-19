@@ -27,36 +27,12 @@ namespace PhotonScriptor
             roomHash = new ExitGames.Client.Photon.Hashtable();
             roomHash.Add("HP1", PlayerHP1);
             roomHash.Add("HP2", PlayerHP2);
-            //roomHash.Add("BM1", BlackMap1);
-            //roomHash.Add("BM2", BlackMap2);
             PhotonNetwork.CurrentRoom.SetCustomProperties(roomHash);
         }
 
         void Update()
         {
-            /*
-            if (TimeManager.PreParationTime.InformPreparationState() == true)
-            {
-                if (mapReady == false)
-                {
-                    
-                    if(PhotonScriptor.ConnectingScript.informPlayerID() == 1)
-                    {
-                        BlackMap1 = Player.BluePrint.DrawBluePrint.InformBlackMap();
-                        roomHash["BM1"] = (object)BlackMap1;
-                    }
-                    else
-                    {
-                        BlackMap2 = Player.BluePrint.DrawBluePrint.InformBlackMap();
-                        roomHash["BM2"] = (object)BlackMap2;
-                    }
-                    mapReady = true;
-                    PhotonNetwork.CurrentRoom.SetCustomProperties(roomHash);
-                }
-
-            }
-            */
-
+            
             if(TimeManager.MainPhaze.InformMainphaze() == false)
             {
                 return;
@@ -66,7 +42,7 @@ namespace PhotonScriptor
             {
                 PlayerHP1 = (int)Player.PlayerHp.InformPlayerHP();
                 roomHash["HP1"] = PlayerHP1;
-                
+                PhotonNetwork.CurrentRoom.SetCustomProperties(roomHash);
             }
             if (Player.PlayerHP2.InformPlayerHP() < PlayerHP2)
             {
