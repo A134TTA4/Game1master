@@ -237,6 +237,10 @@ namespace Cube
                 CreateLimit--;
                 IncreasedCube = false;
             }
+            if(CreateLimit <= 0)
+            {
+                CreateLimit = 1;
+            }
         }
 
         static public int InformLimit()

@@ -81,7 +81,7 @@ namespace PhotonScriptor
             //PlayerID = 2;//プレイヤー2としてプレイするよう
             Debug.Log("PlayerID = " + PlayerID);
             Debug.Log("Succesfully Connected");
-            //TimeManager.BluePrint.BruePrintPhaze.StartBluePrintM();//テスト用
+            TimeManager.BluePrint.BruePrintPhaze.StartBluePrintM();//テスト用
         }
 
         public override void OnJoinRoomFailed(short returnCode, string message)

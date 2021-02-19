@@ -27,6 +27,11 @@ namespace Player
         static private bool isWalking = false;
         static private bool A = false;
         static private bool D = false;
+
+        static public float Wstop = 1;
+        static public float Astop = 1;
+        static public float Sstop = 1;
+        static public float Dstop = 1;
         void Start()
         {
             isWalking = false;
@@ -128,7 +133,7 @@ namespace Player
             isWalking = false;
             if (Input.GetKey(KeyCode.W))
             {
-                playerTrans.position += playerTrans.forward * Time.deltaTime * fowardSpeed * groundspeed * SprintMul* ClouchMul * ADSMul * HitStopMul * BuffMul;
+                playerTrans.position += playerTrans.forward * Time.deltaTime * fowardSpeed * groundspeed * SprintMul* ClouchMul * ADSMul * HitStopMul * BuffMul * Wstop;
                 isWalking = true;
             }
             else
@@ -137,12 +142,12 @@ namespace Player
             }
             if (Input.GetKey(KeyCode.S))
             {
-                playerTrans.position += -1 * playerTrans.forward * Time.deltaTime * backwardSpeed * groundspeed * ClouchMul * ADSMul * HitStopMul * BuffMul;
+                playerTrans.position += -1 * playerTrans.forward * Time.deltaTime * backwardSpeed * groundspeed * ClouchMul * ADSMul * HitStopMul * BuffMul * Sstop;
                 isWalking = true;
             }
             if (Input.GetKey(KeyCode.A))
             {
-                playerTrans.position += -1 * playerTrans.right * Time.deltaTime * leftSpeed * groundspeed * ClouchMul * ADSMul * HitStopMul * BuffMul;
+                playerTrans.position += -1 * playerTrans.right * Time.deltaTime * leftSpeed * groundspeed * ClouchMul * ADSMul * HitStopMul * BuffMul * Astop;
                 isWalking = true;
                 A = true;
             }
@@ -152,7 +157,7 @@ namespace Player
             }
             if (Input.GetKey(KeyCode.D))
             {
-                playerTrans.position += playerTrans.right * Time.deltaTime * rightSpeed * groundspeed * ClouchMul * ADSMul * HitStopMul * BuffMul;
+                playerTrans.position += playerTrans.right * Time.deltaTime * rightSpeed * groundspeed * ClouchMul * ADSMul * HitStopMul * BuffMul *Dstop;
                 isWalking = true;
                 D = true;
             }
