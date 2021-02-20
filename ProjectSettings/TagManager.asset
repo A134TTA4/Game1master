@@ -9,6 +9,8 @@ TagManager:
   - Shield
   - BluePrint
   - Separate
+  - Bullet
+  - hantei
   layers:
   - Default
   - TransparentFX

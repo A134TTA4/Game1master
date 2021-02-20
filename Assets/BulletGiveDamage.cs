@@ -30,6 +30,10 @@ public class BulletGiveDamage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {  
+        if(other.CompareTag("hantei"))
+        {
+            return;
+        }
         GameObject Player = other.gameObject;
         PlayerHp component;
         if ((component = Player.GetComponent<PlayerHp>()) != null)
