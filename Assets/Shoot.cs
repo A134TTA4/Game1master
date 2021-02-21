@@ -77,6 +77,8 @@ public class Shoot : MonoBehaviourPunCallbacks
             return;
         }
 
+
+
         if(PreParationTime.InformPreparationState() == true)
         {
             magazine = magazineMax;
@@ -109,6 +111,11 @@ public class Shoot : MonoBehaviourPunCallbacks
         }
 
         if(Player.WeaponSwap.InformQ() == true)
+        {
+            return;
+        }
+
+        if(Player.WeaponSwap.InformSwap() == true)
         {
             return;
         }

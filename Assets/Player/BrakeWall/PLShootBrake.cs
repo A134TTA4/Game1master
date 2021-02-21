@@ -63,6 +63,10 @@ namespace Player
                 {
                     return;
                 }
+                if(WeaponSwap.InformSwap() == true)
+                {
+                    return;
+                }
 
                 if (TimeManager.MainPhaze.InformMainphaze() == false)
                 {
