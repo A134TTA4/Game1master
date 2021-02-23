@@ -29,7 +29,7 @@ namespace PhotonScriptor
         
         private void Update()
         {
-            if (PhotonScriptor.ConnectingScript.informStartGame() == true)
+            if (PhotonScriptor.ConnectingScript.informConnected() == true)
             {
                 if (addcallBacks == false)
                 {
@@ -44,7 +44,7 @@ namespace PhotonScriptor
                 return;
             }
             
-            if (TimeManager.TimeCounter.InformStartGame() == true)
+            if (TimeManager.BluePrint.BruePrintPhaze.InformBluePrintState() == true)
             {
                 if (PN == ConnectingScript.informPlayerID())
                 {

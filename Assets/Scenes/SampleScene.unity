@@ -18772,6 +18772,7 @@ GameObject:
   - component: {fileID: 713709718}
   - component: {fileID: 713709720}
   - component: {fileID: 713709719}
+  - component: {fileID: 713709721}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player
@@ -18872,6 +18873,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PN: 1
   player: {fileID: 713709699}
+  PLRifgid: {fileID: 713709705}
   fowardSpeed: 3
 --- !u!54 &713709705
 Rigidbody:
@@ -18975,7 +18977,7 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 1
-  m_UseLocal: 1
+  m_UseLocal: 0
 --- !u!114 &713709712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19015,7 +19017,7 @@ MonoBehaviour:
   m_SynchronizeVelocity: 1
   m_SynchronizeAngularVelocity: 1
   m_TeleportEnabled: 1
-  m_TeleportIfDistanceGreaterThan: 2
+  m_TeleportIfDistanceGreaterThan: 0.01
 --- !u!82 &713709714
 AudioSource:
   m_ObjectHideFlags: 0
@@ -19366,6 +19368,21 @@ MonoBehaviour:
   GroundedSoundClip: {fileID: 8300000, guid: ca0f251dbd1629c4b95e7969da8827d5, type: 3}
   GroundedSource: {fileID: 713709719}
   PN: 1
+--- !u!114 &713709721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 713709699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a8deaa9557ebed488622952217f0151, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PLCollider: {fileID: 713709700}
+  PLRigid: {fileID: 713709705}
+  PNE: 2
 --- !u!1001 &714488720
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45916,6 +45933,7 @@ GameObject:
   - component: {fileID: 1803875621}
   - component: {fileID: 1803875623}
   - component: {fileID: 1803875622}
+  - component: {fileID: 1803875624}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Player
@@ -45994,6 +46012,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PN: 2
   player: {fileID: 1803875602}
+  PLRifgid: {fileID: 1803875608}
   fowardSpeed: 3
 --- !u!54 &1803875608
 Rigidbody:
@@ -46143,7 +46162,7 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 1
-  m_UseLocal: 1
+  m_UseLocal: 0
 --- !u!114 &1803875616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46159,7 +46178,7 @@ MonoBehaviour:
   m_SynchronizeVelocity: 1
   m_SynchronizeAngularVelocity: 1
   m_TeleportEnabled: 1
-  m_TeleportIfDistanceGreaterThan: 2
+  m_TeleportIfDistanceGreaterThan: 0.01
 --- !u!82 &1803875617
 AudioSource:
   m_ObjectHideFlags: 0
@@ -46510,6 +46529,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1803875624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803875602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a8deaa9557ebed488622952217f0151, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PLCollider: {fileID: 1803875609}
+  PLRigid: {fileID: 1803875608}
+  PNE: 1
 --- !u!1 &1805254833
 GameObject:
   m_ObjectHideFlags: 0

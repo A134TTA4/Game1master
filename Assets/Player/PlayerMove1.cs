@@ -11,12 +11,14 @@ namespace Player
 
         [SerializeField]
         GameObject player;
-        Transform playerTrans;
         [SerializeField]
-        private float fowardSpeed = 3.0f;
-        private float backwardSpeed = 3.0f;
-        private float leftSpeed = 3.0f;
-        private float rightSpeed = 3.0f;
+        Rigidbody PLRifgid;
+
+        Transform playerTrans;
+        private float fowardSpeed = 2.5f;
+        private float backwardSpeed = 2.5f;
+        private float leftSpeed = 2.5f;
+        private float rightSpeed = 2.5f;
         private float groundspeed = 1;
         private float SprintMul = 1;
         private float HitStopMul = 1;
@@ -32,6 +34,11 @@ namespace Player
         static public float Astop = 1;
         static public float Sstop = 1;
         static public float Dstop = 1;
+
+        private float PLVx;
+        private float PLVz;
+        private float Rad;
+        private float NRad;
         void Start()
         {
             isWalking = false;
@@ -130,11 +137,13 @@ namespace Player
 
         private void characterMove()
         {
+            PLVx = 0;
+            PLVz = 0;
             isWalking = false;
             if (Input.GetKey(KeyCode.W))
             {
-                playerTrans.position += playerTrans.forward * Time.deltaTime * fowardSpeed * groundspeed * SprintMul* ClouchMul * ADSMul * HitStopMul * BuffMul * Wstop;
                 isWalking = true;
+                PLVz +=  -1*fowardSpeed * groundspeed * SprintMul * ClouchMul * ADSMul * HitStopMul * BuffMul * Wstop;
             }
             else
             {
@@ -142,13 +151,14 @@ namespace Player
             }
             if (Input.GetKey(KeyCode.S))
             {
-                playerTrans.position += -1 * playerTrans.forward * Time.deltaTime * backwardSpeed * groundspeed * ClouchMul * ADSMul * HitStopMul * BuffMul * Sstop;
+                
                 isWalking = true;
+                PLVz += backwardSpeed * groundspeed * ClouchMul * ADSMul * HitStopMul * BuffMul * Sstop;
             }
             if (Input.GetKey(KeyCode.A))
             {
-                playerTrans.position += -1 * playerTrans.right * Time.deltaTime * leftSpeed * groundspeed * ClouchMul * ADSMul * HitStopMul * BuffMul * Astop;
                 isWalking = true;
+                PLVx +=  -1*leftSpeed * groundspeed * ClouchMul * ADSMul * HitStopMul * BuffMul * Astop;
                 A = true;
             }
             else
@@ -157,14 +167,19 @@ namespace Player
             }
             if (Input.GetKey(KeyCode.D))
             {
-                playerTrans.position += playerTrans.right * Time.deltaTime * rightSpeed * groundspeed * ClouchMul * ADSMul * HitStopMul * BuffMul *Dstop;
                 isWalking = true;
+                PLVx +=   rightSpeed * groundspeed * ClouchMul * ADSMul * HitStopMul * BuffMul * Dstop;
                 D = true;
             }
             else
             {
                 D = false;
             }
+            Rad = player.transform.position.y * Mathf.Deg2Rad;
+            NRad = Mathf.PI / 2 - Rad;
+            Vector3 v1 = new Vector3(PLVx, 0, PLVz);
+            Vector3 v2 = new Vector3(Vector3.Dot(v1, playerTrans.right), PLRifgid.velocity.y,  -1*Vector3.Dot(v1, playerTrans.forward));
+            PLRifgid.velocity = v2;
         }
 
         static public bool InformWalking()
